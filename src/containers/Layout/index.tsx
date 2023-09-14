@@ -8,6 +8,7 @@ import LoadingIndicator from "../../components/Loading";
 
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const RegisterContainer = lazy(() => import("../Register"));
+const LoginContainer = lazy(() => import("../Login"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -30,6 +31,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                             path={"/register"}
                             render={(props: any) => {
                             return <RegisterContainer {...this.props} {...props} />;
+                            }}
+                        />
+                        <Route
+                            path={"/login"}
+                            render={(props: any) => {
+                            return <LoginContainer {...this.props} {...props} />;
                             }}
                         />
                         <Route

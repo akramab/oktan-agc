@@ -82,3 +82,7 @@
 .fs-7 {
   font-size: small;
 }
+
+.width-fit {
+  max-width: fit-content !important;
+}
