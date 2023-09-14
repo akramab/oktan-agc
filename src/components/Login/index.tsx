@@ -58,10 +58,10 @@ const LoginComponent = (props: any) => {
                                     </Form>
                                     <Row className="mt-4 fs-7">
                                         <Col className="text-start">
-                                            <Link to="/register">Don't have an account? Register</Link>
+                                            <Link to="/register" className="text-default">Don't have an account? Register</Link>
                                         </Col>
                                         <Col className="text-end width-fit">
-                                            <Link to="/forgot">Forgot Password</Link>
+                                            <Link to="/forgot" className="text-default">Forgot Password</Link>
                                         </Col>
                                     </Row>
                                 </Col>

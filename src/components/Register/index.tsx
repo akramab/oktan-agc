@@ -86,7 +86,7 @@ const RegisterComponent = (props: any) => {
                                         </Row>
                                     </Form>
                                     <Row className="mt-4 fs-7">
-                                        <Link to="/login">Already have an account? Login</Link>
+                                        <Link to="/login" className="text-default">Already have an account? Login</Link>
                                     </Row>
                                 </Col>
                             </Row>
