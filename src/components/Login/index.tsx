@@ -32,6 +32,8 @@ const LoginComponent = (props: any) => {
                                                 name="emailUsername"
                                                 onChange={(e: any) => props?.handleChange(e)}
                                                 value={props?.emailUsername}
+                                                checkInput={props?.emailUsernameError ? "input-error" : ""}
+                                                errorMessage={props?.emailUsernameError ?? ""}
                                             />
                                         </Form.Group>
                                         <Form.Group>
@@ -44,6 +46,8 @@ const LoginComponent = (props: any) => {
                                                 name="password"
                                                 onChange={(e: any) => props?.handleChange(e)}
                                                 value={props?.password}
+                                                checkInput={props?.passwordError ? "input-error" : ""}
+                                                errorMessage={props?.passwordError ?? ""}
                                                 showPassword={props?.showPassword}
                                                 togglePassword={() => props?.togglePassword()}
                                             />
