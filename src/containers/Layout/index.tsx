@@ -6,6 +6,7 @@ import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 import LoadingIndicator from "../../components/Loading";
 
+const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const RegisterContainer = lazy(() => import("../Register"));
 
 export class LayoutContainer extends PureComponent<any, any> {
@@ -26,9 +27,15 @@ export class LayoutContainer extends PureComponent<any, any> {
                     {loadingResponse ? <LoadingIndicator show={true}/> : null}
                     <Switch>
                         <Route
-                            path={"/"}
+                            path={"/register"}
                             render={(props: any) => {
                             return <RegisterContainer {...this.props} {...props} />;
+                            }}
+                        />
+                        <Route
+                            path={"/*"}
+                            render={(props: any) => {
+                            return <ComingSoonContainer {...this.props} {...props} />;
                             }}
                         />
                     </Switch>
