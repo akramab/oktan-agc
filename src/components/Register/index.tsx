@@ -20,7 +20,7 @@ const RegisterComponent = (props: any) => {
                     <Row>
                         <Col>
                             <Row className="justify-content-center">
-                                <Col xs={4} className="bg-white text-center rounded shadow-lg py-5 px-4">
+                                <Col xs={12} sm={10} md={8} lg={6} xl={4} className="bg-white text-center rounded shadow-lg py-5 px-4">
                                     <h3 className="mb-5">Register</h3>
                                     <Form className="text-start mx-2">
                                         <Form.Group>
