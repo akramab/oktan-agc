@@ -26,23 +26,41 @@ const RegisterComponent = (props: any) => {
                                         <Form.Group>
                                             <Form.Label>Email</Form.Label>
                                             <CustomInput
+                                                required
                                                 type="email"
                                                 placeholder="email"
+                                                name="email"
+                                                onChange={(e: any) => props?.handleChange(e)}
+                                                value={props?.email}
+                                                checkInput={props?.emailError ? "input-error" : ""}
+                                                errorMessage={props?.emailError ?? ""}
                                             />
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label>Username</Form.Label>
                                             <CustomInput
+                                                required
                                                 type="text"
                                                 placeholder="username"
+                                                name="username"
+                                                onChange={(e: any) => props?.handleChange(e)}
+                                                value={props?.username}
+                                                checkInput={props?.usernameError ? "input-error" : ""}
+                                                errorMessage={props?.usernameError ?? ""}
                                             />
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label>Password</Form.Label>
                                             <CustomInput
                                                 isPassword
+                                                required
                                                 type="password"
                                                 placeholder="password"
+                                                name="password"
+                                                onChange={(e: any) => props?.handleChange(e)}
+                                                value={props?.password}
+                                                checkInput={props?.passwordError ? "input-error" : ""}
+                                                errorMessage={props?.passwordError ?? ""}
                                                 showPassword={props?.showPassword}
                                                 togglePassword={() => props?.togglePassword()}
                                             />
@@ -51,17 +69,23 @@ const RegisterComponent = (props: any) => {
                                             <Form.Label>Confirm Password</Form.Label>
                                             <CustomInput
                                                 isPassword
+                                                required
                                                 type="password"
                                                 placeholder="password"
+                                                name="confirmPassword"
+                                                onChange={(e: any) => props?.handleChange(e)}
+                                                value={props?.confirmPassword}
+                                                checkInput={props?.confirmPasswordError ? "input-error" : ""}
+                                                errorMessage={props?.confirmPasswordError ?? ""}
                                                 showPassword={props?.showPassword}
                                                 togglePassword={() => props?.togglePassword()}
                                             />
                                         </Form.Group>
+                                        <Row className="mt-4">
+                                            <PurpleButton text="REGISTER" onClick={(e: any) => props?.handleRegister(e)} />
+                                        </Row>
                                     </Form>
-                                    <Row className="mx-2 mt-4">
-                                        <PurpleButton text="REGISTER" />
-                                    </Row>
-                                    <Row className="mt-4">
+                                    <Row className="mt-4 fs-7">
                                         <Link to="/login">Already have an account? Login</Link>
                                     </Row>
                                 </Col>

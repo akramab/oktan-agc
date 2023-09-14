@@ -78,3 +78,7 @@
   color: var(--red-light) !important;
   margin-bottom: 0.5rem !important;
 }
+
+.fs-7 {
+  font-size: small;
+}
