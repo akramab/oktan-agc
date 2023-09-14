@@ -40,15 +40,21 @@ const RegisterComponent = (props: any) => {
                                         <Form.Group>
                                             <Form.Label>Password</Form.Label>
                                             <CustomInput
+                                                isPassword
                                                 type="password"
                                                 placeholder="password"
+                                                showPassword={props?.showPassword}
+                                                togglePassword={() => props?.togglePassword()}
                                             />
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label>Confirm Password</Form.Label>
                                             <CustomInput
+                                                isPassword
                                                 type="password"
                                                 placeholder="password"
+                                                showPassword={props?.showPassword}
+                                                togglePassword={() => props?.togglePassword()}
                                             />
                                         </Form.Group>
                                     </Form>

@@ -10,11 +10,27 @@ export class RegisterContainer extends PureComponent<any, any> {
 
     constructor(props: any) {
         super(props);
+
+        this.state = {
+            showPassword: false
+        };
+        this.togglePassword = this.togglePassword.bind(this);
+    }
+
+    private togglePassword(): void {
+        this.setState({
+            ...this.state,
+            showPassword: !this.state.showPassword
+        });
     }
 
     render() {
+        const { showPassword } = this.state;
         return (
-            <RegisterComponent/>
+            <RegisterComponent
+                showPassword={showPassword}
+                togglePassword={this.togglePassword}
+            />
         )
     }
 }
