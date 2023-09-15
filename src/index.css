@@ -18,6 +18,10 @@
   color: #1F2937 !important;
 }
 
+.text-purple {
+  color: var(--purple-bright);
+}
+
 .bg-gray {
   background-color: var(--gray-bg);
 }
@@ -138,4 +142,12 @@
 
 .dropdown-menu a:hover {
   background-color: rgba(31, 41, 55, .1) !important;
+}
+
+.hr-underline {
+  background-color: var(--purple-bright);
+  opacity: 1;
+  margin-top: 1.25rem !important;
+  height: 4px;
+  width: 6rem;
 }
