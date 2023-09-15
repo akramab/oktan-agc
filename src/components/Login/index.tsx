@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg"
 
 const CustomInput = lazy(() => import("../../components/General/CustomInput"));
-const PurpleButton = lazy(() => import("../../components/General/PurpleButton"));
+const CustomButton = lazy(() => import("../General/CustomButton"));
 
 const LoginComponent = (props: any) => {
     return (
@@ -53,7 +53,7 @@ const LoginComponent = (props: any) => {
                                             />
                                         </Form.Group>
                                         <Row className="mt-4">
-                                            <PurpleButton text="LOGIN" onClick={(e: any) => props?.handleLogin(e)} />
+                                            <CustomButton bg="bg-purple-bright" text="LOGIN" onClick={(e: any) => props?.handleLogin(e)} />
                                         </Row>
                                     </Form>
                                     <Row className="mt-4 fs-7">

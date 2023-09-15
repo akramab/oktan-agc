@@ -1,6 +1,6 @@
 * {
   margin: 0 !important;
-  color: #1F2937 !important;
+  color: #1F2937;
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -8,16 +8,33 @@
   --gray-bg: #F2F2F2;
   --gray-input: #C8C8C8;
   --gray-sidebar: #777E90;
-  --purple: #570DF8;
-  --red-light: #F87272;
+  --hover-bg: #A0A0A0;
+  --purple-bright: #570DF8;
+  --red-input: #F87272;
+  --green-btn: #36D399;
+}
+
+.text-default {
+  color: #1F2937 !important;
 }
 
 .bg-gray {
   background-color: var(--gray-bg);
 }
 
-.bg-purple {
-  background-color: var(--purple) !important;
+.bg-purple-bright {
+  background-color: var(--purple-bright) !important;
+}
+
+.bg-green-btn {
+  background-color: var(--green-btn) !important;
+}
+
+.bg-image-full {
+  background-image: linear-gradient(rgba(61, 68, 81, 0.6), rgba(61, 68, 81, 0.6)), url(/src/assets/background-full.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .form-control {
@@ -55,19 +72,19 @@
 }
 
 .input-group-text {
-  background-color: #FFFFFF !important;
+  background-color: white !important;
   border-width: 1px 1px 1px 0 !important;
   border-color: var(--gray-input) !important;
 }
 
 .input-error {
-  border: 1px solid var(--red-light) !important;
+  border: 1px solid var(--red-input) !important;
   margin-bottom: 0.3rem !important;
 }
 
 .input-error:focus, .input-error:focus-within {
-  border: 1px solid var(--red-light) !important;
-  outline: 2px solid var(--red-light) !important;
+  border: 1px solid var(--red-input) !important;
+  outline: 2px solid var(--red-input) !important;
 }
 
 .input-error .form-control, .input-error .input-group-text {
@@ -75,7 +92,7 @@
 }
 
 .error-message {
-  color: var(--red-light) !important;
+  color: var(--red-input) !important;
   margin-bottom: 0.5rem !important;
 }
 
@@ -85,4 +102,36 @@
 
 .width-fit {
   max-width: fit-content !important;
+}
+
+.nav-link {
+  color: white !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.nav-link path {
+  fill: white;
+}
+
+.nav-link:hover, .navbar-brand:hover {
+  background-color: rgba(31, 41, 55, .1);
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu.show {
+  border: none;
+  border-radius: 0;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.dropdown-menu a {
+  padding: 0.75rem;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(31, 41, 55, .1) !important;
 }

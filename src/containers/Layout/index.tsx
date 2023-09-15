@@ -9,6 +9,7 @@ import LoadingIndicator from "../../components/Loading";
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const RegisterContainer = lazy(() => import("../Register"));
 const LoginContainer = lazy(() => import("../Login"));
+const HomeContainer = lazy(() => import("../Home"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -27,6 +28,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                 <Suspense fallback={<LoadingIndicator show={true}/>}>
                     {loadingResponse ? <LoadingIndicator show={true}/> : null}
                     <Switch>
+                        <Route
+                            exact path={"/"}
+                            render={(props: any) => {
+                            return <HomeContainer {...this.props} {...props} />;
+                            }}
+                        />
                         <Route
                             path={"/register"}
                             render={(props: any) => {
