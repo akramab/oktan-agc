@@ -19,7 +19,7 @@
 }
 
 .text-purple {
-  color: var(--purple-bright);
+  color: var(--purple-bright) !important;
 }
 
 .bg-gray {
@@ -108,6 +108,10 @@
   max-width: fit-content !important;
 }
 
+.height-fit {
+  max-height: fit-content !important;
+}
+
 .width-logo {
   width: 8rem;
 }
@@ -150,4 +154,18 @@
   margin-top: 1.25rem !important;
   height: 4px;
   width: 6rem;
+}
+
+.brands-logo path {
+  fill: white;
+}
+
+.brands-logo div {
+  background-color: white;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.brands-logo div path {
+  fill: var(--purple-bright);
 }

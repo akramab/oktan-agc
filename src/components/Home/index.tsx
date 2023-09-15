@@ -9,8 +9,9 @@ import isoterm from "../../assets/isoterm.png"
 import whatsapp from "../../assets/whatsapp.svg"
 import line from "../../assets/line.svg"
 
-const CustomButton = lazy(() => import("../General/CustomButton"));
 const NavigationBar = lazy(() => import("../../components/General/NavigationBar"));
+const CustomButton = lazy(() => import("../General/CustomButton"));
+const Footer = lazy(() => import("../General/Footer"));
 
 const HomeComponent = (props: any) => {
     return (
@@ -29,15 +30,17 @@ const HomeComponent = (props: any) => {
                             </p>
                             <Row className="justify-content-center mt-4">
                                 <Col xs={2}>
-                                    <CustomButton
-                                        bg="bg-purple-bright"
-                                        text={
-                                            <>
-                                                REGISTER NOW
-                                                <FontAwesomeIcon icon={faArrowRightLong} size="xs" className="ms-2" />
-                                            </>
-                                        }
-                                    />
+                                    <Link to="/register">
+                                        <CustomButton
+                                            bg="bg-purple-bright"
+                                            text={
+                                                <>
+                                                    REGISTER NOW
+                                                    <FontAwesomeIcon icon={faArrowRightLong} size="xs" className="ms-2" />
+                                                </>
+                                            }
+                                        />
+                                    </Link>
                                 </Col>
                             </Row>
                         </Col>
@@ -117,6 +120,15 @@ const HomeComponent = (props: any) => {
                     </Col>
                 </Row>
             </div>
+            <div className="py-5 px-3 text-center">
+                <Row className="justify-content-center mt-4 mb-5">
+                    <h2 className="fw-bold mb-5">
+                        Media Partner & Sponsor
+                        <hr className="text-purple mx-auto hr-underline" />
+                    </h2>
+                </Row>
+            </div>
+            <Footer />
         </>
     )
 }
