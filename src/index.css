@@ -1,10 +1,11 @@
 * {
   margin: 0 !important;
-  color: #1F2937;
+  color: var(--black);
   font-family: 'Segoe UI', sans-serif;
 }
 
 :root {
+  --black: #1F2937;
   --gray-bg: #F2F2F2;
   --gray-input: #C8C8C8;
   --gray-sidebar: #777E90;
@@ -14,8 +15,14 @@
   --green-btn: #36D399;
 }
 
+@media only screen and (max-width: 768px) {
+  .navbar-brand span {
+    font-size: 3vw;
+  }
+}
+
 .text-default {
-  color: #1F2937 !important;
+  color: var(--black) !important;
 }
 
 .text-purple {
@@ -125,8 +132,50 @@
   fill: white;
 }
 
-.nav-link:hover, .navbar-brand:hover {
+.navbar-nav .nav-link:hover, .navbar-brand:hover, .navbar-toggler:hover {
   background-color: rgba(31, 41, 55, .1);
+}
+
+.nav-bg {
+  background-color: rgba(255, 255, 255, .9) !important;
+}
+
+.nav-bg span, .nav-bg a, .navbar-collapse.show a, .navbar-collapse.show span {
+  color: var(--black) !important;
+}
+
+.nav-bg path, .navbar-collapse.show path {
+  fill: var(--black) !important;
+}
+
+.navbar-collapse.show {
+  width: 225px;
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 7px;
+}
+
+.navbar-collapse.show a {
+  border-radius: 10px;
+  padding: 11.25px 22.5px !important;
+  font-size: small;
+}
+
+.navbar-collapse a:active {
+  background-color: var(--purple-bright) !important;
+  color: white !important;
+}
+
+.navbar-collapse.show span:active, .navbar-collapse.show path:active {
+  color: white !important;
+  fill: white !important;
+}
+
+.navbar-collapse.collapsing {
+  display: none;
 }
 
 .dropdown-toggle::after {
@@ -168,4 +217,20 @@
 
 .brands-logo div path {
   fill: var(--purple-bright);
+}
+
+.tag-line {
+  max-width: 28rem !important;
+}
+
+.darken-hover:hover {
+  background-color: hsl(215 28% 17%/0.2);
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
 }

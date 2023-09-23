@@ -1,21 +1,42 @@
-import { lazy } from "react";
+import { lazy, useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
 import logo from "../../assets/logo.svg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faBars } from '@fortawesome/free-solid-svg-icons';
 
 const CustomButton = lazy(() => import("./CustomButton"));
 
 const NavigationBar = (props: any) => {
+    const [backgroundChange, setBackground] = useState(0);
+
+    useEffect(() => {
+        const container = document.getElementsByClassName("bg-gray")[0];
+        const updateScroll = () => {
+            setBackground(container?.scrollTop);
+        }
+        
+        container?.addEventListener("scroll", updateScroll, false);
+
+        updateScroll()
+
+        return () => {
+            container?.removeEventListener("scroll", updateScroll, false);
+        };
+    }, []);
+
     return (
-        <Navbar collapseOnSelect expand="lg" data-bs-theme="dark" className="py-3">
-            <Navbar.Brand href="/" className="fw-bolder ms-2 rounded px-4">
-                <Image src={logo} className="w-25" />
-                <span className="text-white ms-2">OKTAN ITB 2023</span>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar fixed="top" collapseOnSelect expand="lg" data-bs-theme="dark" className={backgroundChange > 0 ? "nav-bg py-3" : "py-3"}>
+            <div className="d-flex align-items-center">
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 py-2 ms-3">
+                    <FontAwesomeIcon icon={faBars} size="sm" />
+                </Navbar.Toggle>
+                <Navbar.Brand href="/" className="fw-bolder rounded px-4">
+                    <Image src={logo} className="w-25" />
+                    <span className="text-white ms-2">OKTAN ITB 2023</span>
+                </Navbar.Brand>
+            </div>
             <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ms-auto align-items-center">
+                <Nav className="ms-auto">
                     <NavDropdown title={
                         <span className="text-white">
                             Competition
@@ -33,11 +54,11 @@ const NavigationBar = (props: any) => {
                     <Nav.Link>Webinar</Nav.Link>
                     <Nav.Link>About</Nav.Link>
                     <Nav.Link>FAQ</Nav.Link>
-                    <Nav.Link href="/login">
-                        <CustomButton bg="bg-green-btn" text="SIGN IN" />
-                    </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
+            <Nav.Link href="/login" className="me-2">
+                <CustomButton bg="bg-green-btn" text="SIGN IN" />
+            </Nav.Link>
         </Navbar>
     )
 }
