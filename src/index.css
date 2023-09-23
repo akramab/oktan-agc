@@ -1,23 +1,51 @@
 * {
   margin: 0 !important;
-  color: #1F2937 !important;
+  color: var(--black);
   font-family: 'Segoe UI', sans-serif;
 }
 
 :root {
+  --black: #1F2937;
   --gray-bg: #F2F2F2;
   --gray-input: #C8C8C8;
   --gray-sidebar: #777E90;
-  --purple: #570DF8;
-  --red-light: #F87272;
+  --hover-bg: #A0A0A0;
+  --purple-bright: #570DF8;
+  --red-input: #F87272;
+  --green-btn: #36D399;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-brand span {
+    font-size: 3vw;
+  }
+}
+
+.text-default {
+  color: var(--black) !important;
+}
+
+.text-purple {
+  color: var(--purple-bright) !important;
 }
 
 .bg-gray {
   background-color: var(--gray-bg);
 }
 
-.bg-purple {
-  background-color: var(--purple) !important;
+.bg-purple-bright {
+  background-color: var(--purple-bright) !important;
+}
+
+.bg-green-btn {
+  background-color: var(--green-btn) !important;
+}
+
+.bg-image-full {
+  background-image: linear-gradient(rgba(61, 68, 81, 0.6), rgba(61, 68, 81, 0.6)), url(/src/assets/background-full.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .form-control {
@@ -55,19 +83,19 @@
 }
 
 .input-group-text {
-  background-color: #FFFFFF !important;
+  background-color: white !important;
   border-width: 1px 1px 1px 0 !important;
   border-color: var(--gray-input) !important;
 }
 
 .input-error {
-  border: 1px solid var(--red-light) !important;
+  border: 1px solid var(--red-input) !important;
   margin-bottom: 0.3rem !important;
 }
 
 .input-error:focus, .input-error:focus-within {
-  border: 1px solid var(--red-light) !important;
-  outline: 2px solid var(--red-light) !important;
+  border: 1px solid var(--red-input) !important;
+  outline: 2px solid var(--red-input) !important;
 }
 
 .input-error .form-control, .input-error .input-group-text {
@@ -75,7 +103,7 @@
 }
 
 .error-message {
-  color: var(--red-light) !important;
+  color: var(--red-input) !important;
   margin-bottom: 0.5rem !important;
 }
 
@@ -85,4 +113,124 @@
 
 .width-fit {
   max-width: fit-content !important;
+}
+
+.height-fit {
+  max-height: fit-content !important;
+}
+
+.width-logo {
+  width: 8rem;
+}
+
+.nav-link {
+  color: white !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.nav-link path, button path {
+  fill: white;
+}
+
+.navbar-nav .nav-link:hover, .navbar-brand:hover, .navbar-toggler:hover {
+  background-color: rgba(31, 41, 55, .1);
+}
+
+.nav-bg {
+  background-color: rgba(255, 255, 255, .9) !important;
+}
+
+.nav-bg span, .nav-bg a, .navbar-collapse.show a, .navbar-collapse.show span {
+  color: var(--black) !important;
+}
+
+.nav-bg path, .navbar-collapse.show path {
+  fill: var(--black) !important;
+}
+
+.navbar-collapse.show {
+  width: 225px;
+  position: absolute;
+  top: 100px;
+  left: 10px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 7px;
+}
+
+.navbar-collapse.show a {
+  border-radius: 10px;
+  padding: 11.25px 22.5px !important;
+  font-size: small;
+}
+
+.navbar-collapse a:active {
+  background-color: var(--purple-bright) !important;
+  color: white !important;
+}
+
+.navbar-collapse.show span:active, .navbar-collapse.show path:active {
+  color: white !important;
+  fill: white !important;
+}
+
+.navbar-collapse.collapsing {
+  display: none;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.dropdown-menu.show {
+  border: none;
+  border-radius: 0;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.dropdown-menu a {
+  padding: 0.75rem;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(31, 41, 55, .1) !important;
+}
+
+.hr-underline {
+  background-color: var(--purple-bright);
+  opacity: 1;
+  margin-top: 1.25rem !important;
+  height: 4px;
+  width: 6rem;
+}
+
+.brands-logo path {
+  fill: white;
+}
+
+.brands-logo div {
+  background-color: white;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.brands-logo div path {
+  fill: var(--purple-bright);
+}
+
+.tag-line {
+  max-width: 28rem !important;
+}
+
+.darken-hover:hover {
+  background-color: hsl(215 28% 17%/0.2);
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.05);
 }
