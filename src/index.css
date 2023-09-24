@@ -172,11 +172,6 @@
   font-size: small;
 }
 
-.navbar-collapse a:active {
-  background-color: var(--purple-bright) !important;
-  color: white !important;
-}
-
 .navbar-collapse.show span:active, .navbar-collapse.show path:active {
   color: white !important;
   fill: white !important;
@@ -205,6 +200,11 @@
   background-color: rgba(31, 41, 55, .1) !important;
 }
 
+.navbar-collapse a:active, .dropdown-menu a:active {
+  background-color: var(--purple-bright) !important;
+  color: white !important;
+}
+
 .hr-underline {
   background-color: var(--purple-bright);
   opacity: 1;
@@ -223,7 +223,7 @@
   border-radius: 10px;
 }
 
-.brands-logo div path {
+.brands-logo div path, .purple-icon path {
   fill: var(--purple-bright);
 }
 

@@ -102,7 +102,7 @@ const HomeComponent = (props: any) => {
                     </p>
                 </Row>
                 <Row className="justify-content-center my-5">
-                    <Col xs={12} sm={7} md={5} lg={4} xl={3} className="mx-3 shadow zoom">
+                    <Col xs={12} sm={7} md={5} lg={4} xl={3} className="mx-3 rounded shadow zoom">
                         <h5 className="mt-4">Risma</h5>
                         <p className="text-secondary mt-2 mb-3">Informan Pendaftaran</p>
                         <Row className="justify-content-center fs-7 pb-4">
