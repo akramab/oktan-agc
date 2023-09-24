@@ -213,6 +213,31 @@ const CrystalCompetitionComponent = (props: any) => {
                     </Col>
                 </Row>
             </div>
+            <div className="py-5 px-3 bg-white text-center">
+                <Row className="justify-content-center mt-4">
+                    <h2 className="fw-bold">
+                        Information Contact
+                        <hr className="text-purple mx-auto hr-underline" />
+                    </h2>
+                    <p className="mt-4">
+                        Jika Anda ingin mengetahui informasi lebih lanjut mengenai kompetisi Crystal <br/>
+                        ini bisa hubungi akun sosial media yang telah disediakan.
+                    </p>
+                </Row>
+                <Row className="justify-content-center my-5">
+                    <Col xs={12} sm={7} md={5} lg={4} xl={3} className="mx-3 rounded shadow zoom">
+                        <h5 className="mt-4">Deryl</h5>
+                        <p className="text-secondary mt-2 mb-3">Informan Crystal</p>
+                        <Row className="justify-content-center fs-7 pb-4">
+                            <Col className="width-fit rounded-circle shadow-sm py-2 darken-hover">
+                                <Link to="#">
+                                    <Image src={whatsapp} className="py-1" />
+                                </Link>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </div>
             <Footer />
         </>
     )
