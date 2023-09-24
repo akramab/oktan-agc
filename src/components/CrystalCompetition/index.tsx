@@ -1,11 +1,12 @@
 import { lazy } from "react";
-import { Row, Col, Image, Form } from "react-bootstrap";
+import { Row, Col, Image, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightLong, faUser, faUserGraduate, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUsers, faMedal,  } from '@fortawesome/free-solid-svg-icons';
 import { faGoogleDrive } from '@fortawesome/free-brands-svg-icons';
 import crystal from "../../assets/crystal.png"
-import isoterm from "../../assets/isoterm.png"
+import requirement from "../../assets/requirement.jpg"
+import sign from "../../assets/sign.svg"
 import whatsapp from "../../assets/whatsapp.svg"
 import line from "../../assets/line.svg"
 
@@ -24,7 +25,7 @@ const CrystalCompetitionComponent = (props: any) => {
                     </Col>
                 </Row>
             </div>
-            <div className="py-5 px-3 bg-white">
+            <div className="p-3 bg-white">
                 <Row className="justify-content-center align-items-center p-5 m-5">
                     <Col xs={6}>
                         <h2 className="fw-bold mb-4">
@@ -48,6 +49,73 @@ const CrystalCompetitionComponent = (props: any) => {
                     </Col>
                     <Col xs={4}>
                         <Image src={crystal} fluid rounded className="shadow"/>
+                    </Col>
+                </Row>
+            </div>
+            <div className="p-3 bg-white">
+                <Row className="justify-content-center align-items-center p-5 m-5">
+                    <Col xs={4}>
+                        <Image src={requirement} fluid className="shadow p-2 rounded"/>
+                    </Col>
+                    <Col xs={6} className="ps-5">
+                        <h2 className="fw-bold mb-4">
+                            Requirements
+                            <hr className="text-purple hr-underline" />
+                        </h2>
+                        <p>Berikut merupakan persyaratan untuk mengikuti lomba Crystal.</p>
+                        <ListGroup>
+                            <ListGroup.Item className="px-4">
+                                <Row className="align-items-center">
+                                    <Col className="width-icon p-0 text-center">
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </Col>
+                                    <Col>
+                                        <p>
+                                            SMA/K sederajat yang berstatus aktif dan memiliki kartu pelajar
+                                        </p>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item className="px-4">
+                                <Row className="align-items-center">
+                                    <Col className="width-icon p-0 text-center">
+                                        <FontAwesomeIcon icon={faUsers} />
+                                    </Col>
+                                    <Col>
+                                        <p>
+                                            Satu tim terdiri dari 1 atau 2 orang dari sekolah yang sama
+                                        </p>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item className="px-4">
+                                <Row className="align-items-center">
+                                    <Col className="width-icon p-0 text-center">
+                                        <FontAwesomeIcon icon={faMedal} />
+                                    </Col>
+                                    <Col>
+                                        <p>
+                                            Belum pernah mendapatkan medali (emas, perak, dan perunggu)
+                                            dalam ajang kompetisi kimia nasional (Kemendikbud-Ristek) dan
+                                            internasional, serta belum pernah menjadi juara pertama OKTAN
+                                            ITB tahun sebelumnya
+                                        </p>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item className="px-4">
+                                <Row className="align-items-center">
+                                    <Col className="width-icon p-0 text-center">
+                                        <Image src={sign} />
+                                    </Col>
+                                    <Col>
+                                        <p>
+                                            Menandatangani surat pernyataan jujur atau tidak mencontek
+                                        </p>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
                     </Col>
                 </Row>
             </div>

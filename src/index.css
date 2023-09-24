@@ -127,6 +127,10 @@
   width: 8rem;
 }
 
+.width-icon {
+  max-width: 2rem !important;
+}
+
 .nav-link {
   color: white !important;
   padding: 0.75rem 1rem !important;
