@@ -40,8 +40,8 @@ const CrystalCompetitionComponent = (props: any) => {
                 </Row>
             </div>
             <div className="p-3 bg-white">
-                <Row className="justify-content-center align-items-center p-5 m-5">
-                    <Col xs={6}>
+                <Row className="justify-content-center align-items-center py-5 px-3 my-5">
+                    <Col xs={12} lg={6}>
                         <h2 className="fw-bold mb-4">
                             What is Crystal Competition?
                             <hr className="text-purple hr-underline" />
@@ -61,17 +61,17 @@ const CrystalCompetitionComponent = (props: any) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={4}>
+                    <Col xs={4} className="d-none d-lg-block">
                         <Image src={crystal} fluid rounded className="shadow"/>
                     </Col>
                 </Row>
             </div>
             <div className="p-3 bg-white">
-                <Row className="justify-content-center align-items-center px-5 mx-5">
-                    <Col xs={4}>
+                <Row className="justify-content-center align-items-center px-3">
+                    <Col xs={5} className="me-5 pe-5 d-none d-lg-block">
                         <Image src={requirement} fluid className="shadow p-2 rounded"/>
                     </Col>
-                    <Col xs={6} className="ps-5">
+                    <Col xs={12} lg={5}>
                         <h2 className="fw-bold mb-4">
                             Requirements
                             <hr className="text-purple hr-underline" />
@@ -97,7 +97,7 @@ const CrystalCompetitionComponent = (props: any) => {
                                     </Col>
                                     <Col>
                                         <p>
-                                            Satu tim terdiri dari 1 atau 2 orang dari sekolah yang sama
+                                            Satu tim terdiri dari 2 orang dari sekolah yang sama
                                         </p>
                                     </Col>
                                 </Row>
@@ -109,10 +109,9 @@ const CrystalCompetitionComponent = (props: any) => {
                                     </Col>
                                     <Col>
                                         <p>
-                                            Belum pernah mendapatkan medali (emas, perak, dan perunggu)
-                                            dalam ajang kompetisi kimia nasional (Kemendikbud-Ristek) dan
-                                            internasional, serta belum pernah menjadi juara pertama OKTAN
-                                            ITB tahun sebelumnya
+                                            Peserta belum pernah mendapatkan medali emas, perak, atau perunggu
+                                            dalam ajang kompetisi kimia nasional (OSN) dan internasional, serta
+                                            belum pernah menjadi juara pertama OKTAN ITB tahun-tahun sebelumnya.
                                         </p>
                                     </Col>
                                 </Row>
@@ -133,23 +132,24 @@ const CrystalCompetitionComponent = (props: any) => {
                     </Col>
                 </Row>
             </div>
-            <div className="py-5 px-3 bg-white text-center">
-                <Row className="justify-content-center mt-4">
-                    <h2 className="fw-bold">
+            <div className="py-5 px-3 bg-white">
+                <Row className="justify-content-center mt-4 px-3 mx-1">
+                    <h2 className="fw-bold text-lg-center">
                         Prize Pool
-                        <hr className="text-purple mx-auto hr-underline" />
+                        <hr className="text-purple mx-auto hr-underline d-none d-lg-block" />
+                        <hr className="text-purple hr-underline d-block d-lg-none" />
                     </h2>
-                    <p className="mt-4">
+                    <p className="mt-4 text-lg-center">
                         Berikut merupakan hadiah dari kejuaraan Crystal Competition.
                     </p>
                 </Row>
-                <Row className="justify-content-center mt-5">
-                    <Col xs={3} className="mx-3 rounded shadow zoom">
+                <Row className="justify-content-center mt-5 px-4 mx-2">
+                    <Col xs={12} lg={3} className="mx-2 mb-5 rounded shadow zoom d-flex align-items-center flex-column text-center">
                         <h5 className="mt-4 pt-4">Juara 1</h5>
                         <p className="text-secondary mt-2 mb-3">
                             Piala + Piala bergilir + Uang pembinaan Rp. 9.000.000
                         </p>
-                        <Row className="justify-content-center pb-4 mb-4">
+                        <Row className="pb-4 mb-4">
                             <Col className="width-fit rounded-circle shadow-sm mx-2 py-2">
                                 <FontAwesomeIcon icon={faMedal} size="lg" className="purple-icon" />
                             </Col>
@@ -161,7 +161,7 @@ const CrystalCompetitionComponent = (props: any) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={3} className="mx-3 rounded shadow zoom d-flex align-items-center flex-column">
+                    <Col xs={12} lg={3} className="mx-2 mb-5 rounded shadow zoom d-flex align-items-center flex-column text-center">
                         <h5 className="mt-4 pt-4">Juara 2</h5>
                         <p className="text-secondary mt-2 mb-3">
                             Piala + Uang pembinaan Rp. 6.000.000
@@ -178,7 +178,7 @@ const CrystalCompetitionComponent = (props: any) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={3} className="mx-3 rounded shadow zoom d-flex align-items-center flex-column">
+                    <Col xs={12} lg={3} className="mx-2 mb-5 rounded shadow zoom d-flex align-items-center flex-column text-center">
                         <h5 className="mt-4 pt-4">Juara 3</h5>
                         <p className="text-secondary mt-2 mb-3">
                             Piala + Uang pembinaan Rp. 3.000.000
@@ -196,8 +196,8 @@ const CrystalCompetitionComponent = (props: any) => {
                         </Row>
                     </Col>
                 </Row>
-                <Row className="justify-content-center my-5">
-                    <Col xs={3} className="mx-3 rounded shadow zoom">
+                <Row className="justify-content-center px-4 mx-2">
+                    <Col xs={12} lg={3} className="mx-2 mb-5 rounded shadow zoom text-center">
                         <h5 className="mt-4 pt-4">Juara Harapan 1</h5>
                         <p className="text-secondary mt-2 mb-3">
                             Medali + Uang pembinaan Rp. 1.500.000
@@ -211,7 +211,7 @@ const CrystalCompetitionComponent = (props: any) => {
                             </Col>
                         </Row>
                     </Col>
-                    <Col xs={3} className="mx-3 rounded shadow zoom">
+                    <Col xs={12} lg={3} className="mx-2 mb-5 rounded shadow zoom text-center">
                         <h5 className="mt-4 pt-4">Juara Harapan 2</h5>
                         <p className="text-secondary mt-2 mb-3">
                             Medali + Uang pembinaan Rp. 1.000.000
@@ -227,20 +227,21 @@ const CrystalCompetitionComponent = (props: any) => {
                     </Col>
                 </Row>
             </div>
-            <div className="py-5 px-3 text-center">
+            <div className="py-5 px-3 text-md-center">
                 <Row className="justify-content-center mt-4">
                     <h2 className="fw-bold">
                         Timeline
-                        <hr className="text-purple mx-auto hr-underline" />
+                        <hr className="text-purple mx-auto hr-underline d-none d-md-block" />
+                        <hr className="text-purple hr-underline d-block d-md-none" />
                     </h2>
                 </Row>
-                <Row className="justify-content-center align-items-center my-5">
-                    <Col xs={5} className="mx-5">
+                <Row className="justify-content-md-center align-items-center my-5">
+                    <Col xs={12} md={7} lg={5}>
                         <VerticalTimeline
                             animate={false}
                             layout="1-column-left"
                             lineColor="#4B5563"
-                            className="mx-auto p-0 width-fit"
+                            className="mx-md-auto p-0 width-fit"
                         >
                             <VerticalTimelineElement
                                 contentStyle={cStyle}
@@ -251,15 +252,26 @@ const CrystalCompetitionComponent = (props: any) => {
                                 <h5 className="vertical-timeline-element-title fw-bold mb-3">Pendaftaran</h5>
                                 <div className="mb-4">
                                     <i className="fw-bold text-timeline">Pendaftaran Gelombang I :</i>
-                                    <p className="fw-normal text-timeline"><i >31 Oktober 2022 - 25 November 2022</i></p>
+                                    <p className="fw-normal text-timeline"><i>2 Oktober 2023 - 3 November 2023</i></p>
                                 </div>
                                 <div className="mb-4">
                                     <i className="fw-bold text-timeline">Pendaftaran Gelombang II :</i>
-                                    <p className="fw-normal text-timeline"><i>28 November 2022 - 16 Desember 2022</i></p>
+                                    <p className="fw-normal text-timeline"><i>6 November 2023 - 1 Desember 2023</i></p>
                                 </div>
                                 <div className="mb-4">
                                     <i className="fw-bold text-timeline">Pendaftaran Gelombang III :</i>
-                                    <p className="fw-normal text-timeline"><i>19 Desember 2022 - 13 Januari 2023</i></p>
+                                    <p className="fw-normal text-timeline"><i>4 Desember 2023 - 5 Januari 2024</i></p>
+                                </div>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                contentStyle={cStyle}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faArrowDown} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mb-3">Try Out</h5>
+                                <div className="mb-4">
+                                    <p className="fw-normal text-timeline"><i >6 Januari 2024</i></p>
                                 </div>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -270,7 +282,7 @@ const CrystalCompetitionComponent = (props: any) => {
                             >
                                 <h5 className="vertical-timeline-element-title fw-bold mb-3">Babak Penyisihan</h5>
                                 <div className="mb-4">
-                                    <p className="fw-normal text-timeline"><i >28 Januari 2023</i></p>
+                                    <p className="fw-normal text-timeline"><i >13 Januari 2024</i></p>
                                 </div>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -281,7 +293,7 @@ const CrystalCompetitionComponent = (props: any) => {
                             >
                                 <h5 className="vertical-timeline-element-title fw-bold mb-3">Babak Perempat Final</h5>
                                 <div className="mb-4">
-                                    <p className="fw-normal text-timeline"><i >25 Februari 2023</i></p>
+                                    <p className="fw-normal text-timeline"><i >27 Januari 2024</i></p>
                                 </div>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -292,7 +304,7 @@ const CrystalCompetitionComponent = (props: any) => {
                             >
                                 <h5 className="vertical-timeline-element-title fw-bold mb-3">Babak Semifinal dan Final</h5>
                                 <div className="mb-4">
-                                    <p className="fw-normal text-timeline"><i >26 Februari 2023</i></p>
+                                    <p className="fw-normal text-timeline"><i >28 Januari 2024</i></p>
                                 </div>
                             </VerticalTimelineElement>
                             <VerticalTimelineElement
@@ -305,16 +317,17 @@ const CrystalCompetitionComponent = (props: any) => {
                             </VerticalTimelineElement>
                         </VerticalTimeline>
                     </Col>
-                    <Col xs={4} className="mx-5 d-sm-none d-lg-block">
+                    <Col xs={4} className="mx-5 d-none d-lg-block">
                         <Image src={timeline} fluid className="shadow p-2 rounded bg-white"/>
                     </Col>
                 </Row>
             </div>
-            <div className="py-5 px-3 bg-white text-center">
+            <div className="py-5 px-3 bg-white text-md-center">
                 <Row className="justify-content-center mt-4">
                     <h2 className="fw-bold">
                         Information Contact
-                        <hr className="text-purple mx-auto hr-underline" />
+                        <hr className="text-purple mx-auto hr-underline d-none d-md-block" />
+                        <hr className="text-purple hr-underline d-block d-md-none" />
                     </h2>
                     <p className="mt-4">
                         Jika Anda ingin mengetahui informasi lebih lanjut mengenai kompetisi Crystal <br/>
@@ -322,7 +335,7 @@ const CrystalCompetitionComponent = (props: any) => {
                     </p>
                 </Row>
                 <Row className="justify-content-center my-5">
-                    <Col xs={12} sm={7} md={5} lg={4} xl={3} className="mx-3 rounded shadow zoom">
+                    <Col xs={12} md={10} lg={7} xl={3} className="mx-3 rounded shadow zoom text-center">
                         <h5 className="mt-4">Deryl</h5>
                         <p className="text-secondary mt-2 mb-3">Informan Crystal</p>
                         <Row className="justify-content-center fs-7 pb-4">
