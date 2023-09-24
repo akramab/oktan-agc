@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Image, Form } from "react-bootstrap";
+import { Row, Col, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong, faUser, faUserGraduate, faUsers } from '@fortawesome/free-solid-svg-icons';
@@ -66,7 +66,7 @@ const HomeComponent = (props: any) => {
                                 </Col>
                                 <Col className="width-fit border border-dark rounded-pill ms-1">
                                     <FontAwesomeIcon icon={faUsers} className="me-2" />
-                                    <span>1 - 2</span>
+                                    <span>2</span>
                                 </Col>
                             </Row>
                         </Link>
@@ -102,19 +102,19 @@ const HomeComponent = (props: any) => {
                     </p>
                 </Row>
                 <Row className="justify-content-center my-5">
-                    <Col xs={12} sm={7} md={5} lg={4} xl={3} className="mx-3 shadow zoom">
+                    <Col xs={12} sm={7} md={5} lg={4} xl={3} className="mx-3 rounded shadow zoom">
                         <h5 className="mt-4">Risma</h5>
                         <p className="text-secondary mt-2 mb-3">Informan Pendaftaran</p>
                         <Row className="justify-content-center fs-7 pb-4">
                             <Col className="width-fit rounded-circle shadow-sm me-1 py-2 darken-hover">
-                                <Link to="#">
+                                <a href="https://api.whatsapp.com/send?phone=6285727446514" target="_blank">
                                     <Image src={whatsapp} className="py-1" />
-                                </Link>
+                                </a>
                             </Col>
                             <Col className="width-fit rounded-circle shadow-sm ms-1 py-2 darken-hover">
-                                <Link to="#">
+                                <a href="https://line.me/ti/p/~imrismaa" target="_blank">
                                     <Image src={line} className="py-1" />
-                                </Link>
+                                </a>
                             </Col>
                         </Row>
                     </Col>

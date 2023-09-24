@@ -29,6 +29,14 @@
   color: var(--purple-bright) !important;
 }
 
+.text-timeline {
+  color: #374151 !important;
+}
+
+.icon-drive path {
+  fill: #3ABFF8;
+}
+
 .bg-gray {
   background-color: var(--gray-bg);
 }
@@ -123,6 +131,10 @@
   width: 8rem;
 }
 
+.width-icon {
+  max-width: 2rem !important;
+}
+
 .nav-link {
   color: white !important;
   padding: 0.75rem 1rem !important;
@@ -164,11 +176,6 @@
   font-size: small;
 }
 
-.navbar-collapse a:active {
-  background-color: var(--purple-bright) !important;
-  color: white !important;
-}
-
 .navbar-collapse.show span:active, .navbar-collapse.show path:active {
   color: white !important;
   fill: white !important;
@@ -197,6 +204,11 @@
   background-color: rgba(31, 41, 55, .1) !important;
 }
 
+.navbar-collapse a:active, .dropdown-menu a:active {
+  background-color: var(--purple-bright) !important;
+  color: white !important;
+}
+
 .hr-underline {
   background-color: var(--purple-bright);
   opacity: 1;
@@ -215,7 +227,7 @@
   border-radius: 10px;
 }
 
-.brands-logo div path {
+.brands-logo div path, .purple-icon path {
   fill: var(--purple-bright);
 }
 
@@ -233,4 +245,25 @@
 
 .zoom:hover {
   transform: scale(1.05);
+}
+
+.vertical-timeline::before {
+  width: 1px !important;
+}
+
+.vertical-timeline-element-icon {
+  box-shadow: none !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical-timeline-element-icon svg {
+  top: 0 !important;
+  left: 0 !important;
+  height: 16px !important;
+}
+
+.vertical-timeline-element-icon path {
+  fill: #374151;
 }
