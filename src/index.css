@@ -29,6 +29,10 @@
   color: var(--purple-bright) !important;
 }
 
+.icon-drive path {
+  fill: #3ABFF8;
+}
+
 .bg-gray {
   background-color: var(--gray-bg);
 }
