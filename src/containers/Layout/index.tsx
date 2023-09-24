@@ -11,6 +11,7 @@ const RegisterContainer = lazy(() => import("../Register"));
 const LoginContainer = lazy(() => import("../Login"));
 const HomeContainer = lazy(() => import("../Home"));
 const CrystalCompetitionContainer = lazy(() => import("../CrystalCompetition"));
+const IsotermCompetitionContainer = lazy(() => import("../IsotermCompetition"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -51,6 +52,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                             exact path={"/competition/crystal"}
                             render={(props: any) => {
                             return <CrystalCompetitionContainer {...this.props} {...props} />;
+                            }}
+                        />
+                        <Route
+                            exact path={"/competition/isoterm"}
+                            render={(props: any) => {
+                            return <IsotermCompetitionContainer {...this.props} {...props} />;
                             }}
                         />
                         <Route
