@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUsers, faMedal, faTrophy, faMoneyBillWave, faArrowDown, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faGoogleDrive } from '@fortawesome/free-brands-svg-icons';
@@ -340,9 +339,9 @@ const CrystalCompetitionComponent = (props: any) => {
                         <p className="text-secondary mt-2 mb-3">Informan Crystal</p>
                         <Row className="justify-content-center fs-7 pb-4">
                             <Col className="width-fit rounded-circle shadow-sm py-2 darken-hover">
-                                <Link to="#">
+                                <a href="https://api.whatsapp.com/send?phone=6281214164329" target="_blank">
                                     <Image src={whatsapp} className="py-1" />
-                                </Link>
+                                </a>
                             </Col>
                         </Row>
                     </Col>
