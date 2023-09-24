@@ -29,6 +29,10 @@
   color: var(--purple-bright) !important;
 }
 
+.text-timeline {
+  color: #374151 !important;
+}
+
 .icon-drive path {
   fill: #3ABFF8;
 }
@@ -241,4 +245,25 @@
 
 .zoom:hover {
   transform: scale(1.05);
+}
+
+.vertical-timeline::before {
+  width: 1px !important;
+}
+
+.vertical-timeline-element-icon {
+  box-shadow: none !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical-timeline-element-icon svg {
+  top: 0 !important;
+  left: 0 !important;
+  height: 16px !important;
+}
+
+.vertical-timeline-element-icon path {
+  fill: #374151;
 }

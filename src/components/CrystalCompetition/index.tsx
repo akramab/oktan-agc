@@ -2,19 +2,33 @@ import { lazy } from "react";
 import { Row, Col, Image, ListGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUsers, faMedal, faTrophy, faMoneyBillWave  } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUsers, faMedal, faTrophy, faMoneyBillWave, faArrowDown, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faGoogleDrive } from '@fortawesome/free-brands-svg-icons';
 import crystal from "../../assets/crystal.png"
 import requirement from "../../assets/requirement.jpg"
+import timeline from "../../assets/timeline.jpg"
 import sign from "../../assets/sign.svg"
 import whatsapp from "../../assets/whatsapp.svg"
-import line from "../../assets/line.svg"
+import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 const NavigationBar = lazy(() => import("../../components/General/NavigationBar"));
-const CustomButton = lazy(() => import("../General/CustomButton"));
 const Footer = lazy(() => import("../General/Footer"));
 
 const CrystalCompetitionComponent = (props: any) => {
+    const cStyle = { 
+        background: 'transparent',
+        color: '#374151',
+        boxShadow: 'none',
+        textAlign: 'start',
+        padding: '0 3.5rem'
+    };
+
+    const iStyle = {
+        border: '1px solid #E5E7EB',
+        background: '#F2F2F2',
+        fill: '#374151'
+    };
+
     return (
         <>
             <div className="bg-image-full">
@@ -210,6 +224,89 @@ const CrystalCompetitionComponent = (props: any) => {
                                 <FontAwesomeIcon icon={faMoneyBillWave} size="lg" className="purple-icon" />
                             </Col>
                         </Row>
+                    </Col>
+                </Row>
+            </div>
+            <div className="py-5 px-3 text-center">
+                <Row className="justify-content-center mt-4">
+                    <h2 className="fw-bold">
+                        Timeline
+                        <hr className="text-purple mx-auto hr-underline" />
+                    </h2>
+                </Row>
+                <Row className="justify-content-center align-items-center my-5">
+                    <Col xs={5} className="mx-5">
+                        <VerticalTimeline
+                            animate={false}
+                            layout="1-column-left"
+                            lineColor="#4B5563"
+                            className="mx-auto p-0 width-fit"
+                        >
+                            <VerticalTimelineElement
+                                contentStyle={cStyle}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faArrowDown} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mb-3">Pendaftaran</h5>
+                                <div className="mb-4">
+                                    <i className="fw-bold text-timeline">Pendaftaran Gelombang I :</i>
+                                    <p className="fw-normal text-timeline"><i >31 Oktober 2022 - 25 November 2022</i></p>
+                                </div>
+                                <div className="mb-4">
+                                    <i className="fw-bold text-timeline">Pendaftaran Gelombang II :</i>
+                                    <p className="fw-normal text-timeline"><i>28 November 2022 - 16 Desember 2022</i></p>
+                                </div>
+                                <div className="mb-4">
+                                    <i className="fw-bold text-timeline">Pendaftaran Gelombang III :</i>
+                                    <p className="fw-normal text-timeline"><i>19 Desember 2022 - 13 Januari 2023</i></p>
+                                </div>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                contentStyle={cStyle}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faArrowDown} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mb-3">Babak Penyisihan</h5>
+                                <div className="mb-4">
+                                    <p className="fw-normal text-timeline"><i >28 Januari 2023</i></p>
+                                </div>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                contentStyle={cStyle}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faArrowDown} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mb-3">Babak Perempat Final</h5>
+                                <div className="mb-4">
+                                    <p className="fw-normal text-timeline"><i >25 Februari 2023</i></p>
+                                </div>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                contentStyle={cStyle}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faArrowDown} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mb-3">Babak Semifinal dan Final</h5>
+                                <div className="mb-4">
+                                    <p className="fw-normal text-timeline"><i >26 Februari 2023</i></p>
+                                </div>
+                            </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                contentStyle={{...cStyle, display: 'flex', alignItems: 'center'}}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faCheck} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mt-2">Done</h5>
+                            </VerticalTimelineElement>
+                        </VerticalTimeline>
+                    </Col>
+                    <Col xs={4} className="mx-5 d-sm-none d-lg-block">
+                        <Image src={timeline} fluid className="shadow p-2 rounded bg-white"/>
                     </Col>
                 </Row>
             </div>
