@@ -12,12 +12,31 @@
   --hover-bg: #A0A0A0;
   --purple-bright: #570DF8;
   --red-input: #F87272;
+  --red-btn: #CF3B3B;
+  --red-asterisk: #F00F00;
   --green-btn: #36D399;
+  --blue-btn: #007AFF;
+  --crystal: #2E7578;
+  --isoterm: #FF9334;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 991px) {
+  .top-title h3 {
+    font-size: 3vw;
+  }
+
+  .side-content {
+    left: 112px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
   .navbar-brand span {
     font-size: 3vw;
+  }
+
+  .top-title h3 {
+    font-size: 4vw;
   }
 }
 
@@ -33,12 +52,28 @@
   color: #374151 !important;
 }
 
+.text-gray {
+  color: var(--gray-sidebar) !important;
+}
+
+.text-blue {
+  color: var(--blue-btn) !important;
+}
+
+.text-asterisk {
+  color: var(--red-asterisk);
+}
+
 .icon-drive path {
   fill: #3ABFF8;
 }
 
 .bg-gray {
   background-color: var(--gray-bg);
+}
+
+.bg-gray-input {
+  background-color: var(--gray-input);
 }
 
 .bg-purple-bright {
@@ -49,11 +84,35 @@
   background-color: var(--green-btn) !important;
 }
 
+.bg-red-btn {
+  background-color: var(--red-btn) !important;
+}
+
+.bg-blue-btn {
+  background-color: var(--blue-btn) !important;
+}
+
 .bg-image-full {
   background-image: linear-gradient(rgba(61, 68, 81, 0.6), rgba(61, 68, 81, 0.6)), url(/src/assets/background-full.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.bg-crystal {
+  background-color: var(--crystal);
+}
+
+.bg-isoterm {
+  background-color: var(--isoterm);
+}
+
+.border-gray {
+  border: 2px solid var(--gray-sidebar);
+}
+
+.border-blue {
+  border: 2px solid var(--blue-btn);
 }
 
 .form-control {
@@ -135,6 +194,10 @@
   max-width: 2rem !important;
 }
 
+.width-team {
+  max-width: 3.5rem;
+}
+
 .nav-link {
   color: white !important;
   padding: 0.75rem 1rem !important;
@@ -156,7 +219,7 @@
   color: var(--black) !important;
 }
 
-.nav-bg path, .navbar-collapse.show path {
+.nav-bg path, .navbar-collapse.show path, button.black-path path {
   fill: var(--black) !important;
 }
 
@@ -266,4 +329,58 @@
 
 .vertical-timeline-element-icon path {
   fill: #374151;
+}
+
+.fa-img {
+  background-color: #353945;
+}
+
+.fa-img path {
+  fill: white;
+}
+
+.sidebar {
+  position: fixed;
+  top: 86px;
+  left: 0;
+  height: calc(100vh - 86px);
+}
+
+.side-content {
+  position: absolute;
+  top: 86px;
+  left: 278px;
+  right: 0;
+}
+
+.sidebar-icon path, .border-gray path {
+  fill: var(--gray-sidebar);
+}
+
+.sidebar-icon.active path {
+  fill: var(--blue-btn);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.profile .form-control {
+  border: none !important;
+}
+
+.profile path {
+  fill: #545F71;
+}
+
+.profile .input-group-text span {
+  color: #545F71;
+}
+
+.profile button path {
+  fill: white;
 }
