@@ -1,11 +1,15 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerMessageSelector } from "./selector";
+import { sendRegister } from "./action";
 
 const RegisterComponent = lazy(() => import("../../components/Register"));
 
 export class RegisterContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
+        registerMessageResponse: PropTypes.any
     };
 
     constructor(props: any) {
@@ -159,5 +163,20 @@ export class RegisterContainer extends PureComponent<any, any> {
         )
     }
 }
+
+const mapStateToProps = (state: any) => {
+    return {
+        registerMessageResponse: registerMessageSelector(state)
+    };
+};
   
-export default RegisterContainer;
+function mapDispatchToProps(dispatch: any) {
+    return {
+        sendRegisterData: (params: any) => dispatch(sendRegister(params))
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RegisterContainer);

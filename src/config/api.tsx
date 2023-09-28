@@ -7,6 +7,12 @@ const cancelAxiosRequest = () => {
     CANCEL_TOKEN_SOURCE = axios.CancelToken.source();
 };
 
+const getApiUrl = () => {
+    // Temporary URL
+    const url = "localhost:3001";
+    return url;
+};
+
 export const hitApi = (parameters: any) => {
     const { method, url, headers, params, data, responseType } = parameters;
     const timeout = setTimeout(() => {
@@ -74,3 +80,5 @@ export const payloadGenerator = (
     }
     return payload;
 };
+
+export const REGISTER_URL = `${getApiUrl()}/register`;

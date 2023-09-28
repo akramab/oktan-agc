@@ -1,0 +1,4 @@
+export const SEND_REGISTER =
+    "OktanAGC/App/SEND_REGISTER";
+export const SUCCESS_SEND_REGISTER =
+    "OktanAGC/App/SUCCESS_SEND_REGISTER";
