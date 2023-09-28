@@ -1,11 +1,16 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { isotermProfileSelector, editProfileMessageSelector } from "./selector";
+import { getIsotermProfile, editIsotermProfile } from "./action";
 
 const IsotermProfileComponent = lazy(() => import("../../components/IsotermProfile"));
 
 export class IsotermProfileContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
+        isotermProfileResponse: PropTypes.any,
+        editProfileMessageResponse: PropTypes.any,
     };
 
     constructor(props: any) {
@@ -319,5 +324,22 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         )
     }
 }
+
+const mapStateToProps = (state: any) => {
+    return {
+        isotermProfileResponse: isotermProfileSelector(state),
+        editProfileMessageResponse: editProfileMessageSelector(state)
+    };
+};
   
-export default IsotermProfileContainer;
+function mapDispatchToProps(dispatch: any) {
+    return {
+        getIsotermProfileData: () => dispatch(getIsotermProfile()),
+        editIsotermProfileData: (params: any) => dispatch(editIsotermProfile(params))
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(IsotermProfileContainer);
