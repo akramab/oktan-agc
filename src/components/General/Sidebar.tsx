@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Image, Button } from 'react-bootstrap';
+import { Row, Col, Image } from 'react-bootstrap';
 import crystal from "../../assets/crystal.png"
 import isoterm from "../../assets/isoterm.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

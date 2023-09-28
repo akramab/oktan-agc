@@ -27,6 +27,8 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Nama Kelompok"
                                     name="teamName"
                                     icon={faUserGroup}
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.teamName}
                                 />
                             </Form.Group>
                         </Col>
@@ -34,8 +36,14 @@ const CrystalProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Dokumen Pendaftaran<span className="text-asterisk">*</span></Form.Label>
                                 <FileInput
-                                    text="Upload dalam 1 dokumen PDF"
+                                    text={
+                                        props?.registrationDocument ?
+                                        props.registrationDocument.name :
+                                        "Upload dalam 1 dokumen PDF"
+                                    }
                                     name="registrationDocument"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.registrationDocument}
                                 />
                             </Form.Group>
                         </Col>
@@ -53,6 +61,8 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Nama Anggota"
                                     name="name1"
                                     icon={faUser}
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.name1}
                                 />
                             </Form.Group>
                         </Col>
@@ -63,9 +73,13 @@ const CrystalProfileComponent = (props: any) => {
                                     required
                                     isProfile
                                     type="text"
-                                    placeholder="696 88 77 55"
+                                    placeholder="696887755"
                                     name="number1"
                                     pre="(+62)"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.number1}
+                                    checkInput={props?.number1Error ? "input-error" : ""}
+                                    errorMessage={props?.number1Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -79,6 +93,10 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Email"
                                     name="email1"
                                     pre="@"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.email1}
+                                    checkInput={props?.email1Error ? "input-error" : ""}
+                                    errorMessage={props?.email1Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -96,6 +114,8 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Nama Anggota"
                                     name="name2"
                                     icon={faUser}
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.name2}
                                 />
                             </Form.Group>
                         </Col>
@@ -106,9 +126,13 @@ const CrystalProfileComponent = (props: any) => {
                                     required
                                     isProfile
                                     type="text"
-                                    placeholder="696 88 77 55"
+                                    placeholder="696887755"
                                     name="number2"
                                     pre="(+62)"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.number2}
+                                    checkInput={props?.number2Error ? "input-error" : ""}
+                                    errorMessage={props?.number2Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -122,6 +146,10 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Email"
                                     name="email2"
                                     pre="@"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.email2}
+                                    checkInput={props?.email2Error ? "input-error" : ""}
+                                    errorMessage={props?.email2Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -139,6 +167,8 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Nama Guru"
                                     name="teacherName"
                                     icon={faUser}
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.teacherName}
                                 />
                             </Form.Group>
                         </Col>
@@ -149,9 +179,13 @@ const CrystalProfileComponent = (props: any) => {
                                     required
                                     isProfile
                                     type="text"
-                                    placeholder="696 88 77 55"
+                                    placeholder="696887755"
                                     name="teacherNumber"
                                     pre="(+62)"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.teacherNumber}
+                                    checkInput={props?.teacherNumberError ? "input-error" : ""}
+                                    errorMessage={props?.teacherNumberError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -165,6 +199,10 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Email"
                                     name="teacherEmail"
                                     pre="@"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.teacherEmail}
+                                    checkInput={props?.teacherEmailError ? "input-error" : ""}
+                                    errorMessage={props?.teacherEmailError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -182,6 +220,8 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Nama Sekolah"
                                     name="schoolName"
                                     icon={faSchool}
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.schoolName}
                                 />
                             </Form.Group>
                         </Col>
@@ -192,9 +232,13 @@ const CrystalProfileComponent = (props: any) => {
                                     required
                                     isProfile
                                     type="text"
-                                    placeholder="696 88 77 55"
+                                    placeholder="696887755"
                                     name="schoolNumber"
                                     pre="(+62)"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.schoolNumber}
+                                    checkInput={props?.schoolNumberError ? "input-error" : ""}
+                                    errorMessage={props?.schoolNumberError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -208,6 +252,10 @@ const CrystalProfileComponent = (props: any) => {
                                     placeholder="Email"
                                     name="schoolEmail"
                                     pre="@"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.schoolEmail}
+                                    checkInput={props?.schoolEmailError ? "input-error" : ""}
+                                    errorMessage={props?.schoolEmailError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -218,8 +266,14 @@ const CrystalProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Data Pembayaran<span className="text-asterisk">*</span></Form.Label>
                                 <FileInput
-                                    text="Upload dalam 1 dokumen PDF"
+                                    text={
+                                        props?.paymentDocument ?
+                                        props.paymentDocument.name :
+                                        "Upload dalam 1 dokumen PDF"
+                                    }
                                     name="paymentDocument"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.paymentDocument}
                                 />
                             </Form.Group>
                         </Col>
@@ -232,6 +286,7 @@ const CrystalProfileComponent = (props: any) => {
                                     Submit Data
                                     <FontAwesomeIcon icon={faPaperPlane} className="ms-2" />
                                 </>}
+                                onClick={(e: any) => props?.handleSubmitData(e)}
                             />
                         </Col>
                     </Row>

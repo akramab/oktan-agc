@@ -26,7 +26,7 @@ const CustomInput = (props: any) => {
                 </InputGroup>
             }
             {props?.isProfile &&
-                <InputGroup className="rounded">
+                <InputGroup className={`${props?.checkInput} rounded`}>
                     <InputGroup.Text className="border-0 ps-4 pe-0">
                         {props?.icon ?
                             <FontAwesomeIcon icon={props?.icon} />

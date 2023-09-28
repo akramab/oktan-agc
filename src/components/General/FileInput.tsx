@@ -12,7 +12,7 @@ const FileInput = (props: any) => {
     return (
         <>
             <InputGroup className="cursor-pointer">
-                <Row className="bg-gray-input w-100 rounded py-1" onClick={handleClick}>
+                <Row className="bg-gray-input w-100 rounded py-1" onClick={handleClick} id={props?.name} tabindex="0">
                     <Col className="d-flex align-items-center py-2">
                         <FontAwesomeIcon icon={faPaperclip} className="text-purple px-2" />
                         <p>{props?.text}</p>
@@ -25,6 +25,7 @@ const FileInput = (props: any) => {
                     name={props?.name}
                     className="d-none"
                     onChange={props?.onChange}
+                    accept="application/pdf"
                 />
             </InputGroup>
         </>
