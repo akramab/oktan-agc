@@ -5,7 +5,7 @@ import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
 const CustomInput = (props: any) => {
     return (
         <>
-            {props?.isPassword ?
+            {props?.isPassword &&
                 <InputGroup className={`${props?.checkInput} rounded`}>
                     <Form.Control
                         className="password"
@@ -24,7 +24,28 @@ const CustomInput = (props: any) => {
                         }
                     </InputGroup.Text>
                 </InputGroup>
-            :
+            }
+            {props?.isProfile &&
+                <InputGroup className="rounded">
+                    <InputGroup.Text className="border-0 ps-4 pe-0">
+                        {props?.icon ?
+                            <FontAwesomeIcon icon={props?.icon} />
+                            :
+                            <span>{props?.pre}</span>
+                        }
+                    </InputGroup.Text>
+                    <Form.Control
+                        className="password"
+                        type={props?.type}
+                        placeholder={props?.placeholder}
+                        name={props?.name}
+                        onChange={props?.onChange}
+                        value={props?.value}
+                        required={props?.required}
+                    />
+                </InputGroup>
+            }
+            {(!props?.isPassword && !props?.isProfile) &&
                 <Form.Control
                     className={props?.checkInput}
                     type={props?.type}
