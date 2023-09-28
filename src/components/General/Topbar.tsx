@@ -14,7 +14,7 @@ const Topbar = (props: any) => {
                 <Navbar.Brand href="/" className="fw-bolder rounded px-4 d-flex align-items-center">
                     <Image src={logo} className="h-100" />
                     <div className="ms-2">
-                        <span>OKTAN ITB <br/> 2023</span>
+                        <span className="d-block lh-1">OKTAN ITB <br/> 2023</span>
                     </div>
                 </Navbar.Brand>
             </div>

@@ -20,13 +20,17 @@
   --isoterm: #FF9334;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .top-title h3 {
     font-size: 3vw;
   }
+
+  .side-content {
+    left: 112px !important;
+  }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .navbar-brand span {
     font-size: 3vw;
   }

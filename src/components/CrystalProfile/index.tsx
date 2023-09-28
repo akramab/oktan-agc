@@ -17,7 +17,7 @@ const CrystalProfileComponent = (props: any) => {
             <div className="side-content bg-gray p-4">
                 <Form className="profile">
                     <Row>
-                        <Col>
+                        <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>Nama Kelompok<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -32,7 +32,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>Dokumen Pendaftaran<span className="text-asterisk">*</span></Form.Label>
                                 <FileInput
@@ -51,7 +51,7 @@ const CrystalProfileComponent = (props: any) => {
                     <hr className="my-4" />
                     <Row>
                         <h5 className="fw-bold mb-3">Data Anggota 1</h5>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -66,7 +66,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -83,7 +83,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -104,7 +104,7 @@ const CrystalProfileComponent = (props: any) => {
                     <hr className="my-4" />
                     <Row>
                         <h5 className="fw-bold mb-3">Data Anggota 2</h5>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -119,7 +119,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -136,7 +136,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -157,7 +157,7 @@ const CrystalProfileComponent = (props: any) => {
                     <hr className="my-4" />
                     <Row>
                         <h5 className="fw-bold mb-3">Data Guru</h5>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nama Guru<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -172,7 +172,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -189,7 +189,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -210,7 +210,7 @@ const CrystalProfileComponent = (props: any) => {
                     <hr className="my-4" />
                     <Row>
                         <h5 className="fw-bold mb-3">Data Sekolah</h5>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nama Sekolah<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -225,7 +225,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -242,7 +242,7 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col>
+                        <Col xs={12} md={4}>
                             <Form.Group>
                                 <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -262,7 +262,7 @@ const CrystalProfileComponent = (props: any) => {
                     </Row>
                     <hr className="my-4" />
                     <Row>
-                        <Col xs={6}>
+                        <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>Data Pembayaran<span className="text-asterisk">*</span></Form.Label>
                                 <FileInput
