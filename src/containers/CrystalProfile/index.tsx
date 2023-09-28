@@ -1,11 +1,16 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { crystalProfileSelector, editProfileMessageSelector } from "./selector";
+import { getCrystalProfile, editCrystalProfile } from "./action";
 
 const CrystalProfileComponent = lazy(() => import("../../components/CrystalProfile"));
 
 export class CrystalProfileContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
+        crystalProfileResponse: PropTypes.any,
+        editProfileMessageResponse: PropTypes.any,
     };
 
     constructor(props: any) {
@@ -244,5 +249,22 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         )
     }
 }
+
+const mapStateToProps = (state: any) => {
+    return {
+        crystalProfileResponse: crystalProfileSelector(state),
+        editProfileMessageResponse: editProfileMessageSelector(state)
+    };
+};
   
-export default CrystalProfileContainer;
+function mapDispatchToProps(dispatch: any) {
+    return {
+        getCrystalProfileData: () => dispatch(getCrystalProfile()),
+        editCrystalProfileData: (params: any) => dispatch(editCrystalProfile(params))
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CrystalProfileContainer);

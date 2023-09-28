@@ -1,11 +1,15 @@
 import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginMessageSelector } from "./selector";
+import { sendLogin } from "./action";
 
 const LoginComponent = lazy(() => import("../../components/Login"));
 
 export class LoginContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
+        loginMessageResponse: PropTypes.any,
     };
 
     constructor(props: any) {
@@ -112,5 +116,20 @@ export class LoginContainer extends PureComponent<any, any> {
         )
     }
 }
+
+const mapStateToProps = (state: any) => {
+    return {
+        loginMessageResponse: loginMessageSelector(state)
+    };
+};
   
-export default LoginContainer;
+function mapDispatchToProps(dispatch: any) {
+    return {
+        sendLoginData: (params: any) => dispatch(sendLogin(params))
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginContainer);
