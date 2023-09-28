@@ -19,7 +19,7 @@ const Topbar = (props: any) => {
                 </Navbar.Brand>
             </div>
             <div className="top-title">
-                <h3 className="fw-bold ps-5">{props?.title}</h3>
+                <h3 className="fw-bold ps-lg-5">{props?.title}</h3>
             </div>
             <div className="d-none d-md-block ms-auto">
                 <Nav className="align-items-center">
