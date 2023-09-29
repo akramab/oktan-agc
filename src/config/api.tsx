@@ -1,4 +1,6 @@
 import axios from "axios";
+import { getAuthToken, removeTokens } from "../utils/general";
+import { showToast } from "../utils/general";
 
 let CANCEL_TOKEN_SOURCE = axios.CancelToken.source();
 
@@ -9,7 +11,7 @@ const cancelAxiosRequest = () => {
 
 const getApiUrl = () => {
     // Temporary URL
-    const url = "localhost:3001";
+    const url = "http://localhost:8000/api";
     return url;
 };
 
@@ -31,8 +33,15 @@ export const hitApi = (parameters: any) => {
         return res;
     }).catch((err) => {
         const { response } = err;
-        const { status } = response;
-        console.log(status);
+        const { status, data } = response;
+        const { message } = data;
+        if (status === 401) {
+            removeTokens();
+            window.location.href = "/login";
+        }
+        else if (status === 422) {
+            showToast(message);
+        }
     });
 };
 
@@ -43,14 +52,21 @@ export const payloadGenerator = (
     data: any,
 ) => {
     let header = {};
-    if (method === "POST") {
+    if (url.includes("login") || url.includes("register")) {
+        header = {
+            "Content-Type": "application/json",
+        };
+    }
+    else if (method === "POST") {
         header = {
             "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${getAuthToken()}`
         };
     }
     else {
         header = {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${getAuthToken()}`
         };
     }
     let payload = {};

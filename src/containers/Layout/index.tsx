@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 import LoadingIndicator from "../../components/Loading";
+import { getAuthToken, getAuthType } from "../../utils/general";
 
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const RegisterContainer = lazy(() => import("../Register"));

@@ -16,6 +16,7 @@ export class RegisterContainer extends PureComponent<any, any> {
         super(props);
 
         this.state = {
+            showModal: false,
             showPassword: false,
             email: "",
             username: "",
@@ -27,11 +28,26 @@ export class RegisterContainer extends PureComponent<any, any> {
             passwordError: "",
             confirmPasswordError: ""
         };
+        this.toggleModal = this.toggleModal.bind(this);
         this.togglePassword = this.togglePassword.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
+    }
+
+    componentDidUpdate(prevProps: any): void {
+        const { registerMessageResponse } = this.props;
+        if (prevProps.registerMessageResponse !== registerMessageResponse && registerMessageResponse) {
+            this.toggleModal();
+        }
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        });
     }
 
     private togglePassword(): void {
@@ -128,20 +144,23 @@ export class RegisterContainer extends PureComponent<any, any> {
             email,
             username,
             competitionType,
-            password,
-            confirmPassword
+            password
         } = this.state;
 
         if (this.validateForm()) {
-            // API Integration
+            this.props.sendRegisterData({
+                username,
+                email,
+                competition_type: competitionType,
+                password
+            })
             return;
         }
-
-        console.log("INVALID FORM");
     }
 
     render() {
         const {
+            showModal,
             showPassword,
             email,
             username,
@@ -155,6 +174,7 @@ export class RegisterContainer extends PureComponent<any, any> {
         } = this.state;
         return (
             <RegisterComponent
+                showModal={showModal}
                 showPassword={showPassword}
                 email={email}
                 username={username}

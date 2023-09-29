@@ -384,3 +384,8 @@
 .profile button path {
   fill: white;
 }
+
+.modal-dialog {
+  margin-left: auto !important;
+  margin-right: auto !important;  
+}
