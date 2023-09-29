@@ -8,6 +8,7 @@ import LoadingIndicator from "../../components/Loading";
 import { getAuthToken, getCompetitionType } from "../../utils/general";
 
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
+const NotFoundContainer = lazy(() => import("../404NotFound"));
 const RegisterContainer = lazy(() => import("../Register"));
 const LoginContainer = lazy(() => import("../Login"));
 const HomeContainer = lazy(() => import("../Home"));
@@ -38,49 +39,65 @@ export class LayoutContainer extends PureComponent<any, any> {
                         <Route
                             exact path={"/"}
                             render={(props: any) => {
-                            return <HomeContainer {...this.props} {...props} />;
-                            }}
+                            return <HomeContainer
+                                authToken={authToken}
+                                competitionType={competitionType}
+                                {...this.props}
+                                {...props}
+                            />;}}
                         />
                         <Route
                             path={"/register"}
                             render={(props: any) => {
-                            return <RegisterContainer {...this.props} {...props} />;
+                            return <RegisterContainer authToken={authToken} {...this.props} {...props} />;
                             }}
                         />
                         <Route
                             path={"/login"}
                             render={(props: any) => {
-                            return <LoginContainer {...this.props} {...props} />;
+                            return <LoginContainer authToken={authToken} {...this.props} {...props} />;
                             }}
                         />
                         <Route
                             exact path={"/competition/crystal"}
                             render={(props: any) => {
-                            return <CrystalCompetitionContainer {...this.props} {...props} />;
-                            }}
+                            return <CrystalCompetitionContainer
+                                authToken={authToken}
+                                competitionType={competitionType}
+                                {...this.props}
+                                {...props}
+                            />;}}
                         />
                         <Route
                             exact path={"/competition/isoterm"}
                             render={(props: any) => {
-                            return <IsotermCompetitionContainer {...this.props} {...props} />;
-                            }}
+                            return <IsotermCompetitionContainer
+                                authToken={authToken}
+                                competitionType={competitionType}
+                                {...this.props}
+                                {...props}
+                            />;}}
                         />
-                        <Route
-                            exact path={"/profile/crystal"}
-                            render={(props: any) => {
-                            return <CrystalProfileContainer {...this.props} {...props} />;
-                            }}
-                        />
-                        <Route
-                            exact path={"/profile/isoterm"}
-                            render={(props: any) => {
-                            return <IsotermProfileContainer {...this.props} {...props} />;
-                            }}
-                        />
+                        {authToken &&
+                            <>
+                                <Route
+                                    exact path={"/profile/crystal"}
+                                    render={(props: any) => {
+                                    return <CrystalProfileContainer competitionType={competitionType} {...this.props} {...props} />;
+                                    }}
+                                />
+                                <Route
+                                    exact path={"/profile/isoterm"}
+                                    render={(props: any) => {
+                                    return <IsotermProfileContainer competitionType={competitionType} {...this.props} {...props} />;
+                                    }}
+                                />
+                            </>
+                        }
                         <Route
                             path={"/*"}
                             render={(props: any) => {
-                            return <ComingSoonContainer {...this.props} {...props} />;
+                            return <NotFoundContainer {...this.props} {...props} />;
                             }}
                         />
                     </Switch>

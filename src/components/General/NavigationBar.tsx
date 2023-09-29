@@ -2,7 +2,7 @@ import { lazy, useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
 import logo from "../../assets/logo.svg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
 const CustomButton = lazy(() => import("./CustomButton"));
 
@@ -56,9 +56,21 @@ const NavigationBar = (props: any) => {
                     <Nav.Link>FAQ</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
-            <Nav.Link href="/login" className="me-2">
-                <CustomButton bg="bg-green-btn" text="SIGN IN" />
-            </Nav.Link>
+            {!props?.authToken ?
+                <Nav.Link href="/login" className="me-2">
+                    <CustomButton bg="bg-green-btn" text="SIGN IN" />
+                </Nav.Link> :
+                <Nav.Link
+                    className="to-profile me-4"
+                    href={
+                        props?.competitionType === "CRYSTAL" ?
+                        "/profile/crystal" :
+                        "/profile/isoterm"
+                    }
+                >
+                    <FontAwesomeIcon icon={faUser} size="2x" />
+                </Nav.Link>
+            }
         </Navbar>
     )
 }

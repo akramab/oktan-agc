@@ -389,3 +389,7 @@
   margin-left: auto !important;
   margin-right: auto !important;  
 }
+
+.to-profile path {
+  fill: var(--green-btn);
+}

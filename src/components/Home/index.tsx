@@ -18,7 +18,7 @@ const HomeComponent = (props: any) => {
         <>
             <div className="h-100 bg-image-full">
                 <div className="h-100 d-flex flex-column">
-                    <NavigationBar />
+                    <NavigationBar {...props} />
                     <Row className="justify-content-center align-items-center flex-grow-1 mt-5">
                         <Col className="text-center tag-line">
                             <Image src={logo} className="width-logo" />
@@ -30,17 +30,19 @@ const HomeComponent = (props: any) => {
                             </p>
                             <Row className="justify-content-center mt-4">
                                 <Col>
-                                    <Link to="/register">
-                                        <CustomButton
-                                            bg="bg-purple-bright"
-                                            text={
-                                                <>
-                                                    REGISTER NOW
-                                                    <FontAwesomeIcon icon={faArrowRightLong} size="xs" className="ms-2" />
-                                                </>
-                                            }
-                                        />
-                                    </Link>
+                                    {!props?.authToken &&
+                                        <Link to="/register">
+                                            <CustomButton
+                                                bg="bg-purple-bright"
+                                                text={
+                                                    <>
+                                                        REGISTER NOW
+                                                        <FontAwesomeIcon icon={faArrowRightLong} size="xs" className="ms-2" />
+                                                    </>
+                                                }
+                                            />
+                                        </Link>
+                                    }
                                 </Col>
                             </Row>
                         </Col>

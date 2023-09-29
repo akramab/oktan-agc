@@ -36,6 +36,13 @@ export class RegisterContainer extends PureComponent<any, any> {
         this.handleRegister = this.handleRegister.bind(this);
     }
 
+    componentDidMount(): void {
+        const { authToken } = this.props;
+        if (authToken) {
+            this.props.history.replace("/");
+        }
+    }
+
     componentDidUpdate(prevProps: any): void {
         const { registerMessageResponse } = this.props;
         if (prevProps.registerMessageResponse !== registerMessageResponse && registerMessageResponse) {

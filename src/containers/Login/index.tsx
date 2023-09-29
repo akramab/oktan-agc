@@ -29,6 +29,13 @@ export class LoginContainer extends PureComponent<any, any> {
         this.handleLogin = this.handleLogin.bind(this);
     }
 
+    componentDidMount(): void {
+        const { authToken } = this.props;
+        if (authToken) {
+            this.props.history.replace("/");
+        }
+    }
+
     componentDidUpdate(prevProps: any): void {
         const { loginMessageResponse } = this.props;
         if (prevProps.loginMessageResponse !== loginMessageResponse && loginMessageResponse) {
