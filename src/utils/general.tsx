@@ -8,8 +8,8 @@ export const getAuthToken = () => {
     return "";
 };
 
-export const getAuthType = () => {
-    const data = localStorage.getItem("TYPE");
+export const getCompetitionType = () => {
+    const data = localStorage.getItem("COMPETITION_TYPE");
     if (data) {
         return data;
     }
@@ -18,7 +18,7 @@ export const getAuthType = () => {
 
 export const removeTokens = () => {
     localStorage.removeItem("AUTH_TOKEN");
-    localStorage.removeItem("TYPE");
+    localStorage.removeItem("COMPETITION_TYPE");
     return "";
 };
 

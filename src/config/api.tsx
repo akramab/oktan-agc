@@ -35,9 +35,15 @@ export const hitApi = (parameters: any) => {
         const { response } = err;
         const { status, data } = response;
         const { message } = data;
+        const currentUrl = window.location.href;
         if (status === 401) {
-            removeTokens();
-            window.location.href = "/login";
+            if (currentUrl.includes("login")) {
+                showToast("Kombinasi Salah!");
+            }
+            else {
+                removeTokens();
+                window.location.href = "/login";
+            }
         }
         else if (status === 422) {
             showToast(message);

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 import LoadingIndicator from "../../components/Loading";
-import { getAuthToken, getAuthType } from "../../utils/general";
+import { getAuthToken, getCompetitionType } from "../../utils/general";
 
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const RegisterContainer = lazy(() => import("../Register"));
@@ -28,6 +28,8 @@ export class LayoutContainer extends PureComponent<any, any> {
 
     render() {
         const { loadingResponse } = this.props;
+        const authToken = getAuthToken();
+        const competitionType = getCompetitionType();
         return (
             <div className="bg-gray" style={{ height: "100vh", overflowX: "hidden" }}>
                 <Suspense fallback={<LoadingIndicator show={true}/>}>

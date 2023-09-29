@@ -29,6 +29,20 @@ export class LoginContainer extends PureComponent<any, any> {
         this.handleLogin = this.handleLogin.bind(this);
     }
 
+    componentDidUpdate(prevProps: any): void {
+        const { loginMessageResponse } = this.props;
+        if (prevProps.loginMessageResponse !== loginMessageResponse && loginMessageResponse) {
+            localStorage.setItem("AUTH_TOKEN", loginMessageResponse.access_token);
+            localStorage.setItem("COMPETITION_TYPE", loginMessageResponse.competition_type);
+            if (loginMessageResponse.competition_type === "CRYSTAL") {
+                this.props.history.replace("/profile/crystal");
+            }
+            else if (loginMessageResponse.competition_type === "ISOTERM") {
+                this.props.history.replace("/profile/isoterm");
+            }
+        }
+    }
+
     private togglePassword(): void {
         this.setState({
             ...this.state,
@@ -87,11 +101,12 @@ export class LoginContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
-            //API Integration
+            this.props.sendLoginData({
+                username: emailUsername,
+                password
+            })
             return;          
         }
-
-        console.log("INVALID FORM");
     }
 
     render() {
