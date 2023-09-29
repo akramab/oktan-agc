@@ -57,8 +57,8 @@ const RegisterComponent = (props: any) => {
                                                 placeholder="choose competition type"
                                                 value={props?.competitionType}
                                                 options={[
-                                                    "Crystal",
-                                                    "Isoterm"
+                                                    "CRYSTAL",
+                                                    "ISOTERM"
                                                 ]}
                                                 onChange={(e: any) => props?.handleChange(e)}
                                             />
