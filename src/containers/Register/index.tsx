@@ -19,6 +19,7 @@ export class RegisterContainer extends PureComponent<any, any> {
             showPassword: false,
             email: "",
             username: "",
+            competitionType: "",
             password: "",
             confirmPassword: "",
             emailError: "",
@@ -89,6 +90,7 @@ export class RegisterContainer extends PureComponent<any, any> {
 
     private validateForm(): boolean {
         const {
+            competitionType,
             password,
             confirmPassword,
             emailError,
@@ -102,6 +104,10 @@ export class RegisterContainer extends PureComponent<any, any> {
         }
         else if (usernameError) {
             document.getElementsByName("username")[0].focus();
+            return false;
+        }
+        else if (!competitionType) {
+            document.getElementsByName("competitionType")[0].focus();
             return false;
         }
         else if (passwordError) {
@@ -121,6 +127,7 @@ export class RegisterContainer extends PureComponent<any, any> {
         const {
             email,
             username,
+            competitionType,
             password,
             confirmPassword
         } = this.state;
@@ -138,6 +145,7 @@ export class RegisterContainer extends PureComponent<any, any> {
             showPassword,
             email,
             username,
+            competitionType,
             password,
             confirmPassword,
             emailError,
@@ -150,6 +158,7 @@ export class RegisterContainer extends PureComponent<any, any> {
                 showPassword={showPassword}
                 email={email}
                 username={username}
+                competitionType={competitionType}
                 password={password}
                 confirmPassword={confirmPassword}
                 emailError={emailError}

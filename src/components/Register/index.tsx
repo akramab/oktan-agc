@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg"
 
 const CustomInput = lazy(() => import("../../components/General/CustomInput"));
+const CustomDropdown = lazy(() => import("../../components/General/CustomDropdown"));
 const CustomButton = lazy(() => import("../General/CustomButton"));
 
 const RegisterComponent = (props: any) => {
@@ -47,6 +48,19 @@ const RegisterComponent = (props: any) => {
                                                 value={props?.username}
                                                 checkInput={props?.usernameError ? "input-error" : ""}
                                                 errorMessage={props?.usernameError ?? ""}
+                                            />
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Label>Competition Type</Form.Label>  
+                                            <CustomDropdown
+                                                name="competitionType"
+                                                placeholder="choose competition type"
+                                                value={props?.competitionType}
+                                                options={[
+                                                    "Crystal",
+                                                    "Isoterm"
+                                                ]}
+                                                onChange={(e: any) => props?.handleChange(e)}
                                             />
                                         </Form.Group>
                                         <Form.Group>
