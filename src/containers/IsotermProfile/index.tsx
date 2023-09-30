@@ -69,6 +69,38 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         if (competitionType !== "ISOTERM") {
             this.props.history.replace("/profile/crystal");
         }
+        this.props.getIsotermProfileData();
+    }
+
+    componentDidUpdate(prevProps: any): void {
+        const { isotermProfileResponse, editProfileMessageResponse } = this.props;
+        if (prevProps.isotermProfileResponse !== isotermProfileResponse && isotermProfileResponse.length !== 0) {
+            this.setState({
+                ...this.state,
+                teamName: isotermProfileResponse.team,
+                subtheme: isotermProfileResponse.sub_theme,
+                name1: isotermProfileResponse.members[0].name,
+                year1: isotermProfileResponse.members[0].year,
+                major1: isotermProfileResponse.members[0].major,
+                number1: isotermProfileResponse.members[0].wa_number,
+                email1: isotermProfileResponse.members[0].email,
+                name2: isotermProfileResponse.members[1].name,
+                year2: isotermProfileResponse.members[1].year,
+                major2: isotermProfileResponse.members[1].major,
+                number2: isotermProfileResponse.members[1].wa_number,
+                email2: isotermProfileResponse.members[1].email,
+                name3: isotermProfileResponse.members[2].name,
+                year3: isotermProfileResponse.members[2].year,
+                major3: isotermProfileResponse.members[2].major,
+                number3: isotermProfileResponse.members[2].wa_number,
+                email3: isotermProfileResponse.members[2].email,
+                universityName: isotermProfileResponse.institution.university.name,
+                teacherName: isotermProfileResponse.institution.university.lecturer
+            });
+        }
+        if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
+            this.toggleModal();
+        }
     }
 
     private toggleModal(): void {

@@ -56,10 +56,29 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         if (competitionType !== "CRYSTAL") {
             this.props.history.replace("/profile/isoterm");
         }
+        this.props.getCrystalProfileData();
     }
 
     componentDidUpdate(prevProps: any): void {
-        const { editProfileMessageResponse } = this.props;
+        const { crystalProfileResponse, editProfileMessageResponse } = this.props;
+        if (prevProps.crystalProfileResponse !== crystalProfileResponse && crystalProfileResponse.length !== 0) {
+            this.setState({
+                ...this.state,
+                teamName: crystalProfileResponse.team,
+                name1: crystalProfileResponse.members[0].name,
+                number1: crystalProfileResponse.members[0].wa_number,
+                email1: crystalProfileResponse.members[0].email,
+                name2: crystalProfileResponse.members[1].name,
+                number2: crystalProfileResponse.members[1].wa_number,
+                email2: crystalProfileResponse.members[1].email,
+                teacherName: crystalProfileResponse.institution.teacher.name,
+                teacherNumber: crystalProfileResponse.institution.teacher.wa_number,
+                teacherEmail: crystalProfileResponse.institution.teacher.email,
+                schoolName: crystalProfileResponse.institution.school.name,
+                schoolNumber: crystalProfileResponse.institution.school.wa_number,
+                schoolEmail: crystalProfileResponse.institution.school.email
+            });
+        }
         if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
             this.toggleModal();
         }
