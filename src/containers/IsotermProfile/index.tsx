@@ -17,6 +17,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         super(props);
 
         this.state = {
+            showModal: false,
             teamName: "",
             subtheme: "",
             name1: "",
@@ -51,6 +52,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             email3Error: "",
             number3Error: ""
         };
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
@@ -62,6 +64,13 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         if (competitionType !== "ISOTERM") {
             this.props.history.replace("/profile/crystal");
         }
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        });
     }
 
     private handleChange(e: any): void {
@@ -247,15 +256,59 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
-            // API Integration
-            return;
-        }
+            let memberData = [
+                {
+                    id: "1",
+                    name: name1,
+                    year: year1,
+                    major: major1,
+                    wa_number: `0${number1}`,
+                    email: email1
+                },
+                {
+                    id: "2",
+                    name: name2,
+                    year: year2,
+                    major: major2,
+                    wa_number: `0${number2}`,
+                    email: email2
+                },
+                {
+                    id: "3",
+                    name: name3,
+                    year: year3,
+                    major: major3,
+                    wa_number: `0${number3}`,
+                    email: email3
+                }
+            ];
 
-        console.log("INVALID FORM");
+            let institutionData = {
+                univeristy: {
+                    name: universityName,
+                    lecturer: teacherName
+                }
+            };
+
+            let formData = {
+                team: teamName,
+                sub_theme: subtheme,
+                members_data: JSON.stringify(memberData),
+                institution_data: JSON.stringify(institutionData),
+                abstract_1_document: abstract1,
+                abstract_2_document: abstract2,
+                work_1_document: paper1,
+                work_2_document: paper2,
+                unified_document: fullDocument
+            }
+            
+            this.props.editIsotermProfileData(formData);
+        }
     }
 
     render() {
         const {
+            showModal,
             teamName,
             subtheme,
             name1,
@@ -292,6 +345,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         } = this.state;
         return (
             <IsotermProfileComponent
+                showModal={showModal}
                 teamName={teamName}
                 subtheme={subtheme}
                 name1={name1}
@@ -325,6 +379,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 year3Error={year3Error}
                 email3Error={email3Error}
                 number3Error={number3Error}
+                toggleModal={this.toggleModal}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}
             />

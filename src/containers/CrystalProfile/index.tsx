@@ -216,27 +216,25 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                     email: email1
                 },
                 {
-                    id: "1",
+                    id: "2",
                     name: name2,
                     wa_number: `0${number2}`,
                     email: email2
                 },
             ];
 
-            let institutionData = [
-                {
-                    teacher: {
-                        name: teacherName,
-                        wa_number: `0${teacherNumber}`,
-                        email: teacherEmail
-                    },
-                    school: {
-                        name: schoolName,
-                        wa_number: `0${schoolNumber}`,
-                        email: schoolEmail
-                    }
+            let institutionData ={
+                teacher: {
+                    name: teacherName,
+                    wa_number: `0${teacherNumber}`,
+                    email: teacherEmail
+                },
+                school: {
+                    name: schoolName,
+                    wa_number: `0${schoolNumber}`,
+                    email: schoolEmail
                 }
-            ];
+            };
 
             let formData = {
                 team: teamName,
@@ -245,7 +243,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 registration_document: registrationDocument,
                 payment_document: paymentDocument
             }
-            
+
             this.props.editCrystalProfileData(formData);
         }
     }
