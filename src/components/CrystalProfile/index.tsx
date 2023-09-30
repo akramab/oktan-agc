@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGroup, faSchool, faUser, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,6 +12,22 @@ const CustomButton = lazy(() => import("../General/CustomButton"));
 const CrystalProfileComponent = (props: any) => {
     return (
         <>
+            <Modal show={props?.showModal} centered>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Profil berhasil diperbaharui!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <CustomButton bg="bg-purple-bright" text="Tutup" onClick={() => props?.toggleModal()}/>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Topbar title="Lengkapi Profil Tim" />
             <Sidebar isCrystal/>
             <div className="side-content bg-gray p-4">

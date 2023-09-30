@@ -105,4 +105,6 @@ export const payloadGenerator = (
 
 export const REGISTER_URL = `${getApiUrl()}/register`;
 export const LOGIN_URL = `${getApiUrl()}/login`;
-export const PROFILE_URL = `${getApiUrl()}/profile`;
+
+export const USER_URL = `${getApiUrl()}/user`;
+export const PROFILE_URL = `${USER_URL}/profile`;

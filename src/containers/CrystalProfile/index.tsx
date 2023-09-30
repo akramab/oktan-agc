@@ -17,6 +17,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         super(props);
 
         this.state = {
+            showModal: false,
             teamName: "",
             registrationDocument: null,
             name1: "",
@@ -41,6 +42,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumberError: "",
             schoolEmailError: "",
         };
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
@@ -52,6 +54,20 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         if (competitionType !== "CRYSTAL") {
             this.props.history.replace("/profile/isoterm");
         }
+    }
+
+    componentDidUpdate(prevProps: any): void {
+        const { editProfileMessageResponse } = this.props;
+        if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
+            this.toggleModal();
+        }
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        });
     }
 
     private handleChange(e: any): void {
@@ -192,15 +208,51 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
-            // API Integration
-            return;
-        }
+            let memberData = [
+                {
+                    id: "1",
+                    name: name1,
+                    wa_number: `0${number1}`,
+                    email: email1
+                },
+                {
+                    id: "1",
+                    name: name2,
+                    wa_number: `0${number2}`,
+                    email: email2
+                },
+            ];
 
-        console.log("INVALID FORM");
+            let institutionData = [
+                {
+                    teacher: {
+                        name: teacherName,
+                        wa_number: `0${teacherNumber}`,
+                        email: teacherEmail
+                    },
+                    school: {
+                        name: schoolName,
+                        wa_number: `0${schoolNumber}`,
+                        email: schoolEmail
+                    }
+                }
+            ];
+
+            let formData = {
+                team: teamName,
+                members_data: JSON.stringify(memberData),
+                institution_data: JSON.stringify(institutionData),
+                registration_document: registrationDocument,
+                payment_document: paymentDocument
+            }
+            
+            this.props.editCrystalProfileData(formData);
+        }
     }
 
     render() {
         const {
+            showModal,
             teamName,
             registrationDocument,
             name1,
@@ -227,6 +279,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         } = this.state;
         return (
             <CrystalProfileComponent
+                showModal={showModal}
                 teamName={teamName}
                 registrationDocument={registrationDocument}
                 name1={name1}
@@ -250,6 +303,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 teacherEmailError={teacherEmailError}
                 schoolNumberError={schoolNumberError}
                 schoolEmailError={schoolEmailError}
+                toggleModal={this.toggleModal}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}
             />
