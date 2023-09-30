@@ -348,7 +348,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             ];
 
             let institutionData = {
-                univeristy: {
+                university: {
                     name: universityName,
                     lecturer: teacherName
                 }
