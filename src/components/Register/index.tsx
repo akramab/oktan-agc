@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Image, Form, Modal } from "react-bootstrap";
+import { Row, Col, Image, Form, Modal, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg"
 
@@ -32,9 +32,11 @@ const RegisterComponent = (props: any) => {
                 <Row className="bg-gray align-items-center flex-grow-1">
                     <Col>
                         <Row>
-                            <Col className="d-flex align-items-center justify-content-center mb-3">
-                                <Image src={logo} />
-                                <h3 className="fw-bolder ms-2">Oktan ITB 2023</h3>
+                            <Col className="d-flex justify-content-center mb-3">
+                                <Navbar.Brand href="/" className="d-flex align-items-center rounded px-4 py-1">
+                                    <Image src={logo} />
+                                    <h3 className="fw-bolder ms-2">Oktan ITB 2023</h3>
+                                </Navbar.Brand>
                             </Col>
                         </Row>
                         <Row>

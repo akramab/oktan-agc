@@ -5,11 +5,14 @@ import isoterm from "../../assets/isoterm.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTableCellsLarge, faInfo, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { faFolder, faCalendar, faUser } from '@fortawesome/free-regular-svg-icons';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { removeTokens } from "../../utils/general";
 
 const CustomButton = lazy(() => import("./CustomButton"));
 
 const Sidebar = (props: any) => {
+    let history = useHistory();
+
     return (
         <div className="bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center">
             <div className="d-flex flex-column align-items-center align-items-lg-start">
@@ -87,25 +90,24 @@ const Sidebar = (props: any) => {
                         </Col>
                     </Row>
                 </Link>
-                <Link to="#" className="text-decoration-none">
-                    <Row className="mt-3">
-                        <CustomButton
-                            bg="bg-red-btn"
-                            text={
-                                <>
-                                    <Row className="py-1 justify-content-center justify-content-lg-start">
-                                        <Col className="p-0 width-fit">
-                                            <FontAwesomeIcon icon={faArrowRightFromBracket} size="xl" className="rotate-180" />
-                                        </Col>
-                                        <Col className="text-start px-4 d-none d-lg-block">
-                                            <h5 className="text-white px-2">Logout</h5>
-                                        </Col>
-                                    </Row>
-                                </>
-                            }
-                        />
-                    </Row>
-                </Link>
+                <Row className="mt-3">
+                    <CustomButton
+                        bg="bg-red-btn"
+                        text={
+                            <>
+                                <Row className="py-1 justify-content-center justify-content-lg-start">
+                                    <Col className="p-0 width-fit">
+                                        <FontAwesomeIcon icon={faArrowRightFromBracket} size="xl" className="rotate-180" />
+                                    </Col>
+                                    <Col className="text-start px-4 d-none d-lg-block">
+                                        <h5 className="text-white px-2">Logout</h5>
+                                    </Col>
+                                </Row>
+                            </>
+                        }
+                        onClick={() => {removeTokens(); history.push("/login");}}
+                    />
+                </Row>
             </div>
         </div>
     )
