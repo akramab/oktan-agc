@@ -381,6 +381,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="abstract1"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.abstract1}
+                                    checkInput={props?.abstract1Error ? "input-error" : ""}
+                                    errorMessage={props?.abstract1Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -396,6 +398,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="abstract2"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.abstract2}
+                                    checkInput={props?.abstract2Error ? "input-error" : ""}
+                                    errorMessage={props?.abstract2Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -413,6 +417,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="paper1"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.paper1}
+                                    checkInput={props?.paper1Error ? "input-error" : ""}
+                                    errorMessage={props?.paper1Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -428,6 +434,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="paper2"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.paper2}
+                                    checkInput={props?.paper2Error ? "input-error" : ""}
+                                    errorMessage={props?.paper2Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -446,6 +454,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="fullDocument"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.fullDocument}
+                                    checkInput={props?.fullDocumentError ? "input-error" : ""}
+                                    errorMessage={props?.fullDocumentError ?? ""}
                                 />
                             </Form.Group>
                         </Col>

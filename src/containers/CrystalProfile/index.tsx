@@ -33,6 +33,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumber: "",
             schoolEmail: "",
             paymentDocument: null,
+            registrationDocumentError: "",
             number1Error: "",
             email1Error: "",
             number2Error: "",
@@ -41,6 +42,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherEmailError: "",
             schoolNumberError: "",
             schoolEmailError: "",
+            paymentDocumentError: ""
         };
         this.toggleModal = this.toggleModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -73,12 +75,18 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
     private handleChange(e: any): void {
         const { name, value, files } = e.target;
         let errorType = name + "Error";
-        let errorMessage = this.validateInput(value, name);
+        let errorMessage = "";
+        if (files) {
+            errorMessage = this.validateInput(files[0], name);
+        }
+        else {
+            errorMessage = this.validateInput(value, name);
+        }
 
         this.setState({
             ...this.state,
             [name]: files ? files[0] : value,
-            [errorType]: !files ? errorMessage : "",
+            [errorType]: errorMessage,
         });
     }
 
@@ -92,6 +100,11 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         else if (type.toLowerCase().includes("email")) {
             if (!input || !input.match(re)) {
                 return "Please enter a valid email";
+            }
+        }
+        else if (type.toLowerCase().includes("document")) {
+            if (!input.name.endsWith("pdf")) {
+                return "Please use a PDF file";
             }
         }
         return "";
@@ -113,6 +126,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolName,
             schoolNumber,
             schoolEmail,
+            paymentDocument,
+            registrationDocumentError,
             number1Error,
             email1Error,
             number2Error,
@@ -121,13 +136,13 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherEmailError,
             schoolNumberError,
             schoolEmailError,
-            paymentDocument
+            paymentDocumentError,
         } = this.state;
         if (!teamName) {
             document.getElementsByName("teamName")[0].focus();
             return false;
         }
-        else if (!registrationDocument) {
+        else if (!registrationDocument || registrationDocumentError) {
             document.getElementById("registrationDocument")?.focus();
             return false;
         }
@@ -179,7 +194,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             document.getElementsByName("schoolEmail")[0].focus();
             return false;
         }
-        else if (!paymentDocument) {
+        else if (!paymentDocument || paymentDocumentError) {
             document.getElementById("paymentDocument")?.focus();
             return false;
         }
@@ -266,6 +281,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumber,
             schoolEmail,
             paymentDocument,
+            registrationDocumentError,
             number1Error,
             email1Error,
             number2Error,
@@ -274,6 +290,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherEmailError,
             schoolNumberError,
             schoolEmailError,
+            paymentDocumentError
         } = this.state;
         return (
             <CrystalProfileComponent
@@ -297,10 +314,12 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 email1Error={email1Error}
                 number2Error={number2Error}
                 email2Error={email2Error}
+                registrationDocumentError={registrationDocumentError}
                 teacherNumberError={teacherNumberError}
                 teacherEmailError={teacherEmailError}
                 schoolNumberError={schoolNumberError}
                 schoolEmailError={schoolEmailError}
+                paymentDocumentError={paymentDocumentError}
                 toggleModal={this.toggleModal}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}

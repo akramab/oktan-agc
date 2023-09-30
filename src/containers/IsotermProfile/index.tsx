@@ -50,7 +50,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number2Error: "",
             year3Error: "",
             email3Error: "",
-            number3Error: ""
+            number3Error: "",
+            abstract1Error: "",
+            abstract2Error: "",
+            paper1Error: "",
+            paper2Error: "",
+            fullDocumentError: "",
         };
         this.toggleModal = this.toggleModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -76,12 +81,18 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     private handleChange(e: any): void {
         const { name, value, files } = e.target;
         let errorType = name + "Error";
-        let errorMessage = this.validateInput(value, name);
+        let errorMessage = "";
+        if (files) {
+            errorMessage = this.validateInput(files[0], name);
+        }
+        else {
+            errorMessage = this.validateInput(value, name);
+        }
 
         this.setState({
             ...this.state,
             [name]: files ? files[0] : value,
-            [errorType]: !files ? errorMessage : "",
+            [errorType]: errorMessage,
         });
     }
 
@@ -100,6 +111,14 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         else if (type.toLowerCase().includes("email")) {
             if (!input || !input.match(re)) {
                 return "Please enter a valid email";
+            }
+        }
+        else if (type.toLowerCase().includes("document") ||
+            type.toLowerCase().includes("abstract") ||
+            type.toLowerCase().includes("paper")
+        ) {
+            if (!input.name.endsWith("pdf")) {
+                return "Please use a PDF file";
             }
         }
         return "";
@@ -136,7 +155,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number2Error,
             year3Error,
             email3Error,
-            number3Error
+            number3Error,
+            abstract1Error,
+            abstract2Error,
+            paper1Error,
+            paper2Error,
+            fullDocumentError,
         } = this.state;
         if (!teamName) {
             document.getElementsByName("teamName")[0].focus();
@@ -210,15 +234,23 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             document.getElementsByName("universityName")[0].focus();
             return false;
         }
-        else if (!abstract1) {
+        else if (!abstract1 || abstract1Error) {
             document.getElementById("abstract1")?.focus();
             return false;
         }
-        else if (!paper1) {
+        else if (abstract2Error) {
+            document.getElementById("abstract2")?.focus();
+            return false;
+        }
+        else if (!paper1 || paper1Error) {
             document.getElementById("paper1")?.focus();
             return false;
         }
-        else if (!fullDocument) {
+        else if (paper2Error) {
+            document.getElementById("paper2")?.focus();
+            return false;
+        }
+        else if (!fullDocument || fullDocumentError) {
             document.getElementById("fullDocument")?.focus();
             return false;
         }
@@ -341,7 +373,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number2Error,
             year3Error,
             email3Error,
-            number3Error
+            number3Error,
+            abstract1Error,
+            abstract2Error,
+            paper1Error,
+            paper2Error,
+            fullDocumentError
         } = this.state;
         return (
             <IsotermProfileComponent
@@ -379,6 +416,11 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 year3Error={year3Error}
                 email3Error={email3Error}
                 number3Error={number3Error}
+                abstract1Error={abstract1Error}
+                abstract2Error={abstract2Error}
+                paper1Error={paper1Error}
+                paper2Error={paper2Error}
+                fullDocumentError={fullDocumentError}
                 toggleModal={this.toggleModal}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}

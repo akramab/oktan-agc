@@ -1,6 +1,4 @@
-import { Form, InputGroup } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash, faEye } from '@fortawesome/free-regular-svg-icons';
+import { Form } from 'react-bootstrap';
 
 const CustomDropdown = (props: any) => {
     return (

@@ -60,6 +60,8 @@ const CrystalProfileComponent = (props: any) => {
                                     name="registrationDocument"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.registrationDocument}
+                                    checkInput={props?.registrationDocumentError ? "input-error" : ""}
+                                    errorMessage={props?.registrationDocumentError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -290,6 +292,8 @@ const CrystalProfileComponent = (props: any) => {
                                     name="paymentDocument"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.paymentDocument}
+                                    checkInput={props?.paymentDocumentError ? "input-error" : ""}
+                                    errorMessage={props?.paymentDocumentError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
