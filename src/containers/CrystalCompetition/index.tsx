@@ -14,7 +14,7 @@ export class CrystalCompetitionContainer extends PureComponent<any, any> {
 
     render() {
         return (
-            <CrystalCompetitionComponent />
+            <CrystalCompetitionComponent {...this.props} />
         )
     }
 }

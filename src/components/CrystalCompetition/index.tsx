@@ -31,7 +31,7 @@ const CrystalCompetitionComponent = (props: any) => {
     return (
         <>
             <div className="bg-image-full">
-                <NavigationBar />
+                <NavigationBar {...props} />
                 <Row className="py-4">
                     <Col className="text-center my-5 py-5">
                         <h1 className="text-white my-3 fw-bold display-5">Crystal Competition</h1>

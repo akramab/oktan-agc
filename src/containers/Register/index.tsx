@@ -16,9 +16,11 @@ export class RegisterContainer extends PureComponent<any, any> {
         super(props);
 
         this.state = {
+            showModal: false,
             showPassword: false,
             email: "",
             username: "",
+            competitionType: "",
             password: "",
             confirmPassword: "",
             emailError: "",
@@ -26,11 +28,33 @@ export class RegisterContainer extends PureComponent<any, any> {
             passwordError: "",
             confirmPasswordError: ""
         };
+        this.toggleModal = this.toggleModal.bind(this);
         this.togglePassword = this.togglePassword.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
         this.handleRegister = this.handleRegister.bind(this);
+    }
+
+    componentDidMount(): void {
+        const { authToken } = this.props;
+        if (authToken) {
+            this.props.history.replace("/");
+        }
+    }
+
+    componentDidUpdate(prevProps: any): void {
+        const { registerMessageResponse } = this.props;
+        if (prevProps.registerMessageResponse !== registerMessageResponse && registerMessageResponse) {
+            this.toggleModal();
+        }
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        });
     }
 
     private togglePassword(): void {
@@ -89,6 +113,7 @@ export class RegisterContainer extends PureComponent<any, any> {
 
     private validateForm(): boolean {
         const {
+            competitionType,
             password,
             confirmPassword,
             emailError,
@@ -102,6 +127,10 @@ export class RegisterContainer extends PureComponent<any, any> {
         }
         else if (usernameError) {
             document.getElementsByName("username")[0].focus();
+            return false;
+        }
+        else if (!competitionType) {
+            document.getElementsByName("competitionType")[0].focus();
             return false;
         }
         else if (passwordError) {
@@ -121,23 +150,28 @@ export class RegisterContainer extends PureComponent<any, any> {
         const {
             email,
             username,
-            password,
-            confirmPassword
+            competitionType,
+            password
         } = this.state;
 
         if (this.validateForm()) {
-            // API Integration
+            this.props.sendRegisterData({
+                username,
+                email,
+                competition_type: competitionType,
+                password
+            })
             return;
         }
-
-        console.log("INVALID FORM");
     }
 
     render() {
         const {
+            showModal,
             showPassword,
             email,
             username,
+            competitionType,
             password,
             confirmPassword,
             emailError,
@@ -147,9 +181,11 @@ export class RegisterContainer extends PureComponent<any, any> {
         } = this.state;
         return (
             <RegisterComponent
+                showModal={showModal}
                 showPassword={showPassword}
                 email={email}
                 username={username}
+                competitionType={competitionType}
                 password={password}
                 confirmPassword={confirmPassword}
                 emailError={emailError}

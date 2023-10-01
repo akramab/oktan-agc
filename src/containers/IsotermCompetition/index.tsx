@@ -14,7 +14,7 @@ export class IsotermCompetitionContainer extends PureComponent<any, any> {
 
     render() {
         return (
-            <IsotermCompetitionComponent />
+            <IsotermCompetitionComponent {...this.props} />
         )
     }
 }

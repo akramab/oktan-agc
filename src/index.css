@@ -115,7 +115,7 @@
   border: 2px solid var(--blue-btn);
 }
 
-.form-control {
+.form-control, .form-select {
   padding: 0.75rem !important;
   margin: 0.3rem 0 0.5rem !important;
   border: 1px solid var(--gray-input) !important;
@@ -129,7 +129,7 @@
   margin: 0 !important;
 }
 
-.form-control:focus {
+.form-control:focus, .form-select:focus {
   box-shadow: none !important;
   outline: 2px solid var(--gray-input) !important;
   outline-offset: 2px;
@@ -385,6 +385,11 @@
   fill: white;
 }
 
-.padding-dropdown {
-  padding: 0.75rem 1.25rem !important;
+.modal-dialog {
+  margin-left: auto !important;
+  margin-right: auto !important;  
+}
+
+.to-profile path {
+  fill: var(--green-btn);
 }

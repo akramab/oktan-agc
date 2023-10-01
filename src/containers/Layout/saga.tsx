@@ -24,7 +24,6 @@ export function* callApi(
         out = data;
     } catch (error: any) {
         const status = error?.response?.status;
-        console.log(status);
     }
     if (hasLoader) {
         yield put(setLoaderState(false));

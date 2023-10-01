@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Form } from "react-bootstrap";
+import { Row, Col, Form, InputGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGroup, faSchool, faUser, faPaperPlane, faGraduationCap, faBaseball } from '@fortawesome/free-solid-svg-icons';
 
@@ -36,18 +36,22 @@ const IsotermProfileComponent = (props: any) => {
                         <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>Subtema<span className="text-asterisk">*</span></Form.Label>  
-                                <CustomDropdown
-                                    name="subtheme"
-                                    placeholder="Pilih subtema"
-                                    value={props?.subtheme}
-                                    options={[
-                                        "Fotokimia Hijau",
-                                        "Material Energi Hijau",
-                                        "Biokimia Energi",
-                                        "Kimia Reduksi Emisi"
-                                    ]}
-                                    onChange={(e: any) => props?.handleChange(e)}
-                                />
+                                <InputGroup className="rounded">
+                                    <CustomDropdown
+                                        isProfile
+                                        className="m-0"
+                                        name="subtheme"
+                                        placeholder="Pilih subtema"
+                                        value={props?.subtheme}
+                                        options={[
+                                            "Fotokimia Hijau",
+                                            "Material Energi Hijau",
+                                            "Biokimia Energi",
+                                            "Kimia Reduksi Emisi"
+                                        ]}
+                                        onChange={(e: any) => props?.handleChange(e)}
+                                    />
+                                </InputGroup>
                             </Form.Group>
                         </Col>
                     </Row>

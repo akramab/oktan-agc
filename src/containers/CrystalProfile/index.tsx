@@ -47,6 +47,13 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         this.handleSubmitData = this.handleSubmitData.bind(this);
     }
 
+    componentDidMount(): void {
+        const { competitionType } = this.props;
+        if (competitionType !== "CRYSTAL") {
+            this.props.history.replace("/profile/isoterm");
+        }
+    }
+
     private handleChange(e: any): void {
         const { name, value, files } = e.target;
         let errorType = name + "Error";

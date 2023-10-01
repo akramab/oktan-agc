@@ -14,7 +14,7 @@ export class HomeContainer extends PureComponent<any, any> {
 
     render() {
         return (
-            <HomeComponent />
+            <HomeComponent {...this.props} />
         )
     }
 }
