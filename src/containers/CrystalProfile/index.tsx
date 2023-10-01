@@ -17,6 +17,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         super(props);
 
         this.state = {
+            showModal: false,
             teamName: "",
             registrationDocument: null,
             name1: "",
@@ -32,6 +33,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumber: "",
             schoolEmail: "",
             paymentDocument: null,
+            registrationDocumentError: "",
             number1Error: "",
             email1Error: "",
             number2Error: "",
@@ -40,7 +42,9 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherEmailError: "",
             schoolNumberError: "",
             schoolEmailError: "",
+            paymentDocumentError: ""
         };
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
@@ -52,17 +56,56 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         if (competitionType !== "CRYSTAL") {
             this.props.history.replace("/profile/isoterm");
         }
+        this.props.getCrystalProfileData();
+    }
+
+    componentDidUpdate(prevProps: any): void {
+        const { crystalProfileResponse, editProfileMessageResponse } = this.props;
+        if (prevProps.crystalProfileResponse !== crystalProfileResponse && crystalProfileResponse.length !== 0) {
+            this.setState({
+                ...this.state,
+                teamName: crystalProfileResponse.team,
+                name1: crystalProfileResponse.members[0].name,
+                number1: crystalProfileResponse.members[0].wa_number,
+                email1: crystalProfileResponse.members[0].email,
+                name2: crystalProfileResponse.members[1].name,
+                number2: crystalProfileResponse.members[1].wa_number,
+                email2: crystalProfileResponse.members[1].email,
+                teacherName: crystalProfileResponse.institution.teacher.name,
+                teacherNumber: crystalProfileResponse.institution.teacher.wa_number,
+                teacherEmail: crystalProfileResponse.institution.teacher.email,
+                schoolName: crystalProfileResponse.institution.school.name,
+                schoolNumber: crystalProfileResponse.institution.school.wa_number,
+                schoolEmail: crystalProfileResponse.institution.school.email
+            });
+        }
+        if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
+            this.toggleModal();
+        }
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        });
     }
 
     private handleChange(e: any): void {
         const { name, value, files } = e.target;
         let errorType = name + "Error";
-        let errorMessage = this.validateInput(value, name);
+        let errorMessage = "";
+        if (files) {
+            errorMessage = this.validateInput(files[0], name);
+        }
+        else {
+            errorMessage = this.validateInput(value, name);
+        }
 
         this.setState({
             ...this.state,
             [name]: files ? files[0] : value,
-            [errorType]: !files ? errorMessage : "",
+            [errorType]: errorMessage,
         });
     }
 
@@ -76,6 +119,11 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         else if (type.toLowerCase().includes("email")) {
             if (!input || !input.match(re)) {
                 return "Please enter a valid email";
+            }
+        }
+        else if (type.toLowerCase().includes("document")) {
+            if (!input.name.endsWith("pdf")) {
+                return "Please use a PDF file";
             }
         }
         return "";
@@ -97,6 +145,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolName,
             schoolNumber,
             schoolEmail,
+            paymentDocument,
+            registrationDocumentError,
             number1Error,
             email1Error,
             number2Error,
@@ -105,13 +155,13 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherEmailError,
             schoolNumberError,
             schoolEmailError,
-            paymentDocument
+            paymentDocumentError,
         } = this.state;
         if (!teamName) {
             document.getElementsByName("teamName")[0].focus();
             return false;
         }
-        else if (!registrationDocument) {
+        else if (!registrationDocument || registrationDocumentError) {
             document.getElementById("registrationDocument")?.focus();
             return false;
         }
@@ -163,7 +213,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             document.getElementsByName("schoolEmail")[0].focus();
             return false;
         }
-        else if (!paymentDocument) {
+        else if (!paymentDocument || paymentDocumentError) {
             document.getElementById("paymentDocument")?.focus();
             return false;
         }
@@ -192,15 +242,49 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
-            // API Integration
-            return;
-        }
+            let memberData = [
+                {
+                    id: "1",
+                    name: name1,
+                    wa_number: `0${number1}`,
+                    email: email1
+                },
+                {
+                    id: "2",
+                    name: name2,
+                    wa_number: `0${number2}`,
+                    email: email2
+                },
+            ];
 
-        console.log("INVALID FORM");
+            let institutionData ={
+                teacher: {
+                    name: teacherName,
+                    wa_number: `0${teacherNumber}`,
+                    email: teacherEmail
+                },
+                school: {
+                    name: schoolName,
+                    wa_number: `0${schoolNumber}`,
+                    email: schoolEmail
+                }
+            };
+
+            let formData = {
+                team: teamName,
+                members_data: JSON.stringify(memberData),
+                institution_data: JSON.stringify(institutionData),
+                registration_document: registrationDocument,
+                payment_document: paymentDocument
+            }
+
+            this.props.editCrystalProfileData(formData);
+        }
     }
 
     render() {
         const {
+            showModal,
             teamName,
             registrationDocument,
             name1,
@@ -216,6 +300,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumber,
             schoolEmail,
             paymentDocument,
+            registrationDocumentError,
             number1Error,
             email1Error,
             number2Error,
@@ -224,9 +309,11 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherEmailError,
             schoolNumberError,
             schoolEmailError,
+            paymentDocumentError
         } = this.state;
         return (
             <CrystalProfileComponent
+                showModal={showModal}
                 teamName={teamName}
                 registrationDocument={registrationDocument}
                 name1={name1}
@@ -246,10 +333,13 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 email1Error={email1Error}
                 number2Error={number2Error}
                 email2Error={email2Error}
+                registrationDocumentError={registrationDocumentError}
                 teacherNumberError={teacherNumberError}
                 teacherEmailError={teacherEmailError}
                 schoolNumberError={schoolNumberError}
                 schoolEmailError={schoolEmailError}
+                paymentDocumentError={paymentDocumentError}
+                toggleModal={this.toggleModal}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}
             />

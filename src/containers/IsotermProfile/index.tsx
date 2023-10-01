@@ -17,6 +17,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         super(props);
 
         this.state = {
+            showModal: false,
             teamName: "",
             subtheme: "",
             name1: "",
@@ -49,8 +50,14 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number2Error: "",
             year3Error: "",
             email3Error: "",
-            number3Error: ""
+            number3Error: "",
+            abstract1Error: "",
+            abstract2Error: "",
+            paper1Error: "",
+            paper2Error: "",
+            fullDocumentError: "",
         };
+        this.toggleModal = this.toggleModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
@@ -62,17 +69,62 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         if (competitionType !== "ISOTERM") {
             this.props.history.replace("/profile/crystal");
         }
+        this.props.getIsotermProfileData();
+    }
+
+    componentDidUpdate(prevProps: any): void {
+        const { isotermProfileResponse, editProfileMessageResponse } = this.props;
+        if (prevProps.isotermProfileResponse !== isotermProfileResponse && isotermProfileResponse.length !== 0) {
+            this.setState({
+                ...this.state,
+                teamName: isotermProfileResponse.team,
+                subtheme: isotermProfileResponse.sub_theme,
+                name1: isotermProfileResponse.members[0].name,
+                year1: isotermProfileResponse.members[0].year,
+                major1: isotermProfileResponse.members[0].major,
+                number1: isotermProfileResponse.members[0].wa_number,
+                email1: isotermProfileResponse.members[0].email,
+                name2: isotermProfileResponse.members[1].name,
+                year2: isotermProfileResponse.members[1].year,
+                major2: isotermProfileResponse.members[1].major,
+                number2: isotermProfileResponse.members[1].wa_number,
+                email2: isotermProfileResponse.members[1].email,
+                name3: isotermProfileResponse.members[2].name,
+                year3: isotermProfileResponse.members[2].year,
+                major3: isotermProfileResponse.members[2].major,
+                number3: isotermProfileResponse.members[2].wa_number,
+                email3: isotermProfileResponse.members[2].email,
+                universityName: isotermProfileResponse.institution.university.name,
+                teacherName: isotermProfileResponse.institution.university.lecturer
+            });
+        }
+        if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
+            this.toggleModal();
+        }
+    }
+
+    private toggleModal(): void {
+        this.setState({
+            ...this.state,
+            showModal: !this.state.showModal
+        });
     }
 
     private handleChange(e: any): void {
         const { name, value, files } = e.target;
         let errorType = name + "Error";
-        let errorMessage = this.validateInput(value, name);
+        let errorMessage = "";
+        if (files) {
+            errorMessage = this.validateInput(files[0], name);
+        }
+        else {
+            errorMessage = this.validateInput(value, name);
+        }
 
         this.setState({
             ...this.state,
             [name]: files ? files[0] : value,
-            [errorType]: !files ? errorMessage : "",
+            [errorType]: errorMessage,
         });
     }
 
@@ -91,6 +143,14 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         else if (type.toLowerCase().includes("email")) {
             if (!input || !input.match(re)) {
                 return "Please enter a valid email";
+            }
+        }
+        else if (type.toLowerCase().includes("document") ||
+            type.toLowerCase().includes("abstract") ||
+            type.toLowerCase().includes("paper")
+        ) {
+            if (!input.name.endsWith("pdf")) {
+                return "Please use a PDF file";
             }
         }
         return "";
@@ -127,7 +187,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number2Error,
             year3Error,
             email3Error,
-            number3Error
+            number3Error,
+            abstract1Error,
+            abstract2Error,
+            paper1Error,
+            paper2Error,
+            fullDocumentError,
         } = this.state;
         if (!teamName) {
             document.getElementsByName("teamName")[0].focus();
@@ -201,15 +266,23 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             document.getElementsByName("universityName")[0].focus();
             return false;
         }
-        else if (!abstract1) {
+        else if (!abstract1 || abstract1Error) {
             document.getElementById("abstract1")?.focus();
             return false;
         }
-        else if (!paper1) {
+        else if (abstract2Error) {
+            document.getElementById("abstract2")?.focus();
+            return false;
+        }
+        else if (!paper1 || paper1Error) {
             document.getElementById("paper1")?.focus();
             return false;
         }
-        else if (!fullDocument) {
+        else if (paper2Error) {
+            document.getElementById("paper2")?.focus();
+            return false;
+        }
+        else if (!fullDocument || fullDocumentError) {
             document.getElementById("fullDocument")?.focus();
             return false;
         }
@@ -247,15 +320,59 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
-            // API Integration
-            return;
-        }
+            let memberData = [
+                {
+                    id: "1",
+                    name: name1,
+                    year: year1,
+                    major: major1,
+                    wa_number: `0${number1}`,
+                    email: email1
+                },
+                {
+                    id: "2",
+                    name: name2,
+                    year: year2,
+                    major: major2,
+                    wa_number: `0${number2}`,
+                    email: email2
+                },
+                {
+                    id: "3",
+                    name: name3,
+                    year: year3,
+                    major: major3,
+                    wa_number: `0${number3}`,
+                    email: email3
+                }
+            ];
 
-        console.log("INVALID FORM");
+            let institutionData = {
+                university: {
+                    name: universityName,
+                    lecturer: teacherName
+                }
+            };
+
+            let formData = {
+                team: teamName,
+                sub_theme: subtheme,
+                members_data: JSON.stringify(memberData),
+                institution_data: JSON.stringify(institutionData),
+                abstract_1_document: abstract1,
+                abstract_2_document: abstract2,
+                work_1_document: paper1,
+                work_2_document: paper2,
+                unified_document: fullDocument
+            }
+            
+            this.props.editIsotermProfileData(formData);
+        }
     }
 
     render() {
         const {
+            showModal,
             teamName,
             subtheme,
             name1,
@@ -288,10 +405,16 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number2Error,
             year3Error,
             email3Error,
-            number3Error
+            number3Error,
+            abstract1Error,
+            abstract2Error,
+            paper1Error,
+            paper2Error,
+            fullDocumentError
         } = this.state;
         return (
             <IsotermProfileComponent
+                showModal={showModal}
                 teamName={teamName}
                 subtheme={subtheme}
                 name1={name1}
@@ -325,6 +448,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 year3Error={year3Error}
                 email3Error={email3Error}
                 number3Error={number3Error}
+                abstract1Error={abstract1Error}
+                abstract2Error={abstract2Error}
+                paper1Error={paper1Error}
+                paper2Error={paper2Error}
+                fullDocumentError={fullDocumentError}
+                toggleModal={this.toggleModal}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}
             />

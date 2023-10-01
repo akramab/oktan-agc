@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Form, InputGroup } from "react-bootstrap";
+import { Row, Col, Form, InputGroup, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserGroup, faSchool, faUser, faPaperPlane, faGraduationCap, faBaseball } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,6 +13,22 @@ const CustomButton = lazy(() => import("../General/CustomButton"));
 const IsotermProfileComponent = (props: any) => {
     return (
         <>
+            <Modal show={props?.showModal} centered>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Profil berhasil diperbaharui!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <CustomButton bg="bg-purple-bright" text="Tutup" onClick={() => props?.toggleModal()}/>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Topbar title="Lengkapi Profil Tim" />
             <Sidebar isIsoterm/>
             <div className="side-content bg-gray p-4">
@@ -365,6 +381,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="abstract1"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.abstract1}
+                                    checkInput={props?.abstract1Error ? "input-error" : ""}
+                                    errorMessage={props?.abstract1Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -380,6 +398,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="abstract2"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.abstract2}
+                                    checkInput={props?.abstract2Error ? "input-error" : ""}
+                                    errorMessage={props?.abstract2Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -397,6 +417,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="paper1"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.paper1}
+                                    checkInput={props?.paper1Error ? "input-error" : ""}
+                                    errorMessage={props?.paper1Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -412,6 +434,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="paper2"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.paper2}
+                                    checkInput={props?.paper2Error ? "input-error" : ""}
+                                    errorMessage={props?.paper2Error ?? ""}
                                 />
                             </Form.Group>
                         </Col>
@@ -430,6 +454,8 @@ const IsotermProfileComponent = (props: any) => {
                                     name="fullDocument"
                                     onChange={(e: any) => props?.handleChange(e)}
                                     value={props?.fullDocument}
+                                    checkInput={props?.fullDocumentError ? "input-error" : ""}
+                                    errorMessage={props?.fullDocumentError ?? ""}
                                 />
                             </Form.Group>
                         </Col>
