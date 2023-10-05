@@ -16,9 +16,32 @@ export const getCompetitionType = () => {
     return "";
 };
 
+export const getVerificationStatus = () => {
+    const data = localStorage.getItem("VERIFIED");
+    if (data) {
+        return data;
+    }
+    return "";
+};
+
+export const checkUserType = () => {
+    const data = localStorage.getItem("ROLE");
+    if (data) {
+        if (data === "ADMIN") {
+            return true;
+        }
+        else if (data === "USER") {
+            return false;
+        }
+    }
+    return "";
+};
+
 export const removeTokens = () => {
     localStorage.removeItem("AUTH_TOKEN");
     localStorage.removeItem("COMPETITION_TYPE");
+    localStorage.removeItem("VERIFIED");
+    localStorage.removeItem("ROLE");
     return "";
 };
 

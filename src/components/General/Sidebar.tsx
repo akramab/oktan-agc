@@ -16,7 +16,7 @@ const Sidebar = (props: any) => {
     return (
         <div className="bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center">
             <div className="d-flex flex-column align-items-center align-items-lg-start">
-                {props?.isCrystal &&
+                {(props?.isCrystal && !props?.isAdmin) &&
                     <Row className="py-2 rounded bg-crystal align-items-center width-fit">
                         <Col className="width-fit">
                             <Image src={crystal} className="width-team rounded-circle" />
@@ -27,7 +27,7 @@ const Sidebar = (props: any) => {
                         </Col>
                     </Row>
                 }
-                {props?.isIsoterm &&
+                {(props?.isIsoterm && !props?.isAdmin) &&
                     <Row className="py-2 rounded bg-isoterm align-items-center width-fit">
                         <Col className="width-fit">
                             <Image src={isoterm} className="width-team rounded-circle" />
@@ -68,14 +68,24 @@ const Sidebar = (props: any) => {
                         </Col>
                     </Row>
                 </Link>
-                <Row className="py-3 mt-3 border-blue rounded width-fit">
-                    <Col className="width-fit sidebar-icon px-3 active">
-                        <FontAwesomeIcon icon={faUser} size="xl" />
-                    </Col>
-                    <Col className="d-none d-lg-block pe-5">
-                        <h5 className="text-blue pe-3">Team Profile</h5>
-                    </Col>
-                </Row>
+                {props?.isAdmin ?
+                    <Row className="py-3 mt-3 border-blue rounded width-fit">
+                        <Col className="width-fit sidebar-icon px-3 active">
+                            <FontAwesomeIcon icon={faUser} size="xl" />
+                        </Col>
+                        <Col className="d-none d-lg-block pe-5">
+                            <h5 className="text-blue pe-3">Data Peserta</h5>
+                        </Col>
+                    </Row> :
+                    <Row className={`py-3 mt-3 ${JSON.parse(props?.verified) ? "border-green" : "border-red"} rounded width-fit`}>
+                        <Col className="width-fit sidebar-icon px-3 active">
+                            <FontAwesomeIcon icon={faUser} size="xl" />
+                        </Col>
+                        <Col className="d-none d-lg-block pe-5">
+                            <h5 className={`${JSON.parse(props?.verified) ? "text-green" : "text-red"} pe-3`}>Team Profile</h5>
+                        </Col>
+                    </Row>
+                }
             </div>
             <div className="w-100">
                 <Link to="#" className="text-decoration-none">

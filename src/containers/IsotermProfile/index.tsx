@@ -414,6 +414,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         } = this.state;
         return (
             <IsotermProfileComponent
+                verified={this.props.verified}
                 showModal={showModal}
                 teamName={teamName}
                 subtheme={subtheme}

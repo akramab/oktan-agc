@@ -30,7 +30,7 @@ const IsotermProfileComponent = (props: any) => {
                 </Modal.Footer>
             </Modal>
             <Topbar title="Lengkapi Profil Tim" />
-            <Sidebar isIsoterm/>
+            <Sidebar isIsoterm verified={props?.verified} />
             <div className="side-content bg-gray p-4">
                 <Form className="profile">
                     <Row>

@@ -29,7 +29,7 @@ const CrystalProfileComponent = (props: any) => {
                 </Modal.Footer>
             </Modal>
             <Topbar title="Lengkapi Profil Tim" />
-            <Sidebar isCrystal/>
+            <Sidebar isCrystal verified={props?.verified} />
             <div className="side-content bg-gray p-4">
                 <Form className="profile">
                     <Row>

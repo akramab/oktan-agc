@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 import LoadingIndicator from "../../components/Loading";
-import { getAuthToken, getCompetitionType } from "../../utils/general";
+import { getAuthToken, getCompetitionType, getVerificationStatus, checkUserType } from "../../utils/general";
 
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const NotFoundContainer = lazy(() => import("../404NotFound"));
@@ -16,6 +16,7 @@ const CrystalCompetitionContainer = lazy(() => import("../CrystalCompetition"));
 const IsotermCompetitionContainer = lazy(() => import("../IsotermCompetition"));
 const CrystalProfileContainer = lazy(() => import("../CrystalProfile"));
 const IsotermProfileContainer = lazy(() => import("../IsotermProfile"));
+const ContestantDashboardContainer = lazy(() => import("../ContestantDashboard"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -31,6 +32,9 @@ export class LayoutContainer extends PureComponent<any, any> {
         const { loadingResponse } = this.props;
         const authToken = getAuthToken();
         const competitionType = getCompetitionType();
+        const verified = getVerificationStatus();
+        const isAdmin = checkUserType();
+        console.log(isAdmin)
         return (
             <div className="bg-gray" style={{ height: "100vh", overflowX: "hidden" }}>
                 <Suspense fallback={<LoadingIndicator show={true}/>}>
@@ -83,15 +87,25 @@ export class LayoutContainer extends PureComponent<any, any> {
                                 <Route
                                     exact path={"/profile/crystal"}
                                     render={(props: any) => {
-                                    return <CrystalProfileContainer competitionType={competitionType} {...this.props} {...props} />;
+                                    return <CrystalProfileContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                     }}
                                 />
                                 <Route
                                     exact path={"/profile/isoterm"}
                                     render={(props: any) => {
-                                    return <IsotermProfileContainer competitionType={competitionType} {...this.props} {...props} />;
+                                    return <IsotermProfileContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                     }}
                                 />
+                                {isAdmin &&
+                                    <>
+                                        <Route
+                                            exact path={"/dashboard/contestant"}
+                                            render={(props: any) => {
+                                            return <ContestantDashboardContainer competitionType={competitionType} {...this.props} {...props} />;
+                                            }}
+                                        />
+                                    </>
+                                }
                             </>
                         }
                         <Route

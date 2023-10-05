@@ -313,6 +313,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         } = this.state;
         return (
             <CrystalProfileComponent
+                verified={this.props.verified}
                 showModal={showModal}
                 teamName={teamName}
                 registrationDocument={registrationDocument}

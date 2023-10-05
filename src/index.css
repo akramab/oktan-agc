@@ -11,6 +11,7 @@
   --gray-sidebar: #777E90;
   --hover-bg: #A0A0A0;
   --purple-bright: #570DF8;
+  --purple-dope: #5D5FEF;
   --red-input: #F87272;
   --red-btn: #CF3B3B;
   --red-asterisk: #F00F00;
@@ -60,6 +61,22 @@
   color: var(--blue-btn) !important;
 }
 
+.text-green {
+  color: #008000 !important;
+}
+
+.text-red {
+  color: #FF0000 !important;
+}
+
+.text-crystal {
+  color: var(--crystal) !important;
+}
+
+.text-isoterm {
+  color: var(--isoterm) !important;
+}
+
 .text-asterisk {
   color: var(--red-asterisk);
 }
@@ -78,6 +95,10 @@
 
 .bg-purple-bright {
   background-color: var(--purple-bright) !important;
+}
+
+.bg-purple-dope {
+  background-color: var(--purple-dope) !important;
 }
 
 .bg-green-btn {
@@ -107,12 +128,32 @@
   background-color: var(--isoterm);
 }
 
+.bg-write {
+  background-color: #EFEFFD;
+}
+
+.bg-done {
+  background-color: hsl(158 64% 52%/0.1);
+}
+
+.bg-trash {
+  background-color: #FFF2F2;
+}
+
 .border-gray {
   border: 2px solid var(--gray-sidebar);
 }
 
 .border-blue {
   border: 2px solid var(--blue-btn);
+}
+
+.border-red {
+  border: 2px solid #FF0000;
+}
+
+.border-green {
+  border: 2px solid #008000;
 }
 
 .form-control, .form-select {
@@ -357,8 +398,20 @@
   fill: var(--gray-sidebar);
 }
 
-.sidebar-icon.active path {
+.border-blue .sidebar-icon.active path {
   fill: var(--blue-btn);
+}
+
+.border-green .sidebar-icon.active path {
+  fill: #008000;
+}
+
+.border-red .sidebar-icon.active path {
+  fill: #FF0000;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
 }
 
 .rotate-180 {
@@ -392,4 +445,16 @@
 
 .to-profile path {
   fill: var(--green-btn);
+}
+
+.write path {
+  fill: var(--purple-dope)
+}
+
+.trash path {
+  fill: #FF0000;
+}
+
+.done path {
+  fill: #008000;
 }
