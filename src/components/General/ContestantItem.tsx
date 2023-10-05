@@ -37,12 +37,12 @@ const ContestantItem = (props: any) => {
                 <Row className="align-items-center">
                     <Col className="width-fit d-flex align-items-center ps-0 pe-4">
                         {!data?.verified ?
-                            <FontAwesomeIcon icon={faPen} size="xs" className="p-3 rounded-circle bg-write write cursor-pointer" /> :
+                            <FontAwesomeIcon onClick={() => props?.handleVerifyContestant(data?.id)} icon={faPen} size="xs" className="p-3 rounded-circle bg-write write cursor-pointer" /> :
                             <FontAwesomeIcon icon={faCheck} size="xs" className="p-3 rounded-circle bg-done done" />
                         }
                     </Col>
                     <Col className="width-fit d-flex align-items-center ps-0 pe-4">
-                        <FontAwesomeIcon icon={faTrash} size="xs" className="p-3 rounded-circle bg-trash trash cursor-pointer" />
+                        <FontAwesomeIcon onClick={() => props?.handleDeleteContestant(data?.id)} icon={faTrash} size="xs" className="p-3 rounded-circle bg-trash trash cursor-pointer" />
                     </Col>
                     <Col className="ps-0 pe-1">
                         <CustomButton
@@ -51,6 +51,7 @@ const ContestantItem = (props: any) => {
                                 Unduh
                                 <FontAwesomeIcon icon={faArrowRightToBracket} className="ms-2 rotate-90" />
                             </>}
+                            onClick={() => props?.handleDownloadContestant(data?.id)}
                         />
                     </Col>
                 </Row>

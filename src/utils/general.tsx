@@ -48,3 +48,10 @@ export const removeTokens = () => {
 export const showToast = (message: string) => {
     toast.error(message);
 };
+
+export const downloadFileAsync = async (data: any) => {
+    const link = document.createElement("a");
+    link.href = data;
+    link.setAttribute("download", "");
+    link.click();
+};

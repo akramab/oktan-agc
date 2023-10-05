@@ -34,7 +34,6 @@ export class LayoutContainer extends PureComponent<any, any> {
         const competitionType = getCompetitionType();
         const verified = getVerificationStatus();
         const isAdmin = checkUserType();
-        console.log(isAdmin)
         return (
             <div className="bg-gray" style={{ height: "100vh", overflowX: "hidden" }}>
                 <Suspense fallback={<LoadingIndicator show={true}/>}>

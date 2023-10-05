@@ -4,6 +4,7 @@ import { watchRegisterSaga } from "../Register/saga";
 import { watchLoginSaga } from "../Login/saga";
 import { watchCrystalProfileSaga } from "../CrystalProfile/saga";
 import { watchIsotermProfileSaga } from "../IsotermProfile/saga";
+import { watchContestantDashboardSaga } from "../ContestantDashboard/saga";
 
 export default function* Saga() {
     yield all([
@@ -11,6 +12,7 @@ export default function* Saga() {
         watchRegisterSaga(),
         watchLoginSaga(),
         watchCrystalProfileSaga(),
-        watchIsotermProfileSaga()
+        watchIsotermProfileSaga(),
+        watchContestantDashboardSaga()
     ]);
 }

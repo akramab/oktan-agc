@@ -107,3 +107,6 @@ export const LOGIN_URL = `${getApiUrl()}/login`;
 
 export const USER_URL = `${getApiUrl()}/user`;
 export const PROFILE_URL = `${USER_URL}/profile`;
+export const VERIFY_USER_URL = `${USER_URL}/verify`;
+export const DELETE_USER_URL = `${USER_URL}/delete`;
+export const DOWNLOAD_USER_URL = `${USER_URL}/download`;

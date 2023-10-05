@@ -1,6 +1,5 @@
 import { lazy } from "react";
-import moment from "moment";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,47 +10,24 @@ const Searchbar = lazy(() => import("../General/Searchbar"));
 const CustomButton = lazy(() => import("../General/CustomButton"));
 
 const ContestantDashboardComponent = (props: any) => {
-    const items = [
-        {
-            category: "CRYSTAL",
-            date: moment(),
-            verified: false,
-            name: {
-                team: "Rajawali",
-                member: "Nama Peserta"
-            },
-            institution: {
-                name: "ITB",
-                instructor: "Nama Dosen"
-            }
-        },
-        {
-            category: "CRYSTAL",
-            date: moment(),
-            name: {
-                team: "Rajawali",
-                member: "Nama Peserta"
-            },
-            institution: {
-                name: "ITB",
-                instructor: "Nama Dosen"
-            }
-        },
-        {
-            category: "CRYSTAL",
-            date: moment(),
-            name: {
-                team: "Rajawali",
-                member: "Nama Peserta"
-            },
-            institution: {
-                name: "ITB",
-                instructor: "Nama Dosen"
-            }
-        }
-    ]
     return (
         <>
+            <Modal show={props?.showModal} centered>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Peserta berhasil diverifikasi!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <CustomButton bg="bg-purple-dope" text="Tutup" onClick={() => props?.toggleModal()}/>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
             <Topbar title="Data Peserta" />
             <Sidebar isAdmin />
             <div className="side-content bg-gray p-4">
@@ -92,24 +68,15 @@ const ContestantDashboardComponent = (props: any) => {
                         <p>Aksi</p>
                     </Col>
                 </Row>
-                {items.length !== 0 && items.map((item: any, index: number) => {
-                    return (<ContestantItem data={item} key={index}  />)
+                {props?.contestantsDataResponse?.length !== 0 && props?.contestantsDataResponse?.map((item: any, index: number) => {
+                    return (<ContestantItem
+                            key={index}
+                            data={item}
+                            handleVerifyContestant={props?.handleVerifyContestant}
+                            handleDeleteContestant={props?.handleDeleteContestant}
+                            handleDownloadContestant={props?.handleDownloadContestant}
+                        />)
                 })}
-                <ContestantItem
-                    data={{
-                        category: "ISOTERM",
-                        date: moment(),
-                        verified: true,
-                        name: {
-                            team: "Rajawali",
-                            member: "Nama Peserta"
-                        },
-                        institution: {
-                            name: "ITB",
-                            instructor: "Nama Dosen"
-                        }
-                    }}
-                />
             </div>
         </>
     )
