@@ -336,6 +336,14 @@ const IsotermCompetitionComponent = (props: any) => {
                                     <p className="fw-normal text-timeline"><i>27 - 28 Januari 2024</i></p>
                                 </div>
                             </VerticalTimelineElement>
+                            <VerticalTimelineElement
+                                contentStyle={{...cStyle, display: 'flex', alignItems: 'center'}}
+                                contentArrowStyle={{ display: 'none' }}
+                                iconStyle={iStyle}
+                                icon={<FontAwesomeIcon icon={faCheck} />}
+                            >
+                                <h5 className="vertical-timeline-element-title fw-bold mt-2">Done</h5>
+                            </VerticalTimelineElement>
                         </VerticalTimeline>
                     </Col>
                     <Col xs={4} className="mx-5 d-none d-lg-block">
