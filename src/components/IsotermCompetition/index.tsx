@@ -361,13 +361,8 @@ const IsotermCompetitionComponent = (props: any) => {
                         <p className="text-secondary mt-2 mb-3">Informan Isoterm</p>
                         <Row className="justify-content-center fs-7 pb-4">
                             <Col className="width-fit rounded-circle shadow-sm me-1 py-2 darken-hover">
-                                <a href="https://api.whatsapp.com/send?phone=628980550226" target="_blank">
+                                <a href="https://api.whatsapp.com/send?phone=62895361211264" target="_blank">
                                     <Image src={whatsapp} className="py-1" />
-                                </a>
-                            </Col>
-                            <Col className="width-fit rounded-circle shadow-sm ms-1 py-2 darken-hover">
-                                <a href="https://line.me/ti/p/~wirawisnanta" target="_blank">
-                                    <Image src={line} className="py-1" />
                                 </a>
                             </Col>
                         </Row>

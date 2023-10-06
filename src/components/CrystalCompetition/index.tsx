@@ -339,7 +339,7 @@ const CrystalCompetitionComponent = (props: any) => {
                         <p className="text-secondary mt-2 mb-3">Informan Crystal</p>
                         <Row className="justify-content-center fs-7 pb-4">
                             <Col className="width-fit rounded-circle shadow-sm py-2 darken-hover">
-                                <a href="https://api.whatsapp.com/send?phone=6281214164329" target="_blank">
+                                <a href="https://api.whatsapp.com/send?phone=6285156308836" target="_blank">
                                     <Image src={whatsapp} className="py-1" />
                                 </a>
                             </Col>
