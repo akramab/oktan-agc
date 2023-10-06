@@ -1,6 +1,6 @@
 import { lazy, useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faBars, faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,9 +30,8 @@ const NavigationBar = (props: any) => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" className="border-0 py-2 ms-3">
                     <FontAwesomeIcon icon={faBars} size="sm" />
                 </Navbar.Toggle>
-                <Navbar.Brand href="/" className="fw-bolder rounded px-4">
-                    <Image src={logo} className="w-25" />
-                    <span className="text-white ms-2">OKTAN ITB 2023</span>
+                <Navbar.Brand href="/" className="fw-bolder rounded px-3 mx-4">
+                    <Image src={logo} className="width-logo-nav" />
                 </Navbar.Brand>
             </div>
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -50,8 +49,6 @@ const NavigationBar = (props: any) => {
                             Isoterm Competition
                         </NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link>Atomic</Nav.Link>
-                    <Nav.Link>Webinar</Nav.Link>
                     <Nav.Link>About</Nav.Link>
                     <Nav.Link>FAQ</Nav.Link>
                 </Nav>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Footer = (props: any) => {
     return (
-        <Container fluid className="bg-purple-bright justify-content-between align-items-center px-5">
+        <Container fluid className="bg-cyan justify-content-between align-items-center px-5">
             <Row className="justify-content-between align-items-center">
                 <Col xs={12} md={4} xl={3} className="py-3">
                     <p className="text-white text-center fw-bold fs-7">Copyright © 2022 Oktan ITB</p>

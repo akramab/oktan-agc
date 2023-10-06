@@ -11,11 +11,12 @@
   --gray-sidebar: #777E90;
   --hover-bg: #A0A0A0;
   --purple-bright: #570DF8;
+  --cyan: #13C6C3;
   --purple-dope: #5D5FEF;
   --red-input: #F87272;
   --red-btn: #CF3B3B;
   --red-asterisk: #F00F00;
-  --green-btn: #36D399;
+  --green-btn: #0C7F84;
   --blue-btn: #007AFF;
   --crystal: #2E7578;
   --isoterm: #FF9334;
@@ -45,8 +46,8 @@
   color: var(--black) !important;
 }
 
-.text-purple {
-  color: var(--purple-bright) !important;
+.text-cyan {
+  color: var(--cyan) !important;
 }
 
 .text-timeline {
@@ -93,8 +94,8 @@
   background-color: var(--gray-input);
 }
 
-.bg-purple-bright {
-  background-color: var(--purple-bright) !important;
+.bg-cyan {
+  background-color: var(--cyan) !important;
 }
 
 .bg-purple-dope {
@@ -228,7 +229,11 @@
 }
 
 .width-logo {
-  width: 8rem;
+  width: 18rem;
+}
+
+.width-logo-nav {
+  width: 7rem;
 }
 
 .width-icon {
@@ -237,6 +242,7 @@
 
 .width-team {
   max-width: 3.5rem;
+  padding: 12px 0;
 }
 
 .nav-link {
@@ -309,12 +315,12 @@
 }
 
 .navbar-collapse a:active, .dropdown-menu a:active {
-  background-color: var(--purple-bright) !important;
+  background-color: var(--cyan) !important;
   color: white !important;
 }
 
 .hr-underline {
-  background-color: var(--purple-bright);
+  background-color: var(--cyan);
   opacity: 1;
   margin-top: 1.25rem !important;
   height: 4px;
@@ -332,7 +338,7 @@
 }
 
 .brands-logo div path, .purple-icon path {
-  fill: var(--purple-bright);
+  fill: var(--cyan);
 }
 
 .tag-line {
@@ -382,7 +388,7 @@
 
 .sidebar {
   position: fixed;
-  top: 86px;
+  top: 77.89px;
   left: 0;
   height: calc(100vh - 86px);
 }

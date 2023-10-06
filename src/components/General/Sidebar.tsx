@@ -19,7 +19,7 @@ const Sidebar = (props: any) => {
                 {(props?.isCrystal && !props?.isAdmin) &&
                     <Row className="py-2 rounded bg-crystal align-items-center width-fit">
                         <Col className="width-fit">
-                            <Image src={crystal} className="width-team rounded-circle" />
+                            <Image src={crystal} className="width-team rounded-circle bg-white" />
                         </Col>
                         <Col className="d-none d-lg-block pe-5">
                             <p className="fs-7 text-white">Competition Team</p>
@@ -30,7 +30,7 @@ const Sidebar = (props: any) => {
                 {(props?.isIsoterm && !props?.isAdmin) &&
                     <Row className="py-2 rounded bg-isoterm align-items-center width-fit">
                         <Col className="width-fit">
-                            <Image src={isoterm} className="width-team rounded-circle" />
+                            <Image src={isoterm} className="width-team rounded-circle bg-white" />
                         </Col>
                         <Col className="d-none d-lg-block pe-5">
                             <p className="fs-7 text-white">Competition Team</p>

@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Row, Col, Image, Form, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.png"
 
 const CustomInput = lazy(() => import("../../components/General/CustomInput"));
 const CustomButton = lazy(() => import("../General/CustomButton"));
@@ -13,9 +13,9 @@ const LoginComponent = (props: any) => {
                 <Col>
                     <Row>
                         <Col className="d-flex justify-content-center mb-3">
-                            <Navbar.Brand href="/" className="d-flex align-items-center rounded px-4 py-1">
-                                <Image src={logo} />
-                                <h3 className="fw-bolder ms-2">Oktan ITB 2023</h3>
+                            <Navbar.Brand href="/" className="text-center rounded px-4 py-1">
+                                <Image src={logo} className="width-logo-nav mb-3" />
+                                <h3 className="fw-bolder ms-2">Oktan ITB 2024</h3>
                             </Navbar.Brand>
                         </Col>
                     </Row>
@@ -55,7 +55,7 @@ const LoginComponent = (props: any) => {
                                             />
                                         </Form.Group>
                                         <Row className="mt-4">
-                                            <CustomButton bg="bg-purple-bright" text="LOGIN" onClick={(e: any) => props?.handleLogin(e)} />
+                                            <CustomButton bg="bg-cyan" text="LOGIN" onClick={(e: any) => props?.handleLogin(e)} />
                                         </Row>
                                     </Form>
                                     <Row className="mt-4 fs-7">

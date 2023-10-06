@@ -14,7 +14,7 @@ const FileInput = (props: any) => {
             <InputGroup className={`${props?.checkInput} cursor-pointer rounded`}>
                 <Row className="bg-gray-input w-100 rounded py-1" onClick={handleClick} id={props?.name} tabindex="0">
                     <Col className="d-flex align-items-center py-2">
-                        <FontAwesomeIcon icon={faPaperclip} className="text-purple px-2" />
+                        <FontAwesomeIcon icon={faPaperclip} className="text-cyan px-2" />
                         <p>{props?.text}</p>
                     </Col>
                 </Row>

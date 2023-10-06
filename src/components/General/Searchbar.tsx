@@ -6,7 +6,7 @@ const Searchbar = (props: any) => {
     return (
         <InputGroup>
             <InputGroup.Text id="addon-search" className="px-3 py-3 bg-white border-0">
-                <FontAwesomeIcon icon={faMagnifyingGlass} className="text-purple" />
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="text-cyan" />
             </InputGroup.Text>
             <Form.Control
                 type="text"

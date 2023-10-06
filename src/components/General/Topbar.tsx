@@ -1,5 +1,5 @@
 import { Nav, Navbar, NavDropdown, Image, Button } from 'react-bootstrap';
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSliders, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faBell, faImage } from '@fortawesome/free-regular-svg-icons';
@@ -11,11 +11,8 @@ const Topbar = (props: any) => {
                 <Button variant="light" className="border-0 py-2 ms-3 bg-white black-path">
                     <FontAwesomeIcon icon={faBars} size="xl" />
                 </Button>
-                <Navbar.Brand href="/" className="fw-bolder rounded px-4 d-flex align-items-center">
-                    <Image src={logo} className="h-100" />
-                    <div className="ms-2">
-                        <span className="d-block lh-1">OKTAN ITB <br/> 2023</span>
-                    </div>
+                <Navbar.Brand href="/" className="fw-bolder rounded px-4 me-5 d-flex align-items-center">
+                    <Image src={logo} className="width-logo-nav" />
                 </Navbar.Brand>
             </div>
             <div className="top-title">

@@ -23,7 +23,7 @@ const CrystalProfileComponent = (props: any) => {
                 <Modal.Footer>
                     <Row>
                         <Col>
-                            <CustomButton bg="bg-purple-bright" text="Tutup" onClick={() => props?.toggleModal()}/>
+                            <CustomButton bg="bg-cyan" text="Tutup" onClick={() => props?.toggleModal()}/>
                         </Col>
                     </Row>
                 </Modal.Footer>
