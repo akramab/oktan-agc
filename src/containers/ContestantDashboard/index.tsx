@@ -38,6 +38,13 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
     }
 
     componentDidMount(): void {
+        const { competitionType } = this.props;
+        if (competitionType === "CRYSTAL") {
+            this.props.history.replace("/profile/crystal");
+        }
+        else if (competitionType === "ISOTERM") {
+            this.props.history.replace("/profile/isoterm");
+        }
         this.props.getContestantDataList();
     }
 

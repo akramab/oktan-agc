@@ -57,16 +57,26 @@ const NavigationBar = (props: any) => {
                 <Nav.Link href="/login" className="me-2">
                     <CustomButton bg="bg-green-btn" text="SIGN IN" />
                 </Nav.Link> :
-                <Nav.Link
-                    className="to-profile me-4"
-                    href={
-                        props?.competitionType === "CRYSTAL" ?
-                        "/profile/crystal" :
-                        "/profile/isoterm"
-                    }
-                >
-                    <FontAwesomeIcon icon={faUser} size="2x" />
-                </Nav.Link>
+                    <>
+                        {props?.competitionType === "ADMIN" ?
+                            <Nav.Link
+                                className="to-profile me-4"
+                                href="/dashboard/contestant"
+                            >
+                                <FontAwesomeIcon icon={faUser} size="2x" />
+                            </Nav.Link> :
+                            <Nav.Link
+                                className="to-profile me-4"
+                                href={
+                                    props?.competitionType === "CRYSTAL" ?
+                                    "/profile/crystal" :
+                                    "/profile/isoterm"
+                                }
+                            >
+                                <FontAwesomeIcon icon={faUser} size="2x" />
+                            </Nav.Link>
+                        }
+                    </>
             }
         </Navbar>
     )

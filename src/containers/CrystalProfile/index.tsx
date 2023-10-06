@@ -53,8 +53,11 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
 
     componentDidMount(): void {
         const { competitionType } = this.props;
-        if (competitionType !== "CRYSTAL") {
+        if (competitionType === "ISOTERM") {
             this.props.history.replace("/profile/isoterm");
+        }
+        else if (competitionType === "ADMIN") {
+            this.props.history.replace("/dashboard/contestant");
         }
         this.props.getCrystalProfileData();
     }

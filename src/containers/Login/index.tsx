@@ -49,6 +49,9 @@ export class LoginContainer extends PureComponent<any, any> {
             else if (loginMessageResponse.competition_type === "ISOTERM") {
                 this.props.history.replace("/profile/isoterm");
             }
+            else if (loginMessageResponse.competition_type === "ISOTERM") {
+                this.props.history.replace("/dashboard/contestant");
+            }
         }
     }
 
