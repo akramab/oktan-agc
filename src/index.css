@@ -1,7 +1,7 @@
 * {
   margin: 0 !important;
   color: var(--black);
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'GothamPro', sans-serif;
 }
 
 :root {
@@ -20,6 +20,10 @@
   --blue-btn: #007AFF;
   --crystal: #2E7578;
   --isoterm: #FF9334;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Gilroy-Bold', sans-serif;
 }
 
 @media only screen and (max-width: 991px) {
