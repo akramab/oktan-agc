@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Row, Col, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 const Topbar = lazy(() => import("../../components/General/Topbar"));
 const Sidebar = lazy(() => import("../General/Sidebar"));
@@ -39,9 +39,10 @@ const ContestantDashboardComponent = (props: any) => {
                         <CustomButton
                             bg="bg-purple-dope"
                             text={<>
-                                <FontAwesomeIcon icon={faFilter} className="me-2" />
-                                Filter
+                                Unduh Semua
+                                <FontAwesomeIcon icon={faArrowRightToBracket} className="ms-2 rotate-90" />
                             </>}
+                            onClick={() => props?.handleDownloadAllContestant()}
                         />
                     </Col>
                 </Row>

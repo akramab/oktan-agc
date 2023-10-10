@@ -3,13 +3,15 @@ import {
     setContestantsData,
     successVerifyContestantData,
     successDeleteContestantData,
-    successDownloadContestantData
+    successDownloadContestantData,
+    successDownloadAllContestantData
 } from "./action";
 import {
     GET_CONTESTANTS_DATA,
     VERIFY_CONTESTANT_DATA,
     DELETE_CONTESTANT_DATA,
-    DOWNLOAD_CONTESTANT_DATA
+    DOWNLOAD_CONTESTANT_DATA,
+    DOWNLOAD_ALL_CONTESTANT_DATA
 } from "./constant";
 import { callApi } from "../Layout/saga";
 import { downloadFileAsync } from "../../utils/general";
@@ -84,9 +86,27 @@ export function* handleDownloadContestantData(action: any): any {
     }
 }
 
+export function* handleDownloadAllContestantData(action: any): any {
+    let res = yield call(
+        callApi,
+        "GET",
+        DOWNLOAD_USER_URL,
+        null,
+        null,
+        true
+    );
+    if (res !== null) {
+        const blob = new Blob([res], {type: "application/zip"});
+        const url = URL.createObjectURL(blob);
+        yield call(downloadFileAsync, url);
+        yield put(successDownloadAllContestantData("All file downloaded"));   
+    }
+}
+
 export function* watchContestantDashboardSaga() {
     yield takeLatest(GET_CONTESTANTS_DATA, handleGetContestantsData);
     yield takeLatest(VERIFY_CONTESTANT_DATA, handleVerifyContestantData);
     yield takeLatest(DELETE_CONTESTANT_DATA, handleDeleteContestantData);
     yield takeLatest(DOWNLOAD_CONTESTANT_DATA, handleDownloadContestantData);
+    yield takeLatest(DOWNLOAD_ALL_CONTESTANT_DATA, handleDownloadAllContestantData);
 }

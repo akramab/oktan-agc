@@ -6,7 +6,9 @@ import {
     DELETE_CONTESTANT_DATA,
     SUCCESS_DELETE_CONTESTANT_DATA,
     DOWNLOAD_CONTESTANT_DATA,
-    SUCCESS_DOWNLOAD_CONTESTANT_DATA
+    SUCCESS_DOWNLOAD_CONTESTANT_DATA,
+    DOWNLOAD_ALL_CONTESTANT_DATA,
+    SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA
 } from "./constant";
 
 export function getContestantsData() {
@@ -60,6 +62,19 @@ export function downloadContestantData(params: any) {
 export function successDownloadContestantData(params: any) {
     return {
         type: SUCCESS_DOWNLOAD_CONTESTANT_DATA,
+        params,
+    };
+}
+
+export function downloadAllContestantData() {
+    return {
+        type: DOWNLOAD_ALL_CONTESTANT_DATA,
+    };
+}
+
+export function successDownloadAllContestantData(params: any) {
+    return {
+        type: SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA,
         params,
     };
 }

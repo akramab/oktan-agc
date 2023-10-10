@@ -5,13 +5,15 @@ import {
     contestantsDataSelector,
     verifyMessageSelector,
     deleteMessageSelector,
-    downloadMessageSelector
+    downloadMessageSelector,
+    downloadAllMessageSelector
 } from "./selector";
 import {
     getContestantsData,
     verifyContestantData,
     deleteContestantData,
-    downloadContestantData
+    downloadContestantData,
+    downloadAllContestantData
 } from "./action";
 
 const ContestantDashboardComponent = lazy(() => import("../../components/ContestantDashboard"));
@@ -37,6 +39,7 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         this.handleVerifyContestant = this.handleVerifyContestant.bind(this);
         this.handleDeleteContestant = this.handleDeleteContestant.bind(this);
         this.handleDownloadContestant = this.handleDownloadContestant.bind(this);
+        this.handleDownloadAllContestant = this.handleDownloadAllContestant.bind(this);
     }
 
     componentDidMount(): void {
@@ -84,6 +87,10 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         this.props.downloadContestant(id);
     }
 
+    private handleDownloadAllContestant(): void {
+        this.props.downloadAllContestant();
+    }
+
     render() {
         const { contestantsDataResponse } = this.props;
         const { showModal, shrink } = this.state;
@@ -98,6 +105,7 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
                 handleVerifyContestant={this.handleVerifyContestant}
                 handleDeleteContestant={this.handleDeleteContestant}
                 handleDownloadContestant={this.handleDownloadContestant}
+                handleDownloadAllContestant={this.handleDownloadAllContestant}
             />
         )
     }
@@ -108,7 +116,8 @@ const mapStateToProps = (state: any) => {
         contestantsDataResponse: contestantsDataSelector(state),
         verifyMessageResponse: verifyMessageSelector(state),
         deleteMessageResponse: deleteMessageSelector(state),
-        downloadMessageResponse: downloadMessageSelector(state)
+        downloadMessageResponse: downloadMessageSelector(state),
+        downloadAllMessageResponse: downloadAllMessageSelector(state)
     };
 };
 
@@ -118,6 +127,7 @@ function mapDispatchToProps(dispatch: any) {
         verifyContestant: (params: any) => dispatch(verifyContestantData(params)),
         deleteContestant: (params: any) => dispatch(deleteContestantData(params)),
         downloadContestant: (params: any) => dispatch(downloadContestantData(params)),
+        downloadAllContestant: () => dispatch(downloadAllContestantData()),
     };
 }
   

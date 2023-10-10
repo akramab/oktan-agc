@@ -2,14 +2,16 @@ import {
     SET_CONTESTANTS_DATA,
     SUCCESS_VERIFY_CONTESTANT_DATA,
     SUCCESS_DELETE_CONTESTANT_DATA,
-    SUCCESS_DOWNLOAD_CONTESTANT_DATA
+    SUCCESS_DOWNLOAD_CONTESTANT_DATA,
+    SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA
 } from "./constant";
 
 const initialState = {
     contestantsData: [],
     verifyMessage: null,
     deleteMessage: null,
-    downloadMessage: null
+    downloadMessage: null,
+    downloadAllMessage: null
 };
 
 const contestantDashboardReducer = (state = initialState, action: any) => {
@@ -33,6 +35,11 @@ const contestantDashboardReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 downloadMessage: action.params,
+            };
+        case SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA:
+            return {
+                ...state,
+                downloadAllMessage: action.params,
             };
         default:
             return state;

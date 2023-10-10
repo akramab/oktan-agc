@@ -22,9 +22,16 @@ const downloadMessageSelector = (state: any) => {
         : null;
 };
 
+const downloadAllMessageSelector = (state: any) => {
+    return state?.contestantDashboardReducer?.downloadAllMessage
+        ? state.contestantDashboardReducer.downloadAllMessage
+        : null;
+};
+
 export {
     contestantsDataSelector,
     verifyMessageSelector,
     deleteMessageSelector,
-    downloadMessageSelector
+    downloadMessageSelector,
+    downloadAllMessageSelector
 };
