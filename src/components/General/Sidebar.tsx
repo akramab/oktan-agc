@@ -24,7 +24,7 @@ const Sidebar = (props: any) => {
                         <Col className="width-fit">
                             <Image src={crystal} className="width-team rounded-circle bg-white" />
                         </Col>
-                        <Col className="d-none d-lg-block pe-5">
+                        <Col className={`${props?.shrink && "d-none"} pe-5`}>
                             <p className="fs-7 text-white">Competition Team</p>
                             <h4 className="text-white">Crystal</h4>
                         </Col>
@@ -35,7 +35,7 @@ const Sidebar = (props: any) => {
                         <Col className="width-fit">
                             <Image src={isoterm} className="width-team rounded-circle bg-white" />
                         </Col>
-                        <Col className="d-none d-lg-block pe-5">
+                        <Col className={`${props?.shrink && "d-none"} pe-5`}>
                             <p className="fs-7 text-white">Competition Team</p>
                             <h4 className="text-white">Isoterm</h4>
                         </Col>
@@ -46,7 +46,7 @@ const Sidebar = (props: any) => {
                         <Col className="width-fit sidebar-icon px-3">
                             <FontAwesomeIcon icon={faTableCellsLarge} size="xl" />
                         </Col>
-                        <Col className="d-none d-lg-block">
+                        <Col className={props?.shrink && "d-none"}>
                             <h5 className="text-gray">Dashboard</h5>
                         </Col>
                     </Row>
@@ -57,7 +57,7 @@ const Sidebar = (props: any) => {
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/question") && "active"}`}>
                                 <FontAwesomeIcon icon={faFolder} size="xl" />
                             </Col>
-                            <Col className="d-none d-lg-block pe-5">
+                            <Col className={`${props?.shrink && "d-none"} pe-5`}>
                                 <h5 className={url.includes("/dashboard/question") ? "text-blue pe-3" : "text-gray"}>Soal</h5>
                             </Col>
                         </Row>
@@ -67,7 +67,7 @@ const Sidebar = (props: any) => {
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/cbt") && "active"}`}>
                                 <FontAwesomeIcon icon={faFolder} size="xl" />
                             </Col>
-                            <Col className="d-none d-lg-block pe-5">
+                            <Col className={`${props?.shrink && "d-none"} pe-5`}>
                                 <h5 className={url.includes("/cbt") ? "text-blue pe-3" : "text-gray"}>CBT</h5>
                             </Col>
                         </Row>
@@ -78,7 +78,7 @@ const Sidebar = (props: any) => {
                         <Col className="width-fit sidebar-icon px-3">
                             <FontAwesomeIcon icon={faCalendar} size="xl" />
                         </Col>
-                        <Col className="d-none d-lg-block">
+                        <Col className={props?.shrink && "d-none"}>
                             <h5 className="text-gray">Calendar</h5>
                         </Col>
                     </Row>
@@ -89,7 +89,7 @@ const Sidebar = (props: any) => {
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/contestant") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>
-                            <Col className="d-none d-lg-block pe-5">
+                            <Col className={`${props?.shrink && "d-none"} pe-5`}>
                                 <h5 className={url.includes("/dashboard/contestant") ? "text-blue pe-3" : "text-gray"}>Data Peserta</h5>
                             </Col>
                         </Row>
@@ -99,7 +99,7 @@ const Sidebar = (props: any) => {
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/profile") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>
-                            <Col className="d-none d-lg-block pe-5">
+                            <Col className={`${props?.shrink && "d-none"} pe-5`}>
                                 <h5 className={`${url.includes("/profile") ? profileText : "text-gray"} pe-3`}>Team Profile</h5>
                             </Col>
                         </Row>
@@ -114,7 +114,7 @@ const Sidebar = (props: any) => {
                                 <FontAwesomeIcon icon={faInfo} className="px-1" />
                             </div>
                         </Col>
-                        <Col className="d-none d-lg-block">
+                        <Col className={props?.shrink && "d-none"}>
                             <h5 className="text-gray">Support</h5>
                         </Col>
                     </Row>
@@ -128,7 +128,7 @@ const Sidebar = (props: any) => {
                                     <Col className="p-0 width-fit">
                                         <FontAwesomeIcon icon={faArrowRightFromBracket} size="xl" className="rotate-180" />
                                     </Col>
-                                    <Col className="text-start px-4 d-none d-lg-block">
+                                    <Col className={`text-start px-4 ${props?.shrink && "d-none"}`}>
                                         <h5 className="text-white px-2">Logout</h5>
                                     </Col>
                                 </Row>

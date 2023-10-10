@@ -31,9 +31,9 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 3vw;
   }
 
-  .side-content {
-    left: 112px !important;
-  }
+  /* .side-content {
+    left: 90px !important;
+  } */
 }
 
 @media only screen and (max-width: 767px) {
@@ -400,8 +400,12 @@ h1, h2, h3, h4, h5, h6 {
 .side-content {
   position: absolute;
   top: 86px;
-  left: 278px;
+  left: 286.75px;
   right: 0;
+}
+
+.side-content.shrink {
+  left: 90px !important;
 }
 
 .sidebar-icon path, .border-gray path {

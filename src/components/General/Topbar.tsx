@@ -1,4 +1,4 @@
-import { Nav, Navbar, NavDropdown, Image, Button } from 'react-bootstrap';
+import { Nav, Navbar, Image, Button } from 'react-bootstrap';
 import logo from "../../assets/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSliders, faAngleDown } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,7 @@ const Topbar = (props: any) => {
     return (
         <Navbar fixed="top" data-bs-theme="light" className="bg-white">
             <div className="d-flex align-items-center">
-                <Button variant="light" className="border-0 py-2 ms-3 bg-white black-path">
+                <Button variant="light" className="border-0 py-2 ms-3 bg-white black-path" onClick={() => props?.onBarsClick()}>
                     <FontAwesomeIcon icon={faBars} size="xl" />
                 </Button>
                 <Navbar.Brand href="/" className="fw-bolder rounded px-4 me-5 d-flex align-items-center">

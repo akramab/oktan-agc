@@ -28,10 +28,12 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            showModal: false
+            showModal: false,
+            shrink: false
         };
 
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
         this.handleVerifyContestant = this.handleVerifyContestant.bind(this);
         this.handleDeleteContestant = this.handleDeleteContestant.bind(this);
         this.handleDownloadContestant = this.handleDownloadContestant.bind(this);
@@ -64,6 +66,12 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         });
     }
 
+    private toggleSidebar(): void {
+        this.setState({
+            shrink: !this.state.shrink
+        });
+    }
+
     private handleVerifyContestant(id: any): void {
         this.props.verifyContestant(id);
     }
@@ -78,13 +86,15 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
 
     render() {
         const { contestantsDataResponse } = this.props;
-        const { showModal } = this.state;
+        const { showModal, shrink } = this.state;
         return (
             <ContestantDashboardComponent
                 {...this.props}
                 contestantsDataResponse={contestantsDataResponse}
                 showModal={showModal}
+                shrink={shrink}
                 toggleModal={this.toggleModal}
+                toggleSidebar={this.toggleSidebar}
                 handleVerifyContestant={this.handleVerifyContestant}
                 handleDeleteContestant={this.handleDeleteContestant}
                 handleDownloadContestant={this.handleDownloadContestant}

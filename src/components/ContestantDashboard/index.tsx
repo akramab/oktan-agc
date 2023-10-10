@@ -28,9 +28,9 @@ const ContestantDashboardComponent = (props: any) => {
                     </Row>
                 </Modal.Footer>
             </Modal>
-            <Topbar title="Data Peserta" />
-            <Sidebar isAdmin verified={props?.verified} />
-            <div className="side-content bg-gray p-4">
+            <Topbar title="Data Peserta" onBarsClick={props?.toggleSidebar} />
+            <Sidebar isAdmin verified={props?.verified} shrink={props?.shrink} />
+            <div className={`side-content bg-gray p-4 ${props?.shrink && "shrink"}`}>
                 <Row className="justify-content-between align-items-center my-2">
                     <Col className="p-0">
                         <Searchbar />
