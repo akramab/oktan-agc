@@ -6,6 +6,7 @@ import crystalProfileReducer from "../CrystalProfile/reducer";
 import isotermProfileReducer from "../IsotermProfile/reducer";
 import contestantDashboardReducer from "../ContestantDashboard/reducer";
 import forgotPasswordReducer from "../ForgotPassword/reducer";
+import newPasswordReducer from "../NewPassword/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -14,7 +15,8 @@ const Reducer = combineReducers({
     crystalProfileReducer,
     isotermProfileReducer,
     contestantDashboardReducer,
-    forgotPasswordReducer
+    forgotPasswordReducer,
+    newPasswordReducer
 });
 
 export default Reducer;

@@ -1,0 +1,94 @@
+import { lazy } from "react";
+import { Row, Col, Image, Form, Modal, Navbar } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png"
+
+const CustomInput = lazy(() => import("../../components/General/CustomInput"));
+const CustomButton = lazy(() => import("../General/CustomButton"));
+
+const NewPasswordComponent = (props: any) => {
+    return (
+        <>
+            <Modal show={props?.showModal} centered>
+                <Modal.Body>
+                    <Row className="text-center p-5">
+                        <Col>
+                            <p className="fw-bold">Password berhasil diganti!</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Row>
+                        <Col>
+                            <Link to="/login">
+                                <CustomButton bg="bg-green-btn" text="Login"/>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Modal.Footer>
+            </Modal>
+            <div className="h-100 d-flex flex-column">
+                <Row className="bg-gray align-items-center flex-grow-1">
+                    <Col>
+                        <Row>
+                            <Col className="d-flex justify-content-center mb-3">
+                                <Navbar.Brand href="/" className="d-flex align-items-center rounded px-4 py-1">
+                                    <Image src={logo} className="width-logo-nav mb-3" />
+                                    <h3 className="fw-bolder ms-2">Oktan ITB 2024</h3>
+                                </Navbar.Brand>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Row className="justify-content-center">
+                                    <Col xs={12} sm={10} md={8} lg={6} xl={4} className="bg-white text-center rounded shadow-lg py-5 px-4">
+                                        <h3 className="mb-5">New Password</h3>
+                                        <Form className="text-start mx-2">
+                                            <Form.Group>
+                                                <Form.Label>Password</Form.Label>
+                                                <CustomInput
+                                                    isPassword
+                                                    required
+                                                    type="password"
+                                                    placeholder="password"
+                                                    name="password"
+                                                    onChange={(e: any) => props?.handleChange(e)}
+                                                    value={props?.password}
+                                                    checkInput={props?.passwordError ? "input-error" : ""}
+                                                    errorMessage={props?.passwordError ?? ""}
+                                                    showPassword={props?.showPassword}
+                                                    togglePassword={() => props?.togglePassword()}
+                                                />
+                                            </Form.Group>
+                                            <Form.Group>
+                                                <Form.Label>Confirm Password</Form.Label>
+                                                <CustomInput
+                                                    isPassword
+                                                    required
+                                                    type="password"
+                                                    placeholder="password"
+                                                    name="confirmPassword"
+                                                    onChange={(e: any) => props?.handleChange(e)}
+                                                    value={props?.confirmPassword}
+                                                    checkInput={props?.confirmPasswordError ? "input-error" : ""}
+                                                    errorMessage={props?.confirmPasswordError ?? ""}
+                                                    showPassword={props?.showPassword}
+                                                    togglePassword={() => props?.togglePassword()}
+                                                />
+                                            </Form.Group>
+                                            <Row className="mt-4">
+                                                <CustomButton bg="bg-cyan" text="RESET" onClick={(e: any) => props?.handleNewPassword(e)} />
+                                            </Row>
+                                        </Form>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </div>
+        </>
+    )
+}
+
+export default NewPasswordComponent;

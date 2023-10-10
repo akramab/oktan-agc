@@ -63,7 +63,7 @@ const LoginComponent = (props: any) => {
                                             <Link to="/register" className="text-default">Don't have an account? Register</Link>
                                         </Col>
                                         <Col className="text-end width-fit">
-                                            <Link to="/forgot" className="text-default">Forgot Password</Link>
+                                            <Link to="/forgot-password" className="text-default">Forgot Password</Link>
                                         </Col>
                                     </Row>
                                 </Col>

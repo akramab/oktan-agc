@@ -1,0 +1,4 @@
+export const SEND_NEW_PASSWORD =
+    "OktanAGC/App/SEND_NEW_PASSWORD";
+export const SUCCESS_SEND_NEW_PASSWORD =
+    "OktanAGC/App/SUCCESS_SEND_NEW_PASSWORD";

@@ -6,6 +6,7 @@ import { watchCrystalProfileSaga } from "../CrystalProfile/saga";
 import { watchIsotermProfileSaga } from "../IsotermProfile/saga";
 import { watchContestantDashboardSaga } from "../ContestantDashboard/saga";
 import { watchForgotPasswordSaga } from "../ForgotPassword/saga";
+import { watchNewPasswordSaga } from "../NewPassword/saga";
 
 export default function* Saga() {
     yield all([
@@ -15,6 +16,7 @@ export default function* Saga() {
         watchCrystalProfileSaga(),
         watchIsotermProfileSaga(),
         watchContestantDashboardSaga(),
-        watchForgotPasswordSaga()
+        watchForgotPasswordSaga(),
+        watchNewPasswordSaga()
     ]);
 }

@@ -55,7 +55,7 @@ const ForgotPasswordComponent = (props: any) => {
                                                 />
                                             </Form.Group>
                                             <Row className="mt-4">
-                                                <CustomButton bg="bg-cyan" text="RESET" onClick={(e: any) => props?.handleReset(e)} />
+                                                <CustomButton bg="bg-cyan" text="CONFIRM" onClick={(e: any) => props?.handleReset(e)} />
                                             </Row>
                                         </Form>
                                     </Col>
