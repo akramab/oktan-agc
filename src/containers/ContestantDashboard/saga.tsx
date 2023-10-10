@@ -14,66 +14,23 @@ import {
 import { callApi } from "../Layout/saga";
 import { downloadFileAsync } from "../../utils/general";
 
-// Subject to changes
+// Subject to change
 import {
     USER_URL,
     VERIFY_USER_URL,
     DELETE_USER_URL,
     DOWNLOAD_USER_URL
 } from "../../config/api";
+
 export function* handleGetContestantsData(action: any): any {
-    // let res = yield call(
-    //     callApi,
-    //     "GET",
-    //     USER_URL,
-    //     null,
-    //     null,
-    //     true
-    // );
-    let res = [
-        {
-            id: "1",
-            category: "CRYSTAL",
-            verified: true,
-            date: "27-10-2024",
-            name: {
-                team: "Rajawali",
-                member: "AlifahRB"
-            },
-            institution: {
-                name: "ITB",
-                instructor: "Kridanto"
-            }
-        },
-        {
-            id: "2",
-            category: "CRYSTAL",
-            verified: true,
-            date: "27-10-2024",
-            name: {
-                team: "Rajawali",
-                member: "AlifahRB"
-            },
-            institution: {
-                name: "ITB",
-                instructor: "Kridanto"
-            }
-        },
-        {
-            id: "3",
-            category: "CRYSTAL",
-            verified: false,
-            date: "27-10-2024",
-            name: {
-                team: "Rajawali",
-                member: "AlifahRB"
-            },
-            institution: {
-                name: "ITB",
-                instructor: "Kridanto"
-            }
-        }
-    ]
+    let res = yield call(
+        callApi,
+        "GET",
+        USER_URL,
+        null,
+        null,
+        true
+    );
     if (res) {
         yield put(setContestantsData(res));
     }
