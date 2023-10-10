@@ -12,6 +12,9 @@ const CustomButton = lazy(() => import("./CustomButton"));
 
 const Sidebar = (props: any) => {
     let history = useHistory();
+    const url = window.location.href;
+    let profileUrl = props?.isCrystal ? "/profile/crystal" : "/profile/isoterm";
+    let profileText = JSON.parse(props?.verified) ? "text-green" : "text-red";
 
     return (
         <div className="bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center">
@@ -48,16 +51,28 @@ const Sidebar = (props: any) => {
                         </Col>
                     </Row>
                 </Link>
-                <Link to="#" className="text-decoration-none">
-                    <Row className="py-3 mt-3">
-                        <Col className="width-fit sidebar-icon px-3">
-                            <FontAwesomeIcon icon={faFolder} size="xl" />
-                        </Col>
-                        <Col className="d-none d-lg-block">
-                            <h5 className="text-gray">CBT</h5>
-                        </Col>
-                    </Row>
-                </Link>
+                {props?.isAdmin ?
+                    <Link to={url.includes("/dashboard/question") ? "#" : "/dashboard/question"} className="text-decoration-none">
+                        <Row className={`py-3 mt-3 ${url.includes("/dashboard/question") && "border-blue"} rounded width-fit`}>
+                            <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/question") && "active"}`}>
+                                <FontAwesomeIcon icon={faFolder} size="xl" />
+                            </Col>
+                            <Col className="d-none d-lg-block pe-5">
+                                <h5 className={url.includes("/dashboard/question") ? "text-blue pe-3" : "text-gray"}>Soal</h5>
+                            </Col>
+                        </Row>
+                    </Link> :
+                    <Link to={url.includes("/cbt") ? "#" : "/cbt"} className="text-decoration-none">
+                        <Row className={`py-3 mt-3 ${url.includes("/cbt") && "border-blue"} rounded width-fit`}>
+                            <Col className={`width-fit sidebar-icon px-3 ${url.includes("/cbt") && "active"}`}>
+                                <FontAwesomeIcon icon={faFolder} size="xl" />
+                            </Col>
+                            <Col className="d-none d-lg-block pe-5">
+                                <h5 className={url.includes("/cbt") ? "text-blue pe-3" : "text-gray"}>CBT</h5>
+                            </Col>
+                        </Row>
+                    </Link>
+                }
                 <Link to="#" className="text-decoration-none">
                     <Row className="py-3 mt-3">
                         <Col className="width-fit sidebar-icon px-3">
@@ -69,22 +84,26 @@ const Sidebar = (props: any) => {
                     </Row>
                 </Link>
                 {props?.isAdmin ?
-                    <Row className="py-3 mt-3 border-blue rounded width-fit">
-                        <Col className="width-fit sidebar-icon px-3 active">
-                            <FontAwesomeIcon icon={faUser} size="xl" />
-                        </Col>
-                        <Col className="d-none d-lg-block pe-5">
-                            <h5 className="text-blue pe-3">Data Peserta</h5>
-                        </Col>
-                    </Row> :
-                    <Row className={`py-3 mt-3 ${JSON.parse(props?.verified) ? "border-green" : "border-red"} rounded width-fit`}>
-                        <Col className="width-fit sidebar-icon px-3 active">
-                            <FontAwesomeIcon icon={faUser} size="xl" />
-                        </Col>
-                        <Col className="d-none d-lg-block pe-5">
-                            <h5 className={`${JSON.parse(props?.verified) ? "text-green" : "text-red"} pe-3`}>Team Profile</h5>
-                        </Col>
-                    </Row>
+                    <Link to={url.includes("/dashboard/contestant") ? "#" : "/dashboard/contestant"} className="text-decoration-none">
+                        <Row className={`py-3 mt-3 ${url.includes("/dashboard/contestant") && "border-blue"} rounded width-fit`}>
+                            <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/contestant") && "active"}`}>
+                                <FontAwesomeIcon icon={faUser} size="xl" />
+                            </Col>
+                            <Col className="d-none d-lg-block pe-5">
+                                <h5 className={url.includes("/dashboard/contestant") ? "text-blue pe-3" : "text-gray"}>Data Peserta</h5>
+                            </Col>
+                        </Row>
+                    </Link> :
+                    <Link to={url.includes("/profile") ? "#" : profileUrl} className="text-decoration-none">
+                        <Row className={`py-3 mt-3 ${JSON.parse(props?.verified) && url.includes("/profile") ? "border-green" : "border-red"} rounded width-fit`}>
+                            <Col className={`width-fit sidebar-icon px-3 ${url.includes("/profile") && "active"}`}>
+                                <FontAwesomeIcon icon={faUser} size="xl" />
+                            </Col>
+                            <Col className="d-none d-lg-block pe-5">
+                                <h5 className={`${url.includes("/profile") ? profileText : "text-gray"} pe-3`}>Team Profile</h5>
+                            </Col>
+                        </Row>
+                    </Link>
                 }
             </div>
             <div className="w-100">

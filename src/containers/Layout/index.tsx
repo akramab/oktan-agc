@@ -100,7 +100,7 @@ export class LayoutContainer extends PureComponent<any, any> {
                                         <Route
                                             exact path={"/dashboard/contestant"}
                                             render={(props: any) => {
-                                            return <ContestantDashboardContainer competitionType={competitionType} {...this.props} {...props} />;
+                                            return <ContestantDashboardContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                             }}
                                         />
                                     </>
