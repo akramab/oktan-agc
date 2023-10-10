@@ -28,9 +28,9 @@ const CrystalProfileComponent = (props: any) => {
                     </Row>
                 </Modal.Footer>
             </Modal>
-            <Topbar title="Lengkapi Profil Tim" />
-            <Sidebar isCrystal verified={props?.verified} />
-            <div className="side-content bg-gray p-4">
+            <Topbar title="Lengkapi Profil Tim" onBarsClick={props?.toggleSidebar} />
+            <Sidebar isCrystal verified={props?.verified} shrink={props?.shrink} />
+            <div className={`side-content bg-gray p-4 ${props?.shrink && "shrink"}`}>
                 <Form className="profile">
                     <Row>
                         <Col xs={12} md={6}>

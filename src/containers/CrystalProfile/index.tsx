@@ -18,6 +18,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
 
         this.state = {
             showModal: false,
+            shrink: false,
             teamName: "",
             registrationDocument: null,
             name1: "",
@@ -45,6 +46,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             paymentDocumentError: ""
         };
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
@@ -91,6 +93,12 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         this.setState({
             ...this.state,
             showModal: !this.state.showModal
+        });
+    }
+
+    private toggleSidebar(): void {
+        this.setState({
+            shrink: !this.state.shrink
         });
     }
 
@@ -288,6 +296,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
     render() {
         const {
             showModal,
+            shrink,
             teamName,
             registrationDocument,
             name1,
@@ -318,6 +327,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             <CrystalProfileComponent
                 verified={this.props.verified}
                 showModal={showModal}
+                shrink={shrink}
                 teamName={teamName}
                 registrationDocument={registrationDocument}
                 name1={name1}
@@ -344,6 +354,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 schoolEmailError={schoolEmailError}
                 paymentDocumentError={paymentDocumentError}
                 toggleModal={this.toggleModal}
+                toggleSidebar={this.toggleSidebar}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}
             />

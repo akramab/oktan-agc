@@ -18,6 +18,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
 
         this.state = {
             showModal: false,
+            shrink: false,
             teamName: "",
             subtheme: "",
             name1: "",
@@ -58,6 +59,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             fullDocumentError: "",
         };
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
@@ -110,6 +112,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         this.setState({
             ...this.state,
             showModal: !this.state.showModal
+        });
+    }
+
+    private toggleSidebar(): void {
+        this.setState({
+            shrink: !this.state.shrink
         });
     }
 
@@ -376,6 +384,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     render() {
         const {
             showModal,
+            shrink,
             teamName,
             subtheme,
             name1,
@@ -419,6 +428,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             <IsotermProfileComponent
                 verified={this.props.verified}
                 showModal={showModal}
+                shrink={shrink}
                 teamName={teamName}
                 subtheme={subtheme}
                 name1={name1}
@@ -458,6 +468,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 paper2Error={paper2Error}
                 fullDocumentError={fullDocumentError}
                 toggleModal={this.toggleModal}
+                toggleSidebar={this.toggleSidebar}
                 handleChange={this.handleChange}
                 handleSubmitData={this.handleSubmitData}
             />
