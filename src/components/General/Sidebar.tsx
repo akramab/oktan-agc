@@ -89,7 +89,7 @@ const Sidebar = (props: any) => {
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/contestant") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>
-                            <Col className={`${props?.shrink && "d-none"} pe-5`}>
+                            <Col className={`${props?.shrink && "d-none"} pe-4`}>
                                 <h5 className={url.includes("/dashboard/contestant") ? "text-blue pe-3" : "text-gray"}>Data Peserta</h5>
                             </Col>
                         </Row>

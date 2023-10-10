@@ -444,6 +444,23 @@ const IsotermProfileComponent = (props: any) => {
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group>
+                                <Form.Label>Data Pembayaran<span className="text-asterisk">*</span></Form.Label>
+                                <FileInput
+                                    text={
+                                        props?.paymentDocument ?
+                                        props.paymentDocument.name :
+                                        "Upload dalam 1 dokumen PDF"
+                                    }
+                                    name="paymentDocument"
+                                    onChange={(e: any) => props?.handleChange(e)}
+                                    value={props?.paymentDocument}
+                                    checkInput={props?.paymentDocumentError ? "input-error" : ""}
+                                    errorMessage={props?.paymentDocumentError ?? ""}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Col xs={12} md={6}>
+                            <Form.Group>
                                 <Form.Label>Dokumen<span className="text-asterisk">*</span> Disatukan</Form.Label>
                                 <FileInput
                                     text={

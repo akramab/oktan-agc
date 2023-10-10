@@ -43,6 +43,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper1: null,
             paper2: null,
             fullDocument: null,
+            paymentDocument: null,
             year1Error: "",
             email1Error: "",
             number1Error: "",
@@ -57,6 +58,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper1Error: "",
             paper2Error: "",
             fullDocumentError: "",
+            paymentDocumentError: ""
         };
         this.toggleModal = this.toggleModal.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -190,6 +192,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             abstract1,
             paper1,
             fullDocument,
+            paymentDocument,
             year1Error,
             email1Error,
             number1Error,
@@ -204,6 +207,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper1Error,
             paper2Error,
             fullDocumentError,
+            paymentDocumentError
         } = this.state;
         if (!teamName) {
             document.getElementsByName("teamName")[0].focus();
@@ -293,6 +297,10 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             document.getElementById("paper2")?.focus();
             return false;
         }
+        else if (!paymentDocument || paymentDocumentError) {
+            document.getElementById("paymentDocument")?.focus();
+            return false;
+        }
         else if (!fullDocument || fullDocumentError) {
             document.getElementById("fullDocument")?.focus();
             return false;
@@ -328,6 +336,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper1,
             paper2,
             fullDocument,
+            paymentDocument
         } = this.state;
 
         if (this.validateForm()) {
@@ -374,7 +383,8 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 abstract_2_document: abstract2,
                 work_1_document: paper1,
                 work_2_document: paper2,
-                unified_document: fullDocument
+                unified_document: fullDocument,
+                payment_document: paymentDocument
             }
             
             this.props.editIsotermProfileData(formData);
@@ -409,6 +419,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper1,
             paper2,
             fullDocument,
+            paymentDocument,
             year1Error,
             email1Error,
             number1Error,
@@ -422,7 +433,8 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             abstract2Error,
             paper1Error,
             paper2Error,
-            fullDocumentError
+            fullDocumentError,
+            paymentDocumentError
         } = this.state;
         return (
             <IsotermProfileComponent
@@ -453,6 +465,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 paper1={paper1}
                 paper2={paper2}
                 fullDocument={fullDocument}
+                paymentDocument={paymentDocument}
                 year1Error={year1Error}
                 email1Error={email1Error}
                 number1Error={number1Error}
@@ -467,6 +480,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 paper1Error={paper1Error}
                 paper2Error={paper2Error}
                 fullDocumentError={fullDocumentError}
+                paymentDocumentError={paymentDocumentError}
                 toggleModal={this.toggleModal}
                 toggleSidebar={this.toggleSidebar}
                 handleChange={this.handleChange}
