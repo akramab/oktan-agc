@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { loadingSelector } from "./selector";
 import { getLoaderState } from "./action";
 import LoadingIndicator from "../../components/Loading";
-import { getAuthToken, getCompetitionType, getVerificationStatus, checkUserType } from "../../utils/general";
+import { getAuthToken, getCompetitionType, getVerificationStatus, getCompetitionStatus, checkUserType } from "../../utils/general";
 
 const ComingSoonContainer = lazy(() => import("../ComingSoon"));
 const NotFoundContainer = lazy(() => import("../404NotFound"));
@@ -33,6 +33,7 @@ export class LayoutContainer extends PureComponent<any, any> {
         const authToken = getAuthToken();
         const competitionType = getCompetitionType();
         const verified = getVerificationStatus();
+        const passed = getCompetitionStatus();
         const isAdmin = checkUserType();
         return (
             <div className="bg-gray" style={{ height: "100vh", overflowX: "hidden" }}>
@@ -92,7 +93,7 @@ export class LayoutContainer extends PureComponent<any, any> {
                                 <Route
                                     exact path={"/profile/isoterm"}
                                     render={(props: any) => {
-                                    return <IsotermProfileContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
+                                    return <IsotermProfileContainer passed={passed} verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                     }}
                                 />
                                 {isAdmin &&

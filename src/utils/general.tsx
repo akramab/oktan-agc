@@ -17,9 +17,27 @@ export const getCompetitionType = () => {
 };
 
 export const getVerificationStatus = () => {
-    const data = localStorage.getItem("VERIFIED");
+    const data = localStorage.getItem("STATUS");
     if (data) {
-        return data;
+        if (data === "REGISTERED") {
+            return false;
+        }
+        else if (data === "PAYMENT_VERIFIED" || data === "COMPETITION_PASSED") {
+            return true;
+        }
+    }
+    return "";
+};
+
+export const getCompetitionStatus = () => {
+    const data = localStorage.getItem("STATUS");
+    if (data) {
+        if (data === "COMPETITION_PASSED") {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
     return "";
 };
@@ -40,7 +58,7 @@ export const checkUserType = () => {
 export const removeTokens = () => {
     localStorage.removeItem("AUTH_TOKEN");
     localStorage.removeItem("COMPETITION_TYPE");
-    localStorage.removeItem("VERIFIED");
+    localStorage.removeItem("STATUS");
     localStorage.removeItem("ROLE");
     return "";
 };

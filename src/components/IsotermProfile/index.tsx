@@ -386,60 +386,64 @@ const IsotermProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col xs={12} md={6}>
-                            <Form.Group>
-                                <Form.Label>Abstrak 2<span className="text-asterisk">*</span></Form.Label>
-                                <FileInput
-                                    text={
-                                        props?.abstract2 ?
-                                        props.abstract2.name :
-                                        "Upload Abstrak 2"
-                                    }
-                                    name="abstract2"
-                                    onChange={(e: any) => props?.handleChange(e)}
-                                    value={props?.abstract2}
-                                    checkInput={props?.abstract2Error ? "input-error" : ""}
-                                    errorMessage={props?.abstract2Error ?? ""}
-                                />
-                            </Form.Group>
-                        </Col>
+                        {props?.passed &&
+                            <Col xs={12} md={6}>
+                                <Form.Group>
+                                    <Form.Label>Abstrak 2<span className="text-asterisk">*</span></Form.Label>
+                                    <FileInput
+                                        text={
+                                            props?.abstract2 ?
+                                            props.abstract2.name :
+                                            "Upload Abstrak 2"
+                                        }
+                                        name="abstract2"
+                                        onChange={(e: any) => props?.handleChange(e)}
+                                        value={props?.abstract2}
+                                        checkInput={props?.abstract2Error ? "input-error" : ""}
+                                        errorMessage={props?.abstract2Error ?? ""}
+                                    />
+                                </Form.Group>
+                            </Col>
+                        }
                     </Row>
-                    <Row>
-                        <Col xs={12} md={6}>
-                            <Form.Group>
-                                <Form.Label>Karya 1<span className="text-asterisk">*</span></Form.Label>
-                                <FileInput
-                                    text={
-                                        props?.paper1 ?
-                                        props.paper1.name :
-                                        "Upload Full Paper 1"
-                                    }
-                                    name="paper1"
-                                    onChange={(e: any) => props?.handleChange(e)}
-                                    value={props?.paper1}
-                                    checkInput={props?.paper1Error ? "input-error" : ""}
-                                    errorMessage={props?.paper1Error ?? ""}
-                                />
-                            </Form.Group>
-                        </Col>
-                        <Col xs={12} md={6}>
-                            <Form.Group>
-                                <Form.Label>Karya 2<span className="text-asterisk">*</span></Form.Label>
-                                <FileInput
-                                    text={
-                                        props?.paper2 ?
-                                        props.paper2.name :
-                                        "Upload Full Paper 2"
-                                    }
-                                    name="paper2"
-                                    onChange={(e: any) => props?.handleChange(e)}
-                                    value={props?.paper2}
-                                    checkInput={props?.paper2Error ? "input-error" : ""}
-                                    errorMessage={props?.paper2Error ?? ""}
-                                />
-                            </Form.Group>
-                        </Col>
-                    </Row>
+                    {props?.passed &&
+                        <Row>
+                            <Col xs={12} md={6}>
+                                <Form.Group>
+                                    <Form.Label>Karya 1<span className="text-asterisk">*</span></Form.Label>
+                                    <FileInput
+                                        text={
+                                            props?.paper1 ?
+                                            props.paper1.name :
+                                            "Upload Full Paper 1"
+                                        }
+                                        name="paper1"
+                                        onChange={(e: any) => props?.handleChange(e)}
+                                        value={props?.paper1}
+                                        checkInput={props?.paper1Error ? "input-error" : ""}
+                                        errorMessage={props?.paper1Error ?? ""}
+                                    />
+                                </Form.Group>
+                            </Col>
+                            <Col xs={12} md={6}>
+                                <Form.Group>
+                                    <Form.Label>Karya 2<span className="text-asterisk">*</span></Form.Label>
+                                    <FileInput
+                                        text={
+                                            props?.paper2 ?
+                                            props.paper2.name :
+                                            "Upload Full Paper 2"
+                                        }
+                                        name="paper2"
+                                        onChange={(e: any) => props?.handleChange(e)}
+                                        value={props?.paper2}
+                                        checkInput={props?.paper2Error ? "input-error" : ""}
+                                        errorMessage={props?.paper2Error ?? ""}
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                    }
                     <hr className="my-4" />
                     <Row>
                         <Col xs={12} md={6}>

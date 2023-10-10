@@ -170,6 +170,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     }
 
     private validateForm(): boolean {
+        const { passed } = this.props;
         const {
             teamName,
             subtheme,
@@ -190,7 +191,9 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             number3,
             universityName,
             abstract1,
+            abstract2,
             paper1,
+            paper2,
             fullDocument,
             paymentDocument,
             year1Error,
@@ -285,18 +288,6 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             document.getElementById("abstract1")?.focus();
             return false;
         }
-        else if (abstract2Error) {
-            document.getElementById("abstract2")?.focus();
-            return false;
-        }
-        else if (!paper1 || paper1Error) {
-            document.getElementById("paper1")?.focus();
-            return false;
-        }
-        else if (paper2Error) {
-            document.getElementById("paper2")?.focus();
-            return false;
-        }
         else if (!paymentDocument || paymentDocumentError) {
             document.getElementById("paymentDocument")?.focus();
             return false;
@@ -304,6 +295,20 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         else if (!fullDocument || fullDocumentError) {
             document.getElementById("fullDocument")?.focus();
             return false;
+        }
+        else if (passed) {
+            if ((!abstract2 && paper2) || abstract2Error) {
+                document.getElementById("abstract2")?.focus();
+                return false;
+            }
+            else if (!paper1 || paper1Error) {
+                document.getElementById("paper1")?.focus();
+                return false;
+            }
+            else if ((abstract2 && !paper2) || paper2Error) {
+                document.getElementById("paper2")?.focus();
+                return false;
+            }
         }
         return true;
     }
@@ -439,6 +444,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         return (
             <IsotermProfileComponent
                 verified={this.props.verified}
+                passed={this.props.passed}
                 showModal={showModal}
                 shrink={shrink}
                 teamName={teamName}

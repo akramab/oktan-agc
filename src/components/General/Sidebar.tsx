@@ -14,7 +14,7 @@ const Sidebar = (props: any) => {
     let history = useHistory();
     const url = window.location.href;
     let profileUrl = props?.isCrystal ? "/profile/crystal" : "/profile/isoterm";
-    let profileText = JSON.parse(props?.verified) ? "text-green" : "text-red";
+    let profileText = props?.verified ? "text-green" : "text-red";
 
     return (
         <div className="bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center">
@@ -95,7 +95,7 @@ const Sidebar = (props: any) => {
                         </Row>
                     </Link> :
                     <Link to={url.includes("/profile") ? "#" : profileUrl} className="text-decoration-none">
-                        <Row className={`py-3 mt-3 ${JSON.parse(props?.verified) && url.includes("/profile") ? "border-green" : "border-red"} rounded width-fit`}>
+                        <Row className={`py-3 mt-3 ${props?.verified && url.includes("/profile") ? "border-green" : "border-red"} rounded width-fit`}>
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/profile") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>

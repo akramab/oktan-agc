@@ -41,7 +41,7 @@ export class LoginContainer extends PureComponent<any, any> {
         if (prevProps.loginMessageResponse !== loginMessageResponse && loginMessageResponse) {
             localStorage.setItem("AUTH_TOKEN", loginMessageResponse.access_token);
             localStorage.setItem("COMPETITION_TYPE", loginMessageResponse.competition_type);
-            localStorage.setItem("VERIFIED", loginMessageResponse.is_payment_verified);
+            localStorage.setItem("STATUS", loginMessageResponse.status);
             localStorage.setItem("ROLE", loginMessageResponse.role);
             if (loginMessageResponse.competition_type === "CRYSTAL") {
                 this.props.history.replace("/profile/crystal");
