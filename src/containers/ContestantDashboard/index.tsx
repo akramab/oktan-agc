@@ -24,7 +24,8 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         contestantsDataResponse: PropTypes.any,
         verifyMessageResponse: PropTypes.any,
         deleteMessageResponse: PropTypes.any,
-        downloadMessageResponse: PropTypes.any
+        downloadMessageResponse: PropTypes.any,
+        downloadAllMessageResponse: PropTypes.any
     };
 
     constructor(props: any) {
