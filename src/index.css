@@ -16,7 +16,9 @@
   --red-input: #F87272;
   --red-btn: #CF3B3B;
   --red-asterisk: #F00F00;
+  --red-answer: #FF4F4F;
   --green-btn: #0C7F84;
+  --green-answer: #25F725;
   --blue-btn: #007AFF;
   --crystal: #2E7578;
   --isoterm: #FF9334;
@@ -140,6 +142,15 @@ h1, h2, h3, h4, h5, h6 {
 .bg-trash {
   background-color: #FFF2F2;
 }
+
+.bg-red-answer {
+  background-color: var(--red-answer);
+}
+
+.bg-green-answer {
+  background-color: var(--green-answer);
+}
+
 
 .border-gray {
   border: 2px solid var(--gray-sidebar);
@@ -396,6 +407,11 @@ h1, h2, h3, h4, h5, h6 {
   top: 77.89px;
   left: 0;
   height: calc(100vh - 86px);
+  min-width: 277.672px;
+}
+
+.sidebar.shrink {
+  min-width: 92px !important;
 }
 
 .side-content {
@@ -406,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .side-content.shrink {
-  left: 90px !important;
+  left: 90px;
 }
 
 .sidebar-icon path, .border-gray path {
@@ -472,4 +488,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .done path {
   fill: #008000;
+}
+
+.fixed-bottom {
+  left: inherit !important;
+  right: inherit !important;
 }

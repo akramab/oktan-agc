@@ -17,8 +17,8 @@ const Sidebar = (props: any) => {
     let profileText = props?.verified ? "text-green" : "text-red";
 
     return (
-        <div className="bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center">
-            <div className="d-flex flex-column align-items-center align-items-lg-start">
+        <div className={`${props?.shrink && "shrink"} bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center`}>
+            <div className="d-flex flex-column align-items-center align-items-lg-start w-100">
                 {(props?.isCrystal && !props?.isAdmin) &&
                     <Row className="py-2 rounded bg-crystal align-items-center width-fit">
                         <Col className="width-fit">
@@ -52,8 +52,8 @@ const Sidebar = (props: any) => {
                     </Row>
                 </Link>
                 {props?.isAdmin ?
-                    <Link to={url.includes("/dashboard/question") ? "#" : "/dashboard/question"} className="text-decoration-none">
-                        <Row className={`py-3 mt-3 ${url.includes("/dashboard/question") && "border-blue"} rounded width-fit`}>
+                    <Link to={url.includes("/dashboard/question") ? "#" : "/dashboard/question"} className="text-decoration-none w-100">
+                        <Row className={`py-3 mt-3 ${url.includes("/dashboard/question") && "border-blue"} rounded`}>
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/question") && "active"}`}>
                                 <FontAwesomeIcon icon={faFolder} size="xl" />
                             </Col>
@@ -62,8 +62,8 @@ const Sidebar = (props: any) => {
                             </Col>
                         </Row>
                     </Link> :
-                    <Link to={url.includes("/cbt") ? "#" : "/cbt"} className="text-decoration-none">
-                        <Row className={`py-3 mt-3 ${url.includes("/cbt") && "border-blue"} rounded width-fit`}>
+                    <Link to={url.includes("/cbt") ? "#" : "/cbt"} className="text-decoration-none w-100">
+                        <Row className={`py-3 mt-3 ${url.includes("/cbt") && "border-blue"} rounded`}>
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/cbt") && "active"}`}>
                                 <FontAwesomeIcon icon={faFolder} size="xl" />
                             </Col>
@@ -84,8 +84,8 @@ const Sidebar = (props: any) => {
                     </Row>
                 </Link>
                 {props?.isAdmin ?
-                    <Link to={url.includes("/dashboard/contestant") ? "#" : "/dashboard/contestant"} className="text-decoration-none">
-                        <Row className={`py-3 mt-3 ${url.includes("/dashboard/contestant") && "border-blue"} rounded width-fit`}>
+                    <Link to={url.includes("/dashboard/contestant") ? "#" : "/dashboard/contestant"} className="text-decoration-none w-100">
+                        <Row className={`py-3 mt-3 ${url.includes("/dashboard/contestant") && "border-blue"} rounded`}>
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/dashboard/contestant") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>
@@ -94,8 +94,8 @@ const Sidebar = (props: any) => {
                             </Col>
                         </Row>
                     </Link> :
-                    <Link to={url.includes("/profile") ? "#" : profileUrl} className="text-decoration-none">
-                        <Row className={`py-3 mt-3 ${props?.verified && url.includes("/profile") ? "border-green" : "border-red"} rounded width-fit`}>
+                    <Link to={url.includes("/profile") ? "#" : profileUrl} className="text-decoration-none w-100">
+                        <Row className={`py-3 mt-3 ${props?.verified && url.includes("/profile") ? "border-green" : "border-red"} rounded`}>
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/profile") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>

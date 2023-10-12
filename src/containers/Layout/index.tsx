@@ -19,6 +19,7 @@ const IsotermProfileContainer = lazy(() => import("../IsotermProfile"));
 const ContestantDashboardContainer = lazy(() => import("../ContestantDashboard"));
 const ForgotPasswordContainer = lazy(() => import("../ForgotPassword"));
 const NewPasswordContainer = lazy(() => import("../NewPassword"));
+const QuestionDashboardContainer = lazy(() => import("../QuestionDashboard"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -114,6 +115,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                                             exact path={"/dashboard/contestant"}
                                             render={(props: any) => {
                                             return <ContestantDashboardContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
+                                            }}
+                                        />
+                                        <Route
+                                            exact path={"/dashboard/question"}
+                                            render={(props: any) => {
+                                            return <QuestionDashboardContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                             }}
                                         />
                                     </>
