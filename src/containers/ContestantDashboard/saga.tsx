@@ -25,11 +25,12 @@ import {
 } from "../../config/api";
 
 export function* handleGetContestantsData(action: any): any {
+    const { params } = action;
     let res = yield call(
         callApi,
         "GET",
         USER_URL,
-        null,
+        params,
         null,
         true
     );

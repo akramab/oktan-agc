@@ -32,15 +32,18 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         super(props);
         this.state = {
             showModal: false,
-            shrink: false
+            shrink: false,
+            keyword: ""
         };
 
         this.toggleModal = this.toggleModal.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleVerifyContestant = this.handleVerifyContestant.bind(this);
         this.handleDeleteContestant = this.handleDeleteContestant.bind(this);
         this.handleDownloadContestant = this.handleDownloadContestant.bind(this);
         this.handleDownloadAllContestant = this.handleDownloadAllContestant.bind(this);
+        this.handleSearchContestant = this.handleSearchContestant.bind(this);
     }
 
     componentDidMount(): void {
@@ -51,16 +54,17 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         else if (competitionType === "ISOTERM") {
             this.props.history.replace("/profile/isoterm");
         }
-        this.props.getContestantDataList();
+        this.props.getContestantDataList(null);
     }
 
     componentDidUpdate(prevProps: any): void {
         const { verifyMessageResponse, deleteMessageResponse } = this.props;
+        const { keyword } = this.state
         if (prevProps.verifyMessageResponse !== verifyMessageResponse && verifyMessageResponse) {
             this.toggleModal();
         }
         if (prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) {
-            this.props.getContestantDataList();
+            this.props.getContestantDataList(keyword);
         }
     }
 
@@ -73,6 +77,13 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
     private toggleSidebar(): void {
         this.setState({
             shrink: !this.state.shrink
+        });
+    }
+
+    private handleChange(e: any): void {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value
         });
     }
 
@@ -92,21 +103,29 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
         this.props.downloadAllContestant();
     }
 
+    private handleSearchContestant(): void {
+        const { keyword } = this.state;
+        this.props.getContestantDataList(keyword);
+    }
+
     render() {
         const { contestantsDataResponse } = this.props;
-        const { showModal, shrink } = this.state;
+        const { showModal, shrink, keyword } = this.state;
         return (
             <ContestantDashboardComponent
                 {...this.props}
                 contestantsDataResponse={contestantsDataResponse}
                 showModal={showModal}
                 shrink={shrink}
+                keyword={keyword}
                 toggleModal={this.toggleModal}
                 toggleSidebar={this.toggleSidebar}
+                handleChange={this.handleChange}
                 handleVerifyContestant={this.handleVerifyContestant}
                 handleDeleteContestant={this.handleDeleteContestant}
                 handleDownloadContestant={this.handleDownloadContestant}
                 handleDownloadAllContestant={this.handleDownloadAllContestant}
+                handleSearchContestant={this.handleSearchContestant}
             />
         )
     }
@@ -124,7 +143,7 @@ const mapStateToProps = (state: any) => {
 
 function mapDispatchToProps(dispatch: any) {
     return {
-        getContestantDataList: () => dispatch(getContestantsData()),
+        getContestantDataList: (params: any) => dispatch(getContestantsData(params)),
         verifyContestant: (params: any) => dispatch(verifyContestantData(params)),
         deleteContestant: (params: any) => dispatch(deleteContestantData(params)),
         downloadContestant: (params: any) => dispatch(downloadContestantData(params)),

@@ -11,9 +11,10 @@ import {
     SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA
 } from "./constant";
 
-export function getContestantsData() {
+export function getContestantsData(params: any) {
     return {
-        type: GET_CONTESTANTS_DATA
+        type: GET_CONTESTANTS_DATA,
+        params,
     };
 }
 

@@ -4,8 +4,8 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Searchbar = (props: any) => {
     return (
-        <InputGroup>
-            <InputGroup.Text id="addon-search" className="px-3 py-3 bg-white border-0">
+        <InputGroup className="rounded">
+            <InputGroup.Text id="addon-search" onClick={props?.onClick} className="px-3 py-3 bg-white border-0 cursor-pointer">
                 <FontAwesomeIcon icon={faMagnifyingGlass} className="text-cyan" />
             </InputGroup.Text>
             <Form.Control
@@ -15,6 +15,8 @@ const Searchbar = (props: any) => {
                 name={props?.name}
                 onChange={props?.onChange}
                 value={props?.value}
+                aria-label="Cari Nama Instansi"
+                aria-describedby="addon-search"
             />
         </InputGroup>
     )

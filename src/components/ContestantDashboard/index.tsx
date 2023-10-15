@@ -33,7 +33,12 @@ const ContestantDashboardComponent = (props: any) => {
             <div className={`side-content bg-gray p-4 ${props?.shrink && "shrink"}`}>
                 <Row className="justify-content-between align-items-center my-2">
                     <Col className="p-0">
-                        <Searchbar />
+                        <Searchbar
+                            name="keyword"
+                            onChange={(e: any) => props?.handleChange(e)}
+                            value={props?.keyword}
+                            onClick={() => props?.handleSearchContestant()}
+                        />
                     </Col>
                     <Col className="p-0 text-end">
                         <CustomButton
