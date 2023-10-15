@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faCheck, faTrash, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 import { formatDate } from '../../utils/helper';
@@ -12,26 +12,40 @@ const ContestantItem = (props: any) => {
         <Row className="bg-white rounded align-items-center py-2 mb-3">
             <Col xs={1}>
                 {data?.category === "CRYSTAL" &&
-                    <p className="fw-bold text-crystal text-truncate">Crystal</p>
+                    <OverlayTrigger overlay={<Tooltip>Crystal</Tooltip>}>
+                        <p className="fw-bold text-crystal text-truncate">Crystal</p>
+                    </OverlayTrigger>
                 }
                 {data?.category === "ISOTERM" &&
-                    <p className="fw-bold text-isoterm text-truncate">Isoterm</p>
+                    <OverlayTrigger overlay={<Tooltip>Isoterm</Tooltip>}>
+                        <p className="fw-bold text-isoterm text-truncate">Isoterm</p>
+                    </OverlayTrigger>
                 }
             </Col>
             <Col xs={2}>
-                <p className="text-truncate">{formatDate(data?.date)}</p>
+                <OverlayTrigger overlay={<Tooltip>{formatDate(data?.date)}</Tooltip>}>
+                    <p className="text-truncate">{formatDate(data?.date)}</p>
+                </OverlayTrigger>
             </Col>
             <Col xs={1}>
-                <p className="text-truncate">{data?.name?.team}</p>
+                <OverlayTrigger overlay={<Tooltip>{data?.name?.team}</Tooltip>}>
+                    <p className="text-truncate">{data?.name?.team}</p>
+                </OverlayTrigger>
             </Col>
             <Col xs={2}>
-                <p className="text-truncate">{data?.name?.member}</p>
+                <OverlayTrigger overlay={<Tooltip>{data?.name?.member}</Tooltip>}>
+                    <p className="text-truncate">{data?.name?.member}</p>
+                </OverlayTrigger>
             </Col>
             <Col xs={1}>
-                <p className="text-truncate">{data?.institution?.name}</p>
+                <OverlayTrigger overlay={<Tooltip>{data?.institution?.name}</Tooltip>}>
+                    <p className="text-truncate">{data?.institution?.name}</p>
+                </OverlayTrigger>
             </Col>
             <Col xs={2}>
-                <p className="text-truncate">{data?.institution?.instructor}</p>
+                <OverlayTrigger overlay={<Tooltip>{data?.institution?.instructor}</Tooltip>}>
+                    <p className="text-truncate">{data?.institution?.instructor}</p>
+                </OverlayTrigger>
             </Col>
             <Col xs={3} className="p-0">
                 <Row className="align-items-center">
