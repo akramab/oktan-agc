@@ -16,7 +16,7 @@ const QuestionDashboardComponent = (props: any) => {
                 <Modal.Body>
                     <Row className="text-center p-5">
                         <Col>
-                            <p className="fw-bold">Peserta berhasil diverifikasi!</p>
+                            <p className="fw-bold">Pertanyaan berhasil diperbaharui!</p>
                         </Col>
                     </Row>
                 </Modal.Body>
@@ -43,7 +43,6 @@ const QuestionDashboardComponent = (props: any) => {
                                     <FontAwesomeIcon icon={faFilter} className="me-2" />
                                     Filter
                                 </>}
-                                onClick={() => props?.handleDownloadAllContestant()}
                             />
                         </Col>
                     </Row>
@@ -72,24 +71,6 @@ const QuestionDashboardComponent = (props: any) => {
                                     }
                                 ]
                             }}
-                        /><QuestionItem
-                        data={{
-                            number: "1",
-                            question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                            type: "ESSAY"
-                        }}
-                    /><QuestionItem
-                            data={{
-                                number: "1",
-                                question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                                type: "ESSAY"
-                            }}
-                        /><QuestionItem
-                            data={{
-                                number: "1",
-                                question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                                type: "ESSAY"
-                            }}
                         />
                         <QuestionItem
                             data={{
@@ -98,43 +79,6 @@ const QuestionDashboardComponent = (props: any) => {
                                 type: "ESSAY"
                             }}
                         />
-                        <QuestionItem
-                            data={{
-                                number: "1",
-                                question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                                type: "ESSAY"
-                            }}
-                        /><QuestionItem
-                            data={{
-                                number: "1",
-                                question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                                type: "ESSAY"
-                            }}
-                        /><QuestionItem
-                            data={{
-                                number: "1",
-                                question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                                type: "ESSAY"
-                            }}
-                        /><QuestionItem
-                        data={{
-                            number: "1",
-                            question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                            type: "ESSAY"
-                        }}
-                    /><QuestionItem
-                    data={{
-                        number: "1",
-                        question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                        type: "ESSAY"
-                    }}
-                /><QuestionItem
-                data={{
-                    number: "1",
-                    question: "Jika f(x) = 9 cos x + 3 sin x, maka f’(0) = ... ",
-                    type: "ESSAY"
-                }}
-            />
                         <QuestionItem
                             data={{
                                 number: "1",

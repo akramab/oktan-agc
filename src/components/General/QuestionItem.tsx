@@ -1,10 +1,6 @@
-import { lazy } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faCheck, faTrash, faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { formatDate } from '../../utils/helper';
-
-const CustomButton = lazy(() => import("./CustomButton"));
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const QuestionItem = (props: any) => {
     const data = props?.data;

@@ -113,3 +113,5 @@ export const DOWNLOAD_USER_URL = `${USER_URL}/download`;
 
 export const FORGOT_PASSWORD_URL = `${getApiUrl()}/forgot`;
 export const NEW_PASSWORD_URL = `${FORGOT_PASSWORD_URL}/new`;
+
+export const QUESTION_URL = `${getApiUrl()}/question`;

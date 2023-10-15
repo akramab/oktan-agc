@@ -1,37 +1,30 @@
-const contestantsDataSelector = (state: any) => {
-    return state?.contestantDashboardReducer?.contestantsData
-        ? state.contestantDashboardReducer.contestantsData
+const questionsDataSelector = (state: any) => {
+    return state?.questionDashboardReducer?.questionsData
+        ? state.questionDashboardReducer.questionsData
         : [];
 };
 
-const verifyMessageSelector = (state: any) => {
-    return state?.contestantDashboardReducer?.verifyMessage
-        ? state.contestantDashboardReducer.verifyMessage
+const editMessageSelector = (state: any) => {
+    return state?.questionDashboardReducer?.editMessage
+        ? state.questionDashboardReducer.editMessage
         : null;
 };
 
 const deleteMessageSelector = (state: any) => {
-    return state?.contestantDashboardReducer?.deleteMessage
-        ? state.contestantDashboardReducer.deleteMessage
+    return state?.questionDashboardReducer?.deleteMessage
+        ? state.questionDashboardReducer.deleteMessage
         : null;
 };
 
-const downloadMessageSelector = (state: any) => {
-    return state?.contestantDashboardReducer?.downloadMessage
-        ? state.contestantDashboardReducer.downloadMessage
-        : null;
-};
-
-const downloadAllMessageSelector = (state: any) => {
-    return state?.contestantDashboardReducer?.downloadAllMessage
-        ? state.contestantDashboardReducer.downloadAllMessage
+const createMessageSelector = (state: any) => {
+    return state?.questionDashboardReducer?.createMessage
+        ? state.questionDashboardReducer.createMessage
         : null;
 };
 
 export {
-    contestantsDataSelector,
-    verifyMessageSelector,
+    questionsDataSelector,
+    editMessageSelector,
     deleteMessageSelector,
-    downloadMessageSelector,
-    downloadAllMessageSelector
-};
+    createMessageSelector
+}

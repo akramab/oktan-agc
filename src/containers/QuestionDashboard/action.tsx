@@ -1,80 +1,65 @@
 import {
-    GET_CONTESTANTS_DATA,
-    SET_CONTESTANTS_DATA,
-    VERIFY_CONTESTANT_DATA,
-    SUCCESS_VERIFY_CONTESTANT_DATA,
-    DELETE_CONTESTANT_DATA,
-    SUCCESS_DELETE_CONTESTANT_DATA,
-    DOWNLOAD_CONTESTANT_DATA,
-    SUCCESS_DOWNLOAD_CONTESTANT_DATA,
-    DOWNLOAD_ALL_CONTESTANT_DATA,
-    SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA
+    GET_QUESTIONS_DATA,
+    SET_QUESTIONS_DATA,
+    EDIT_QUESTION_DATA,
+    SUCCESS_EDIT_QUESTION_DATA,
+    DELETE_QUESTION_DATA,
+    SUCCESS_DELETE_QUESTION_DATA,
+    CREATE_QUESTION,
+    SUCCESS_CREATE_QUESTION
 } from "./constant";
 
-export function getContestantsData() {
+export function getQuestionsData() {
     return {
-        type: GET_CONTESTANTS_DATA
+        type: GET_QUESTIONS_DATA
     };
 }
 
-export function setContestantsData(params: any) {
+export function setQuestionsData(params: any) {
     return {
-        type: SET_CONTESTANTS_DATA,
+        type: SET_QUESTIONS_DATA,
         params,
     };
 }
 
-export function verifyContestantData(params: any) {
+export function editQuestionData(params: any) {
     return {
-        type: VERIFY_CONTESTANT_DATA,
+        type: EDIT_QUESTION_DATA,
         params,
     };
 }
 
-export function successVerifyContestantData(params: any) {
+export function successEditQuestionData(params: any) {
     return {
-        type: SUCCESS_VERIFY_CONTESTANT_DATA,
+        type: SUCCESS_EDIT_QUESTION_DATA,
         params,
     };
 }
 
-export function deleteContestantData(params: any) {
+export function deleteQuestionData(params: any) {
     return {
-        type: DELETE_CONTESTANT_DATA,
+        type: DELETE_QUESTION_DATA,
         params,
     };
 }
 
-export function successDeleteContestantData(params: any) {
+export function successDeleteQuestionData(params: any) {
     return {
-        type: SUCCESS_DELETE_CONTESTANT_DATA,
+        type: SUCCESS_DELETE_QUESTION_DATA,
         params,
     };
 }
 
-export function downloadContestantData(params: any) {
+export function createQuestion(params: any) {
     return {
-        type: DOWNLOAD_CONTESTANT_DATA,
+        type: CREATE_QUESTION,
         params,
     };
 }
 
-export function successDownloadContestantData(params: any) {
+export function successCreateQuestion(params: any) {
     return {
-        type: SUCCESS_DOWNLOAD_CONTESTANT_DATA,
-        params,
-    };
-}
-
-export function downloadAllContestantData() {
-    return {
-        type: DOWNLOAD_ALL_CONTESTANT_DATA,
-    };
-}
-
-export function successDownloadAllContestantData(params: any) {
-    return {
-        type: SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA,
+        type: SUCCESS_CREATE_QUESTION,
         params,
     };
 }

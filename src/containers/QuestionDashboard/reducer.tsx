@@ -1,49 +1,42 @@
 import {
-    SET_CONTESTANTS_DATA,
-    SUCCESS_VERIFY_CONTESTANT_DATA,
-    SUCCESS_DELETE_CONTESTANT_DATA,
-    SUCCESS_DOWNLOAD_CONTESTANT_DATA,
-    SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA
+    SET_QUESTIONS_DATA,
+    SUCCESS_EDIT_QUESTION_DATA,
+    SUCCESS_DELETE_QUESTION_DATA,
+    SUCCESS_CREATE_QUESTION
 } from "./constant";
 
 const initialState = {
-    contestantsData: [],
-    verifyMessage: null,
+    questionsData: [],
+    editMessage: null,
     deleteMessage: null,
-    downloadMessage: null,
-    downloadAllMessage: null
+    createMessage: null
 };
 
-const contestantDashboardReducer = (state = initialState, action: any) => {
+const questionDashboardReducer = (state = initialState, action: any) => {
     switch (action.type) {
-        case SET_CONTESTANTS_DATA:
+        case SET_QUESTIONS_DATA:
             return {
                 ...state,
-                contestantsData: action.params,
+                questionsData: action.params,
             };
-        case SUCCESS_VERIFY_CONTESTANT_DATA:
+        case SUCCESS_EDIT_QUESTION_DATA:
             return {
                 ...state,
-                verifyMessage: action.params,
+                editMessage: action.params,
             };
-        case SUCCESS_DELETE_CONTESTANT_DATA:
+        case SUCCESS_DELETE_QUESTION_DATA:
             return {
                 ...state,
                 deleteMessage: action.params,
             };
-        case SUCCESS_DOWNLOAD_CONTESTANT_DATA:
+        case SUCCESS_CREATE_QUESTION:
             return {
                 ...state,
-                downloadMessage: action.params,
-            };
-        case SUCCESS_DOWNLOAD_ALL_CONTESTANT_DATA:
-            return {
-                ...state,
-                downloadAllMessage: action.params,
+                createMessage: action.params,
             };
         default:
             return state;
     }
 };
 
-export default contestantDashboardReducer;
+export default questionDashboardReducer;

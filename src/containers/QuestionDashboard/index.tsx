@@ -2,18 +2,16 @@ import { lazy, PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
-    contestantsDataSelector,
-    verifyMessageSelector,
+    questionsDataSelector,
+    editMessageSelector,
     deleteMessageSelector,
-    downloadMessageSelector,
-    downloadAllMessageSelector
+    createMessageSelector
 } from "./selector";
 import {
-    getContestantsData,
-    verifyContestantData,
-    deleteContestantData,
-    downloadContestantData,
-    downloadAllContestantData
+    getQuestionsData,
+    editQuestionData,
+    deleteQuestionData,
+    createQuestion
 } from "./action";
 
 const QuestionDashboardComponent = lazy(() => import("../../components/QuestionDashboard"));
@@ -21,26 +19,35 @@ const QuestionDashboardComponent = lazy(() => import("../../components/QuestionD
 export class QuestionDashboardContainer extends PureComponent<any, any> {
     static propTypes = {
         history: PropTypes.any,
-        contestantsDataResponse: PropTypes.any,
-        verifyMessageResponse: PropTypes.any,
+        questionsDataResponse: PropTypes.any,
+        editMessageResponse: PropTypes.any,
         deleteMessageResponse: PropTypes.any,
-        downloadMessageResponse: PropTypes.any,
-        downloadAllMessageResponse: PropTypes.any
+        createMessageResponse: PropTypes.any
     };
 
     constructor(props: any) {
         super(props);
         this.state = {
             showModal: false,
-            shrink: false
+            showEdit: false,
+            showDelete: false,
+            showCreate: false,
+            shrink: false,
+            currentQuestion: {},
+            number: "",
+            type: "",
+            question: "",
+            answers: ["", "", "", ""],
+            id: ""
         };
 
-        this.toggleModal = this.toggleModal.bind(this);
+        this.toggleEdit = this.toggleEdit.bind(this);
+        this.toggleDelete = this.toggleDelete.bind(this);
+        this.toggleCreate = this.toggleCreate.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
-        this.handleVerifyContestant = this.handleVerifyContestant.bind(this);
-        this.handleDeleteContestant = this.handleDeleteContestant.bind(this);
-        this.handleDownloadContestant = this.handleDownloadContestant.bind(this);
-        this.handleDownloadAllContestant = this.handleDownloadAllContestant.bind(this);
+        this.handleEditQuestion = this.handleEditQuestion.bind(this);
+        this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
+        this.submitCreateQuestion = this.submitCreateQuestion.bind(this);
     }
 
     componentDidMount(): void {
@@ -51,16 +58,17 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         else if (competitionType === "ISOTERM") {
             this.props.history.replace("/profile/isoterm");
         }
-        this.props.getContestantDataList();
+        this.props.getQuestionDataList();
     }
 
     componentDidUpdate(prevProps: any): void {
-        const { verifyMessageResponse, deleteMessageResponse } = this.props;
-        if (prevProps.verifyMessageResponse !== verifyMessageResponse && verifyMessageResponse) {
+        const { editMessageResponse, deleteMessageResponse, createMessageResponse } = this.props;
+        if (prevProps.editMessageResponse !== editMessageResponse && editMessageResponse) {
             this.toggleModal();
         }
-        if (prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) {
-            this.props.getContestantDataList();
+        if ((prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) ||
+            (prevProps.createMessageResponse !== createMessageResponse && createMessageResponse)) {
+            this.props.getQuestionDataList();
         }
     }
 
@@ -70,43 +78,72 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         });
     }
 
+    private toggleEdit(id: string = ""): void {
+        this.setState({
+            showEdit: !this.state.showEdit,
+            id: id
+        });
+    }
+
+    private toggleDelete(id: string = ""): void {
+        this.setState({
+            showDelete: !this.state.showDelete,
+            id: id
+        });
+    }
+
+    private toggleCreate(): void {
+        this.setState({
+            showCreate: !this.state.showCreate
+        });
+    }
+
     private toggleSidebar(): void {
         this.setState({
             shrink: !this.state.shrink
         });
     }
 
-    private handleVerifyContestant(id: any): void {
-        this.props.verifyContestant(id);
+    private handleEditQuestion(id: any): void {
+        this.props.editQuestion(id);
     }
 
-    private handleDeleteContestant(id: any): void {
-        this.props.deleteContestant(id);
+    private handleDeleteQuestion(id: any): void {
+        this.props.deleteQuestion(id);
     }
 
-    private handleDownloadContestant(id: any): void {
-        this.props.downloadContestant(id);
-    }
+    private submitCreateQuestion(): void {
+        const { number, type, question, answers } = this.state;
 
-    private handleDownloadAllContestant(): void {
-        this.props.downloadAllContestant();
+        this.props.createQuestion({
+            number,
+            type,
+            question,
+            answers
+        });
     }
 
     render() {
-        const { contestantsDataResponse } = this.props;
-        const { showModal, shrink } = this.state;
+        const { questionsDataResponse } = this.props;
+        const { showModal, shrink, number, type, question, answers } = this.state;
         return (
             <QuestionDashboardComponent
                 {...this.props}
-                contestantsDataResponse={contestantsDataResponse}
+                questionsDataResponse={questionsDataResponse}
                 showModal={showModal}
                 shrink={shrink}
+                number={number}
+                type={type}
+                question={question}
+                answers={answers}
                 toggleModal={this.toggleModal}
+                toggleEdit={this.toggleEdit}
+                toggleDelete={this.toggleDelete}
+                toggleCreate={this.toggleCreate}
                 toggleSidebar={this.toggleSidebar}
-                handleVerifyContestant={this.handleVerifyContestant}
-                handleDeleteContestant={this.handleDeleteContestant}
-                handleDownloadContestant={this.handleDownloadContestant}
-                handleDownloadAllContestant={this.handleDownloadAllContestant}
+                handleEditQuestion={this.handleEditQuestion}
+                handleDeleteQuestion={this.handleDeleteQuestion}
+                submitCreateQuestion={this.submitCreateQuestion}
             />
         )
     }
@@ -114,21 +151,20 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
 const mapStateToProps = (state: any) => {
     return {
-        contestantsDataResponse: contestantsDataSelector(state),
-        verifyMessageResponse: verifyMessageSelector(state),
+        questionsDataResponse: questionsDataSelector(state),
+        editMessageResponse: editMessageSelector(state),
         deleteMessageResponse: deleteMessageSelector(state),
-        downloadMessageResponse: downloadMessageSelector(state),
-        downloadAllMessageResponse: downloadAllMessageSelector(state)
+        createMessageResponse: createMessageSelector(state)
     };
 };
 
+
 function mapDispatchToProps(dispatch: any) {
     return {
-        getContestantDataList: () => dispatch(getContestantsData()),
-        verifyContestant: (params: any) => dispatch(verifyContestantData(params)),
-        deleteContestant: (params: any) => dispatch(deleteContestantData(params)),
-        downloadContestant: (params: any) => dispatch(downloadContestantData(params)),
-        downloadAllContestant: () => dispatch(downloadAllContestantData()),
+        getQuestionDataList: () => dispatch(getQuestionsData()),
+        editQuestion: (params: any) => dispatch(editQuestionData(params)),
+        deleteQuestion: (params: any) => dispatch(deleteQuestionData(params)),
+        createQuestion: (params: any) => dispatch(createQuestion(params))
     };
 }
   
