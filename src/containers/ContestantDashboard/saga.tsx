@@ -42,7 +42,7 @@ export function* handleVerifyContestantData(action: any): any {
     const { params } = action;
     let res = yield call(
         callApi,
-        "GET",
+        "POST",
         `${VERIFY_USER_URL}/${params}`,
         null,
         null,
@@ -57,7 +57,7 @@ export function* handleDeleteContestantData(action: any): any {
     const { params } = action;
     let res = yield call(
         callApi,
-        "DELETE",
+        "POST",
         `${DELETE_USER_URL}/${params}`,
         null,
         null,
