@@ -54,7 +54,7 @@ const CrystalCompetitionComponent = (props: any) => {
                         <p className="fw-bold mt-3">Untuk informasi lebih lanjut silahkan klik link dibawah ini:</p>
                         <Row className="">
                             <Col className="width-fit rounded shadow-sm p-3 mt-2 darken-hover">
-                                <a target="_blank" href="https://drive.google.com/file/d/1RNlzW4rSXBhf_psq3auqrNi0WFUqZaCf/view?usp=drivesdk">
+                                <a target="_blank" href="https://bit.ly/KitCRYSTAL2024">
                                     <FontAwesomeIcon icon={faGoogleDrive} size="lg" className="px-1 icon-drive" />
                                 </a>
                             </Col>
