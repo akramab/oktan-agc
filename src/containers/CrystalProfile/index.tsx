@@ -34,6 +34,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumber: "",
             schoolEmail: "",
             paymentDocument: null,
+            registrationLink: "",
+            paymentLink: "",
             registrationDocumentError: "",
             number1Error: "",
             email1Error: "",
@@ -67,9 +69,15 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
     componentDidUpdate(prevProps: any): void {
         const { crystalProfileResponse, editProfileMessageResponse } = this.props;
         if (prevProps.crystalProfileResponse !== crystalProfileResponse && crystalProfileResponse.length !== 0) {
+            let registration = crystalProfileResponse.documents.find(d => {return d.name === "registration"});
+            let payment = crystalProfileResponse.documents.find(d => {return d.name === "payment"});
+            let registrationDoc = new File([registration.path], "registration.pdf", {type: "application/pdf"});
+            let paymentDoc = new File([payment.path], "payment.pdf", {type: "application/pdf"});
+            
             this.setState({
                 ...this.state,
                 teamName: crystalProfileResponse.team,
+                registrationDocument: registrationDoc,
                 name1: crystalProfileResponse.members[0].name,
                 number1: crystalProfileResponse.members[0].wa_number,
                 email1: crystalProfileResponse.members[0].email,
@@ -81,7 +89,10 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 teacherEmail: crystalProfileResponse.institution.teacher.email,
                 schoolName: crystalProfileResponse.institution.school.name,
                 schoolNumber: crystalProfileResponse.institution.school.wa_number,
-                schoolEmail: crystalProfileResponse.institution.school.email
+                schoolEmail: crystalProfileResponse.institution.school.email,
+                paymentDocument: paymentDoc,
+                registrationLink: registration.path,
+                paymentLink: payment.path
             });
         }
         if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
@@ -312,6 +323,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             schoolNumber,
             schoolEmail,
             paymentDocument,
+            registrationLink,
+            paymentLink,
             registrationDocumentError,
             number1Error,
             email1Error,
@@ -343,6 +356,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 schoolNumber={schoolNumber}
                 schoolEmail={schoolEmail}
                 paymentDocument={paymentDocument}
+                registrationLink={registrationLink}
+                paymentLink={paymentLink}
                 number1Error={number1Error}
                 email1Error={email1Error}
                 number2Error={number2Error}

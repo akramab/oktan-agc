@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { faPaperclip, faEye } from '@fortawesome/free-solid-svg-icons';
 
 const FileInput = (props: any) => {
     const hiddenFileInput = React.useRef<HTMLInputElement>(null);
@@ -12,11 +12,18 @@ const FileInput = (props: any) => {
     return (
         <>
             <InputGroup className={`${props?.checkInput} cursor-pointer rounded`}>
-                <Row className="bg-gray-input w-100 rounded py-1" onClick={handleClick} id={props?.name} tabindex="0">
-                    <Col className="d-flex align-items-center py-2">
+                <Row className="bg-gray-input w-100 rounded py-1 align-items-center">
+                    <Col className="d-flex align-items-center py-2" onClick={handleClick} id={props?.name} tabindex="0">
                         <FontAwesomeIcon icon={faPaperclip} className="text-cyan px-2" />
                         <p>{props?.text}</p>
                     </Col>
+                    {props?.link &&
+                        <Col className="width-fit">
+                            <a href={props?.link} target="_blank">
+                                <FontAwesomeIcon icon={faEye} />
+                            </a>
+                        </Col>
+                    }
                 </Row>
                 <Form.Control
                     type="file"

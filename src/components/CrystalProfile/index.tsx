@@ -62,6 +62,7 @@ const CrystalProfileComponent = (props: any) => {
                                     value={props?.registrationDocument}
                                     checkInput={props?.registrationDocumentError ? "input-error" : ""}
                                     errorMessage={props?.registrationDocumentError ?? ""}
+                                    link={props?.registrationLink}
                                 />
                             </Form.Group>
                         </Col>
@@ -294,6 +295,7 @@ const CrystalProfileComponent = (props: any) => {
                                     value={props?.paymentDocument}
                                     checkInput={props?.paymentDocumentError ? "input-error" : ""}
                                     errorMessage={props?.paymentDocumentError ?? ""}
+                                    link={props?.paymentLink}
                                 />
                             </Form.Group>
                         </Col>
