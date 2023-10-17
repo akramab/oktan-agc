@@ -71,13 +71,13 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         if (prevProps.crystalProfileResponse !== crystalProfileResponse && crystalProfileResponse.length !== 0) {
             let registration = crystalProfileResponse.documents.find(d => {return d.name === "registration"});
             let payment = crystalProfileResponse.documents.find(d => {return d.name === "payment"});
-            let registrationDoc = new File([registration.path], "registration.pdf", {type: "application/pdf"});
-            let paymentDoc = new File([payment.path], "payment.pdf", {type: "application/pdf"});
-            
+            let registrationDoc = registration && new File([registration.path], "registration.pdf", {type: "application/pdf"});
+            let paymentDoc = payment && new File([payment.path], "payment.pdf", {type: "application/pdf"});
+
             this.setState({
                 ...this.state,
                 teamName: crystalProfileResponse.team,
-                registrationDocument: registrationDoc,
+                registrationDocument: registrationDoc ?? null,
                 name1: crystalProfileResponse.members[0].name,
                 number1: crystalProfileResponse.members[0].wa_number,
                 email1: crystalProfileResponse.members[0].email,
@@ -90,9 +90,9 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 schoolName: crystalProfileResponse.institution.school.name,
                 schoolNumber: crystalProfileResponse.institution.school.wa_number,
                 schoolEmail: crystalProfileResponse.institution.school.email,
-                paymentDocument: paymentDoc,
-                registrationLink: registration.path,
-                paymentLink: payment.path
+                paymentDocument: paymentDoc ?? null,
+                registrationLink: registration?.path ?? "",
+                paymentLink: payment?.path ?? ""
             });
         }
         if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
