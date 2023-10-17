@@ -44,6 +44,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper2: null,
             fullDocument: null,
             paymentDocument: null,
+            abstract1Link: "",
+            abstract2Link: "",
+            paper1Link: "",
+            paper2Link: "",
+            paymentLink: "",
+            fullLink: "",
             year1Error: "",
             email1Error: "",
             number1Error: "",
@@ -82,6 +88,20 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     componentDidUpdate(prevProps: any): void {
         const { isotermProfileResponse, editProfileMessageResponse } = this.props;
         if (prevProps.isotermProfileResponse !== isotermProfileResponse && isotermProfileResponse.length !== 0) {
+            let abstract1 = isotermProfileResponse.documents.find(d => {return d.name === "abstract" && d.id === "1"});
+            let abstract2 = isotermProfileResponse.documents.find(d => {return d.name === "abstract" && d.id === "2"});
+            let work1 = isotermProfileResponse.documents.find(d => {return d.name === "work" && d.id === "1"});
+            let work2 = isotermProfileResponse.documents.find(d => {return d.name === "work" && d.id === "2"});
+            let payment = isotermProfileResponse.documents.find(d => {return d.name === "payment"});
+            let unified = isotermProfileResponse.documents.find(d => {return d.name === "unified_document"});
+
+            let abstract1Doc = abstract1 && new File([abstract1.path], "abstract1.pdf", {type: "application/pdf"});
+            let abstract2Doc = abstract2 && new File([abstract2.path], "abstract2.pdf", {type: "application/pdf"});
+            let work1Doc = work1 && new File([work1.path], "work1.pdf", {type: "application/pdf"});
+            let work2Doc = work2 && new File([work2.path], "work2.pdf", {type: "application/pdf"});
+            let paymentDoc = payment && new File([payment.path], "payment.pdf", {type: "application/pdf"});
+            let unifiedDoc = unified && new File([unified.path], "unified.pdf", {type: "application/pdf"});
+
             this.setState({
                 ...this.state,
                 teamName: isotermProfileResponse.team,
@@ -102,7 +122,19 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 number3: isotermProfileResponse.members[2].wa_number,
                 email3: isotermProfileResponse.members[2].email,
                 universityName: isotermProfileResponse.institution.university.name,
-                teacherName: isotermProfileResponse.institution.university.lecturer
+                teacherName: isotermProfileResponse.institution.university.lecturer,
+                abstract1: abstract1Doc ?? null,
+                abstract2: abstract2Doc ?? null,
+                paper1: work1Doc ?? null,
+                paper2: work2Doc ?? null,
+                paymentDocument: paymentDoc ?? null,
+                fullDocument: unifiedDoc ?? null,
+                abstract1Link: abstract1?.path ?? "",
+                abstract2Link: abstract2?.path ?? "",
+                paper1Link: work1?.path ?? "",
+                paper2Link: work2?.path ?? "",
+                fullLink: unified?.path ?? "",
+                paymentLink: payment?.path ?? ""
             });
         }
         if (prevProps.editProfileMessageResponse !== editProfileMessageResponse && editProfileMessageResponse) {
@@ -425,6 +457,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             paper2,
             fullDocument,
             paymentDocument,
+            abstract1Link,
+            abstract2Link,
+            paper1Link,
+            paper2Link,
+            paymentLink,
+            fullLink,
             year1Error,
             email1Error,
             number1Error,
@@ -472,6 +510,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 paper2={paper2}
                 fullDocument={fullDocument}
                 paymentDocument={paymentDocument}
+                abstract1Link={abstract1Link}
+                abstract2Link={abstract2Link}
+                paper1Link={paper1Link}
+                paper2Link={paper2Link}
+                paymentLink={paymentLink}
+                fullLink={fullLink}
                 year1Error={year1Error}
                 email1Error={email1Error}
                 number1Error={number1Error}

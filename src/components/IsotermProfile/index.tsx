@@ -383,6 +383,7 @@ const IsotermProfileComponent = (props: any) => {
                                     value={props?.abstract1}
                                     checkInput={props?.abstract1Error ? "input-error" : ""}
                                     errorMessage={props?.abstract1Error ?? ""}
+                                    link={props?.abstract1Link}
                                 />
                             </Form.Group>
                         </Col>
@@ -401,6 +402,7 @@ const IsotermProfileComponent = (props: any) => {
                                         value={props?.abstract2}
                                         checkInput={props?.abstract2Error ? "input-error" : ""}
                                         errorMessage={props?.abstract2Error ?? ""}
+                                        link={props?.abstract2Link}
                                     />
                                 </Form.Group>
                             </Col>
@@ -422,6 +424,7 @@ const IsotermProfileComponent = (props: any) => {
                                         value={props?.paper1}
                                         checkInput={props?.paper1Error ? "input-error" : ""}
                                         errorMessage={props?.paper1Error ?? ""}
+                                        link={props?.paper1Link}
                                     />
                                 </Form.Group>
                             </Col>
@@ -439,6 +442,7 @@ const IsotermProfileComponent = (props: any) => {
                                         value={props?.paper2}
                                         checkInput={props?.paper2Error ? "input-error" : ""}
                                         errorMessage={props?.paper2Error ?? ""}
+                                        link={props?.paper2Link}
                                     />
                                 </Form.Group>
                             </Col>
@@ -460,6 +464,7 @@ const IsotermProfileComponent = (props: any) => {
                                     value={props?.paymentDocument}
                                     checkInput={props?.paymentDocumentError ? "input-error" : ""}
                                     errorMessage={props?.paymentDocumentError ?? ""}
+                                    link={props?.paymentLink}
                                 />
                             </Form.Group>
                         </Col>
@@ -477,6 +482,7 @@ const IsotermProfileComponent = (props: any) => {
                                     value={props?.fullDocument}
                                     checkInput={props?.fullDocumentError ? "input-error" : ""}
                                     errorMessage={props?.fullDocumentError ?? ""}
+                                    link={props?.fullLink}
                                 />
                             </Form.Group>
                         </Col>
