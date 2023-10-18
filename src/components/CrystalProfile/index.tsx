@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { Row, Col, Form, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserGroup, faSchool, faUser, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faUserGroup, faSchool, faUser, faPaperPlane, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 const CustomInput = lazy(() => import("../../components/General/CustomInput"));
 const Sidebar = lazy(() => import("../../components/General/Sidebar"));
@@ -229,7 +229,7 @@ const CrystalProfileComponent = (props: any) => {
                     <hr className="my-4" />
                     <Row>
                         <h5 className="fw-bold mb-3">Data Sekolah</h5>
-                        <Col xs={12} md={4}>
+                        <Col xs={12} md={6}>
                             <Form.Group>
                                 <Form.Label>Nama Sekolah<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
@@ -244,39 +244,31 @@ const CrystalProfileComponent = (props: any) => {
                                 />
                             </Form.Group>
                         </Col>
-                        <Col xs={12} md={4}>
+                        <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Provinsi<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
                                     type="text"
-                                    placeholder="696887755"
-                                    name="schoolNumber"
-                                    pre="(+62)"
+                                    placeholder="Provinsi Sekolah"
+                                    name="schoolProvince"
+                                    icon={faLocationDot}
                                     onChange={(e: any) => props?.handleChange(e)}
-                                    value={props?.schoolNumber}
-                                    checkInput={props?.schoolNumberError ? "input-error" : ""}
-                                    errorMessage={props?.schoolNumberError ?? ""}
+                                    value={props?.schoolProvince}
+                                    checkInput={props?.schoolProvinceError ? "input-error" : ""}
+                                    errorMessage={props?.schoolProvinceError ?? ""}
                                 />
                             </Form.Group>
-                        </Col>
-                        <Col xs={12} md={4}>
-                            <Form.Group>
-                                <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
-                                <CustomInput
-                                    required
-                                    isProfile
-                                    type="email"
-                                    placeholder="Email"
-                                    name="schoolEmail"
-                                    pre="@"
-                                    onChange={(e: any) => props?.handleChange(e)}
-                                    value={props?.schoolEmail}
-                                    checkInput={props?.schoolEmailError ? "input-error" : ""}
-                                    errorMessage={props?.schoolEmailError ?? ""}
-                                />
-                            </Form.Group>
+                            {props?.showSuggestions &&
+                                <div className="rounded bg-white">
+                                {(props?.suggestions.map((item: any, idx: number) => {
+                                        return (
+                                            <option className="custom-option rounded cursor-pointer px-3" value={item} key={idx} onClick={() => props?.handleSelectSuggestion(item)}>{item}</option>
+                                        )
+                                    }))}
+                                </div>
+                            }
                         </Col>
                     </Row>
                     <hr className="my-4" />

@@ -494,3 +494,9 @@ h1, h2, h3, h4, h5, h6 {
   left: inherit !important;
   right: inherit !important;
 }
+
+.custom-option:hover {
+  background-color: var(--cyan);
+  color: white;
+  border-collapse: collapse;
+}

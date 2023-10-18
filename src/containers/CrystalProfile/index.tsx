@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { crystalProfileSelector, editProfileMessageSelector } from "./selector";
 import { getCrystalProfile, editCrystalProfile } from "./action";
+import { PROVINCE_LIST } from "../../config/constant";
 
 const CrystalProfileComponent = lazy(() => import("../../components/CrystalProfile"));
 
@@ -19,6 +20,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         this.state = {
             showModal: false,
             shrink: false,
+            showSuggestions: false,
+            suggestions: [],
             teamName: "",
             registrationDocument: null,
             name1: "",
@@ -31,8 +34,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherNumber: "",
             teacherEmail: "",
             schoolName: "",
-            schoolNumber: "",
-            schoolEmail: "",
+            schoolProvince: "",
             paymentDocument: null,
             registrationLink: "",
             paymentLink: "",
@@ -43,13 +45,13 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             email2Error: "",
             teacherNumberError: "",
             teacherEmailError: "",
-            schoolNumberError: "",
-            schoolEmailError: "",
+            schoolProvinceError: "",
             paymentDocumentError: ""
         };
         this.toggleModal = this.toggleModal.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSelectSuggestion = this.handleSelectSuggestion.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.validateForm = this.validateForm.bind(this);
         this.handleSubmitData = this.handleSubmitData.bind(this);
@@ -88,8 +90,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 teacherNumber: crystalProfileResponse.institution.teacher.wa_number,
                 teacherEmail: crystalProfileResponse.institution.teacher.email,
                 schoolName: crystalProfileResponse.institution.school.name,
-                schoolNumber: crystalProfileResponse.institution.school.wa_number,
-                schoolEmail: crystalProfileResponse.institution.school.email,
+                schoolProvince: crystalProfileResponse.institution.school.province,
                 paymentDocument: paymentDoc ?? null,
                 registrationLink: registration?.path ?? "",
                 paymentLink: payment?.path ?? ""
@@ -117,6 +118,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         const { name, value, files } = e.target;
         let errorType = name + "Error";
         let errorMessage = "";
+        let suggestions: string[] = [];
         if (files) {
             errorMessage = this.validateInput(files[0], name);
         }
@@ -124,10 +126,25 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             errorMessage = this.validateInput(value, name);
         }
 
+        if (name === "schoolProvince") {
+            suggestions = PROVINCE_LIST.filter((item: any) => item.toLowerCase().includes(value.toLowerCase()))
+        }
+
         this.setState({
             ...this.state,
             [name]: files ? files[0] : value,
             [errorType]: errorMessage,
+            showSuggestions: name === "schoolProvince",
+            suggestions: name === "schoolProvince" ? suggestions : []
+        });
+    }
+
+    private handleSelectSuggestion(value: string): void {
+        this.setState({
+            ...this.state,
+            schoolProvince: value,
+            showSuggestions: false,
+            schoolProvinceError: false,
         });
     }
 
@@ -148,6 +165,11 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 return "Please use a PDF file";
             }
         }
+        else if (type.toLowerCase().includes("province")) {
+            if (!PROVINCE_LIST.includes(input)) {
+                return "Please select from provided province";
+            }
+        }
         return "";
     }
 
@@ -165,8 +187,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherNumber,
             teacherEmail,
             schoolName,
-            schoolNumber,
-            schoolEmail,
+            schoolProvince,
             paymentDocument,
             registrationDocumentError,
             number1Error,
@@ -175,8 +196,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             email2Error,
             teacherNumberError,
             teacherEmailError,
-            schoolNumberError,
-            schoolEmailError,
+            schoolProvinceError,
             paymentDocumentError,
         } = this.state;
         if (!teamName) {
@@ -227,12 +247,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             document.getElementsByName("schoolName")[0].focus();
             return false;
         }
-        else if (!schoolNumber || schoolNumberError) {
-            document.getElementsByName("schoolNumber")[0].focus();
-            return false;
-        }
-        else if (!schoolEmail || schoolEmailError) {
-            document.getElementsByName("schoolEmail")[0].focus();
+        else if (!schoolProvince || schoolProvinceError) {
+            document.getElementsByName("schoolProvince")[0].focus();
             return false;
         }
         else if (!paymentDocument || paymentDocumentError) {
@@ -258,8 +274,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherNumber,
             teacherEmail,
             schoolName,
-            schoolNumber,
-            schoolEmail,
+            schoolProvince,
             paymentDocument,
         } = this.state;
 
@@ -287,8 +302,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 },
                 school: {
                     name: schoolName,
-                    wa_number: `0${schoolNumber}`,
-                    email: schoolEmail
+                    province: schoolProvince
                 }
             };
 
@@ -308,6 +322,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
         const {
             showModal,
             shrink,
+            showSuggestions,
+            suggestions,
             teamName,
             registrationDocument,
             name1,
@@ -320,8 +336,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             teacherNumber,
             teacherEmail,
             schoolName,
-            schoolNumber,
-            schoolEmail,
+            schoolProvince,
             paymentDocument,
             registrationLink,
             paymentLink,
@@ -332,8 +347,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
             email2Error,
             teacherNumberError,
             teacherEmailError,
-            schoolNumberError,
-            schoolEmailError,
+            schoolProvinceError,
             paymentDocumentError
         } = this.state;
         return (
@@ -341,6 +355,8 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 verified={this.props.verified}
                 showModal={showModal}
                 shrink={shrink}
+                showSuggestions={showSuggestions}
+                suggestions={suggestions}
                 teamName={teamName}
                 registrationDocument={registrationDocument}
                 name1={name1}
@@ -353,8 +369,7 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 teacherNumber={teacherNumber}
                 teacherEmail={teacherEmail}
                 schoolName={schoolName}
-                schoolNumber={schoolNumber}
-                schoolEmail={schoolEmail}
+                schoolProvince={schoolProvince}
                 paymentDocument={paymentDocument}
                 registrationLink={registrationLink}
                 paymentLink={paymentLink}
@@ -365,12 +380,12 @@ export class CrystalProfileContainer extends PureComponent<any, any> {
                 registrationDocumentError={registrationDocumentError}
                 teacherNumberError={teacherNumberError}
                 teacherEmailError={teacherEmailError}
-                schoolNumberError={schoolNumberError}
-                schoolEmailError={schoolEmailError}
+                schoolProvinceError={schoolProvinceError}
                 paymentDocumentError={paymentDocumentError}
                 toggleModal={this.toggleModal}
                 toggleSidebar={this.toggleSidebar}
                 handleChange={this.handleChange}
+                handleSelectSuggestion={this.handleSelectSuggestion}
                 handleSubmitData={this.handleSubmitData}
             />
         )
