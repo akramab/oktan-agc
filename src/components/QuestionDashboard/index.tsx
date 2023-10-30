@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Modal } from "react-bootstrap";
+import { Row, Col, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,7 +34,9 @@ const QuestionDashboardComponent = (props: any) => {
                 <div className="p-4 mb-5">
                     <Row className="justify-content-between align-items-center my-2">
                         <Col className="">
-                            <Searchbar />
+                            <Form>
+                                <Searchbar />
+                            </Form>
                         </Col>
                         <Col className="text-end">
                             <CustomButton

@@ -2,14 +2,16 @@ import {
     SET_QUESTIONS_DATA,
     SUCCESS_EDIT_QUESTION_DATA,
     SUCCESS_DELETE_QUESTION_DATA,
-    SUCCESS_CREATE_QUESTION
+    SUCCESS_CREATE_QUESTION,
+    SET_QUESTION_DETAIL
 } from "./constant";
 
 const initialState = {
     questionsData: [],
     editMessage: null,
     deleteMessage: null,
-    createMessage: null
+    createMessage: null,
+    questionDetail : null
 };
 
 const questionDashboardReducer = (state = initialState, action: any) => {
@@ -33,6 +35,11 @@ const questionDashboardReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 createMessage: action.params,
+            };
+        case SET_QUESTION_DETAIL:
+            return {
+                ...state,
+                questionDetail: action.params,
             };
         default:
             return state;

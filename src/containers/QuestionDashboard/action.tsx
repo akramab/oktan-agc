@@ -6,7 +6,9 @@ import {
     DELETE_QUESTION_DATA,
     SUCCESS_DELETE_QUESTION_DATA,
     CREATE_QUESTION,
-    SUCCESS_CREATE_QUESTION
+    SUCCESS_CREATE_QUESTION,
+    GET_QUESTION_DETAIL,
+    SET_QUESTION_DETAIL
 } from "./constant";
 
 export function getQuestionsData() {
@@ -60,6 +62,20 @@ export function createQuestion(params: any) {
 export function successCreateQuestion(params: any) {
     return {
         type: SUCCESS_CREATE_QUESTION,
+        params,
+    };
+}
+
+export function getQuestionDetail(params: any) {
+    return {
+        type: GET_QUESTION_DETAIL,
+        params,
+    };
+}
+
+export function setQuestionDetail(params: any) {
+    return {
+        type: SET_QUESTION_DETAIL,
         params,
     };
 }

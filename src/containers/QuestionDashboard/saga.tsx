@@ -3,13 +3,15 @@ import {
     setQuestionsData,
     successEditQuestionData,
     successDeleteQuestionData,
-    successCreateQuestion
+    successCreateQuestion,
+    setQuestionDetail
 } from "./action";
 import {
     GET_QUESTIONS_DATA,
     EDIT_QUESTION_DATA,
     DELETE_QUESTION_DATA,
-    CREATE_QUESTION
+    CREATE_QUESTION,
+    GET_QUESTION_DETAIL
 } from "./constant";
 import { callApi } from "../Layout/saga";
 
@@ -75,9 +77,25 @@ export function* handleCreateQuestion(action: any): any {
     }
 }
 
+export function* handleGetQuestionDetail(action: any): any {
+    const { params } = action;
+    let res = yield call(
+        callApi,
+        "GET",
+        `${QUESTION_URL}/${params}`,
+        null,
+        null,
+        true
+    );
+    if (res) {
+        yield put(setQuestionDetail(res));
+    }
+}
+
 export function* watchQuestionDashboardSaga() {
     yield takeLatest(GET_QUESTIONS_DATA, handleGetQuestionsData);
     yield takeLatest(EDIT_QUESTION_DATA, handleEditQuestionData);
     yield takeLatest(DELETE_QUESTION_DATA, handleDeleteQuestionData);
     yield takeLatest(CREATE_QUESTION, handleCreateQuestion);
+    yield takeLatest(GET_QUESTION_DETAIL, handleGetQuestionDetail);
 }

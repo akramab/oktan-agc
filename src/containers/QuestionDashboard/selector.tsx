@@ -22,9 +22,16 @@ const createMessageSelector = (state: any) => {
         : null;
 };
 
+const questionDetailSelector = (state: any) => {
+    return state?.questionDashboardReducer?.questionDetail
+        ? state.questionDashboardReducer.questionDetail
+        : null;
+};
+
 export {
     questionsDataSelector,
     editMessageSelector,
     deleteMessageSelector,
-    createMessageSelector
+    createMessageSelector,
+    questionDetailSelector
 }

@@ -5,13 +5,15 @@ import {
     questionsDataSelector,
     editMessageSelector,
     deleteMessageSelector,
-    createMessageSelector
+    createMessageSelector,
+    questionDetailSelector
 } from "./selector";
 import {
     getQuestionsData,
     editQuestionData,
     deleteQuestionData,
-    createQuestion
+    createQuestion,
+    getQuestionDetail
 } from "./action";
 
 const QuestionDashboardComponent = lazy(() => import("../../components/QuestionDashboard"));
@@ -22,7 +24,8 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         questionsDataResponse: PropTypes.any,
         editMessageResponse: PropTypes.any,
         deleteMessageResponse: PropTypes.any,
-        createMessageResponse: PropTypes.any
+        createMessageResponse: PropTypes.any,
+        questionDetailResponse: PropTypes.any
     };
 
     constructor(props: any) {
@@ -33,7 +36,6 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
             showDelete: false,
             showCreate: false,
             shrink: false,
-            currentQuestion: {},
             number: "",
             type: "",
             question: "",
@@ -61,14 +63,28 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         this.props.getQuestionDataList();
     }
 
-    componentDidUpdate(prevProps: any): void {
-        const { editMessageResponse, deleteMessageResponse, createMessageResponse } = this.props;
+    componentDidUpdate(prevProps: any, prevState: any): void {
+        const { editMessageResponse, deleteMessageResponse, createMessageResponse, questionDetailResponse } = this.props;
+        const { showModal, showEdit, id } = this.state;
         if (prevProps.editMessageResponse !== editMessageResponse && editMessageResponse) {
             this.toggleModal();
         }
         if ((prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) ||
-            (prevProps.createMessageResponse !== createMessageResponse && createMessageResponse)) {
+            (prevProps.createMessageResponse !== createMessageResponse && createMessageResponse) ||
+            (prevState.showModal !== showModal && !showModal)) {
             this.props.getQuestionDataList();
+        }
+        if (prevState.showEdit !== showEdit && showEdit.id !== id && showEdit && id) {
+            this.props.getQuestionDetailData(id);
+        }
+        if (prevProps.questionDetailResponse !== questionDetailResponse && questionDetailResponse) {
+            this.setState({
+                ...this.state,
+                number: questionDetailResponse.number,
+                type: questionDetailResponse.type,
+                question: questionDetailResponse.question,
+                answers: questionDetailResponse.answers
+            });
         }
     }
 
@@ -94,7 +110,8 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     private toggleCreate(): void {
         this.setState({
-            showCreate: !this.state.showCreate
+            showCreate: !this.state.showCreate,
+            id: ""
         });
     }
 
@@ -104,11 +121,20 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         });
     }
 
-    private handleEditQuestion(id: any): void {
-        this.props.editQuestion(id);
+    private handleEditQuestion(): void {
+        const { id, number, type, question, answers } = this.state;
+        let formData = {
+            id,
+            number,
+            type,
+            question,
+            answers
+        };
+        this.props.editQuestion(formData);
     }
 
-    private handleDeleteQuestion(id: any): void {
+    private handleDeleteQuestion(): void {
+        const { id } = this.state;
         this.props.deleteQuestion(id);
     }
 
@@ -154,7 +180,8 @@ const mapStateToProps = (state: any) => {
         questionsDataResponse: questionsDataSelector(state),
         editMessageResponse: editMessageSelector(state),
         deleteMessageResponse: deleteMessageSelector(state),
-        createMessageResponse: createMessageSelector(state)
+        createMessageResponse: createMessageSelector(state),
+        questionDetailResponse: questionDetailSelector(state)
     };
 };
 
@@ -164,7 +191,8 @@ function mapDispatchToProps(dispatch: any) {
         getQuestionDataList: () => dispatch(getQuestionsData()),
         editQuestion: (params: any) => dispatch(editQuestionData(params)),
         deleteQuestion: (params: any) => dispatch(deleteQuestionData(params)),
-        createQuestion: (params: any) => dispatch(createQuestion(params))
+        createQuestion: (params: any) => dispatch(createQuestion(params)),
+        getQuestionDetailData: (params: any) => dispatch(getQuestionDetail(params))
     };
 }
   
