@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { Row, Col, Modal } from "react-bootstrap";
+import { Row, Col, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
@@ -33,12 +33,14 @@ const ContestantDashboardComponent = (props: any) => {
             <div className={`side-content bg-gray p-4 ${props?.shrink && "shrink"}`}>
                 <Row className="justify-content-between align-items-center my-2">
                     <Col className="p-0">
-                        <Searchbar
-                            name="keyword"
-                            onChange={(e: any) => props?.handleChange(e)}
-                            value={props?.keyword}
-                            onClick={() => props?.handleSearchContestant()}
-                        />
+                        <Form>
+                            <Searchbar
+                                name="keyword"
+                                onChange={(e: any) => props?.handleChange(e)}
+                                value={props?.keyword}
+                                onClick={() => props?.handleSearchContestant()}
+                            />
+                        </Form>
                     </Col>
                     <Col className="p-0 text-end">
                         <CustomButton
