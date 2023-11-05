@@ -80,7 +80,8 @@ export function* handleDownloadContestantData(action: any): any {
         true
     );
     if (res !== null) {
-        const blob = new Blob([res], {type: ".csv"});
+        // const blob = new Blob([res], {type: ".csv"});
+        const blob = new Blob([res], {type: "application/zip"});
         const url = URL.createObjectURL(blob);
         yield call(downloadFileAsync, url);
         yield put(successDownloadContestantData({id: params, message: "File downloaded"}));   
