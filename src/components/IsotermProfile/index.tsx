@@ -165,7 +165,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="Nama Anggota"
@@ -180,7 +179,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Tahun Angkatan<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="2023"
@@ -197,7 +195,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Jurusan<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="Jurusan"
@@ -214,7 +211,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="email"
                                     placeholder="Email"
@@ -231,7 +227,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="696887755"
@@ -252,7 +247,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="Nama Anggota"
@@ -267,7 +261,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Tahun Angkatan<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="2023"
@@ -284,7 +277,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Jurusan<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="Jurusan"
@@ -301,7 +293,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="email"
                                     placeholder="Email"
@@ -318,7 +309,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="696887755"
@@ -339,7 +329,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Nama Universitas<span className="text-asterisk">*</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="Nama Universitas"
@@ -354,7 +343,6 @@ const IsotermProfileComponent = (props: any) => {
                             <Form.Group>
                                 <Form.Label>Nama Dosen<span className="text-asterisk">*</span><span className="text-muted"> (Jika ada)</span></Form.Label>
                                 <CustomInput
-                                    required
                                     isProfile
                                     type="text"
                                     placeholder="Nama Dosen"
