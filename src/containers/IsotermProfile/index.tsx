@@ -319,9 +319,9 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
-            let num1 = number1.startsWith("0") ? number1 : `0${number1}`;
-            let num2 = number2.startsWith("0") ? number2 : `0${number2}`;
-            let num3 = number3.startsWith("0") ? number3 : `0${number3}`;
+            let num1 = number1.startsWith("0") || !number1 ? number1 : `0${number1}`;
+            let num2 = number2.startsWith("0")  || !number2 ? number2 : `0${number2}`;
+            let num3 = number3.startsWith("0") || !number3 ? number3 : `0${number3}`;
             let memberData = [
                 {
                     id: "1",
