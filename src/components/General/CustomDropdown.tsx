@@ -1,6 +1,7 @@
 import { Form } from 'react-bootstrap';
 
 const CustomDropdown = (props: any) => {
+    const type = typeof props?.options[0];
     return (
         <Form.Select
             className={`${props?.isProfile && "border-0"} ${props?.className ?? ""} padding-dropdown shadow-none rounded`}
@@ -11,7 +12,13 @@ const CustomDropdown = (props: any) => {
             <option value="">{props?.placeholder}</option>
             {props?.options?.length !== 0 && (props.options.map((item: any, index: number) => {
                 return (
-                    <option value={item} key={index}>{item}</option>
+                    <>
+                        {type === "string" ?
+                            <option value={item} key={index}>{item}</option>
+                        :
+                            <option value={item.value} key={index}>{item.text}</option>
+                        }
+                    </>
                 )
             }))}
         </Form.Select>

@@ -40,13 +40,19 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
             type: "",
             question: "",
             answers: ["", "", "", ""],
-            id: ""
+            id: "",
+            numberError: "",
+            typeError: "",
+            questionError: ""
         };
 
         this.toggleEdit = this.toggleEdit.bind(this);
         this.toggleDelete = this.toggleDelete.bind(this);
         this.toggleCreate = this.toggleCreate.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.validateInput = this.validateInput.bind(this);
+        this.validateForm = this.validateForm.bind(this);
         this.handleEditQuestion = this.handleEditQuestion.bind(this);
         this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
         this.submitCreateQuestion = this.submitCreateQuestion.bind(this);
@@ -121,6 +127,58 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         });
     }
 
+    private handleChange(e: any): void {
+        const { name, value } = e.target;
+        let errorType = name + "Error";
+        let errorMessage = this.validateInput(value, name);
+
+        this.setState({
+            ...this.state,
+            [name]: value,
+            [errorType]: errorMessage
+        });
+    }
+
+    private validateInput(input: any, type: string): string {
+        if (type === "number") {
+            if (!input || (isNaN(input) && isNaN(Number(input)))) {
+                return "Please enter a number";
+            }
+        }
+        else if (type === "type") {
+            if (!input) {
+                return "Please choose question type";
+            }
+        }
+        else if (type === "question") {
+            if (!input) {
+                return "Please enter a question";
+            }
+        }
+        return "";
+    }
+
+    private validateForm(): boolean {
+        const {
+            numberError,
+            typeError,
+            questionError
+        } = this.state;
+        if (numberError) {
+            document.getElementsByName("number")[0].focus();
+            return false;
+        }
+        else if (typeError) {
+            document.getElementsByName("type")[0].focus();
+            return false;
+        }
+        else if (questionError) {
+            document.getElementsByName("question")[0].focus();
+            return false;
+        }
+        return true;
+    }
+
     private handleEditQuestion(): void {
         const { id, number, type, question, answers } = this.state;
         let formData = {
@@ -151,22 +209,38 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     render() {
         const { questionsDataResponse } = this.props;
-        const { showModal, shrink, number, type, question, answers } = this.state;
+        const {
+            showModal,
+            showEdit,
+            showDelete,
+            showCreate,
+            shrink,
+            number,
+            type,
+            question,
+            answers,
+            id
+        } = this.state;
         return (
             <QuestionDashboardComponent
                 {...this.props}
                 questionsDataResponse={questionsDataResponse}
                 showModal={showModal}
+                showEdit={showEdit}
+                showDelete={showDelete}
+                showCreate={showCreate}
                 shrink={shrink}
                 number={number}
                 type={type}
                 question={question}
                 answers={answers}
+                id={id}
                 toggleModal={this.toggleModal}
                 toggleEdit={this.toggleEdit}
                 toggleDelete={this.toggleDelete}
                 toggleCreate={this.toggleCreate}
                 toggleSidebar={this.toggleSidebar}
+                handleChange={this.handleChange}
                 handleEditQuestion={this.handleEditQuestion}
                 handleDeleteQuestion={this.handleDeleteQuestion}
                 submitCreateQuestion={this.submitCreateQuestion}

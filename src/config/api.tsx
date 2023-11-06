@@ -62,7 +62,7 @@ export const payloadGenerator = (
             "Content-Type": "application/json",
         };
     }
-    else if (method === "POST") {
+    else if (method === "POST" && url.includes("profile")) {
         header = {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${getAuthToken()}`
