@@ -104,25 +104,25 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
 
             this.setState({
                 ...this.state,
-                teamName: isotermProfileResponse.team,
-                subtheme: isotermProfileResponse.sub_theme,
-                name1: isotermProfileResponse.members[0].name,
-                year1: isotermProfileResponse.members[0].year,
-                major1: isotermProfileResponse.members[0].major,
-                number1: isotermProfileResponse.members[0].wa_number,
-                email1: isotermProfileResponse.members[0].email,
-                name2: isotermProfileResponse.members[1].name,
-                year2: isotermProfileResponse.members[1].year,
-                major2: isotermProfileResponse.members[1].major,
-                number2: isotermProfileResponse.members[1].wa_number,
-                email2: isotermProfileResponse.members[1].email,
-                name3: isotermProfileResponse.members[2].name,
-                year3: isotermProfileResponse.members[2].year,
-                major3: isotermProfileResponse.members[2].major,
-                number3: isotermProfileResponse.members[2].wa_number,
-                email3: isotermProfileResponse.members[2].email,
-                universityName: isotermProfileResponse.institution.university.name,
-                teacherName: isotermProfileResponse.institution.university.lecturer,
+                teamName: isotermProfileResponse?.team ?? "",
+                subtheme: isotermProfileResponse?.sub_theme ?? "",
+                name1: isotermProfileResponse.members[0]?.name ?? "",
+                year1: isotermProfileResponse.members[0]?.year ?? "",
+                major1: isotermProfileResponse.members[0]?.major ?? "",
+                number1: isotermProfileResponse.members[0]?.wa_number ?? "",
+                email1: isotermProfileResponse.members[0]?.email ?? "",
+                name2: isotermProfileResponse.members[1]?.name ?? "",
+                year2: isotermProfileResponse.members[1]?.year ?? "",
+                major2: isotermProfileResponse.members[1]?.major ?? "",
+                number2: isotermProfileResponse.members[1]?.wa_number ?? "",
+                email2: isotermProfileResponse.members[1]?.email ?? "",
+                name3: isotermProfileResponse.members[2]?.name ?? "",
+                year3: isotermProfileResponse.members[2]?.year ?? "",
+                major3: isotermProfileResponse.members[2]?.major ?? "",
+                number3: isotermProfileResponse.members[2]?.wa_number ?? "",
+                email3: isotermProfileResponse.members[2]?.email ?? "",
+                universityName: isotermProfileResponse.institution.university?.name ?? "",
+                teacherName: isotermProfileResponse.institution.university?.lecturer ?? "",
                 abstract1: abstract1Doc ?? null,
                 abstract2: abstract2Doc ?? null,
                 paper1: work1Doc ?? null,
@@ -176,17 +176,17 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     private validateInput(input: any, type: string): string {
         const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (type.toLowerCase().includes("number")) {
-            if (!input || (isNaN(input) && isNaN(Number(input)))) {
+            if (isNaN(input) && isNaN(Number(input))) {
                 return "Please enter a number";
             }
         }
         else if (type.toLowerCase().includes("year")) {
-            if (!input || (isNaN(input) && isNaN(Number(input))) || input.length !== 4) {
+            if ((isNaN(input) && isNaN(Number(input))) || input.length !== 4) {
                 return "Please enter a valid year";
             }
         }
         else if (type.toLowerCase().includes("email")) {
-            if (!input || !input.match(re)) {
+            if (!input.match(re)) {
                 return "Please enter a valid email";
             }
         }
@@ -204,30 +204,8 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     private validateForm(): boolean {
         const { passed } = this.props;
         const {
-            teamName,
-            subtheme,
-            name1,
-            year1,
-            major1,
-            email1,
-            number1,
-            name2,
-            year2,
-            major2,
-            email2,
-            number2,
-            name3,
-            year3,
-            major3,
-            email3,
-            number3,
-            universityName,
-            abstract1,
             abstract2,
-            paper1,
             paper2,
-            fullDocument,
-            paymentDocument,
             year1Error,
             email1Error,
             number1Error,
@@ -244,87 +222,51 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
             fullDocumentError,
             paymentDocumentError
         } = this.state;
-        if (!teamName) {
-            document.getElementsByName("teamName")[0].focus();
-            return false;
-        }
-        else if (!subtheme) {
-            document.getElementsByName("subtheme")[0].focus();
-            return false;
-        }
-        else if (!name1) {
-            document.getElementsByName("name1")[0].focus();
-            return false;
-        }
-        else if (!year1 || year1Error) {
+        if (year1Error) {
             document.getElementsByName("year1")[0].focus();
             return false;
         }
-        else if (!major1) {
-            document.getElementsByName("major1")[0].focus();
-            return false;
-        }
-        else if (!email1 || email1Error) {
+        else if (email1Error) {
             document.getElementsByName("email1")[0].focus();
             return false;
         }
-        else if (!number1 || number1Error) {
+        else if (number1Error) {
             document.getElementsByName("number1")[0].focus();
             return false;
         }
-        else if (!name2) {
-            document.getElementsByName("name2")[0].focus();
-            return false;
-        }
-        else if (!year2 || year2Error) {
+        else if (year2Error) {
             document.getElementsByName("year2")[0].focus();
             return false;
         }
-        else if (!major2) {
-            document.getElementsByName("major2")[0].focus();
-            return false;
-        }
-        else if (!number2 || number2Error) {
+        else if (number2Error) {
             document.getElementsByName("number2")[0].focus();
             return false;
         }
-        else if (!email2 || email2Error) {
+        else if (email2Error) {
             document.getElementsByName("email2")[0].focus();
             return false;
         }
-        else if (!name3) {
-            document.getElementsByName("name3")[0].focus();
-            return false;
-        }
-        else if (!year3 || year3Error) {
+        else if (year3Error) {
             document.getElementsByName("year3")[0].focus();
             return false;
         }
-        else if (!major3) {
-            document.getElementsByName("major3")[0].focus();
-            return false;
-        }
-        else if (!number3 || number3Error) {
+        else if (number3Error) {
             document.getElementsByName("number3")[0].focus();
             return false;
         }
-        else if (!email3 || email3Error) {
+        else if (email3Error) {
             document.getElementsByName("email3")[0].focus();
             return false;
         }
-        else if (!universityName) {
-            document.getElementsByName("universityName")[0].focus();
-            return false;
-        }
-        else if (!abstract1 || abstract1Error) {
+        else if (abstract1Error) {
             document.getElementById("abstract1")?.focus();
             return false;
         }
-        else if (!paymentDocument || paymentDocumentError) {
+        else if (paymentDocumentError) {
             document.getElementById("paymentDocument")?.focus();
             return false;
         }
-        else if (!fullDocument || fullDocumentError) {
+        else if (fullDocumentError) {
             document.getElementById("fullDocument")?.focus();
             return false;
         }
@@ -333,7 +275,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                 document.getElementById("abstract2")?.focus();
                 return false;
             }
-            else if (!paper1 || paper1Error) {
+            else if (paper1Error) {
                 document.getElementById("paper1")?.focus();
                 return false;
             }

@@ -36,7 +36,7 @@ const IsotermProfileComponent = (props: any) => {
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nama Kelompok<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nama Kelompok</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -51,7 +51,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Subtema<span className="text-asterisk">*</span></Form.Label>  
+                                <Form.Label>Subtema</Form.Label>  
                                 <InputGroup className="rounded">
                                     <CustomDropdown
                                         isProfile
@@ -76,7 +76,7 @@ const IsotermProfileComponent = (props: any) => {
                         <h5 className="fw-bold mb-3">Data Anggota 1</h5>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nama Anggota</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -91,7 +91,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Tahun Angkatan<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Tahun Angkatan</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -108,7 +108,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Jurusan<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Jurusan</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -125,7 +125,7 @@ const IsotermProfileComponent = (props: any) => {
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Email</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -142,7 +142,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nomor Whatsapp</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -163,7 +163,7 @@ const IsotermProfileComponent = (props: any) => {
                         <h5 className="fw-bold mb-3">Data Anggota 2</h5>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nama Anggota</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -178,7 +178,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Tahun Angkatan<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Tahun Angkatan</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -195,7 +195,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Jurusan<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Jurusan</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -212,7 +212,7 @@ const IsotermProfileComponent = (props: any) => {
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Email</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -229,7 +229,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nomor Whatsapp</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -250,7 +250,7 @@ const IsotermProfileComponent = (props: any) => {
                         <h5 className="fw-bold mb-3">Data Anggota 3</h5>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Nama Anggota<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nama Anggota</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -265,7 +265,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Tahun Angkatan<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Tahun Angkatan</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -282,7 +282,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={4}>
                             <Form.Group>
-                                <Form.Label>Jurusan<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Jurusan</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -299,7 +299,7 @@ const IsotermProfileComponent = (props: any) => {
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Email<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Email</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -316,7 +316,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nomor Whatsapp<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nomor Whatsapp</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -337,7 +337,7 @@ const IsotermProfileComponent = (props: any) => {
                         <h5 className="fw-bold mb-3">Data Universitas</h5>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nama Universitas<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Nama Universitas</Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -352,7 +352,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Nama Dosen<span className="text-asterisk">*</span><span className="text-muted"> (Jika ada)</span></Form.Label>
+                                <Form.Label>Nama Dosen<span className="text-muted"> (Jika ada)</span></Form.Label>
                                 <CustomInput
                                     required
                                     isProfile
@@ -371,7 +371,7 @@ const IsotermProfileComponent = (props: any) => {
                         <h5 className="fw-bold mb-3">Upload Dokumen Tambahan</h5>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Abstrak 1<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Abstrak 1</Form.Label>
                                 <FileInput
                                     text={
                                         props?.abstract1 ?
@@ -390,7 +390,7 @@ const IsotermProfileComponent = (props: any) => {
                         {props?.passed &&
                             <Col xs={12} md={6}>
                                 <Form.Group>
-                                    <Form.Label>Abstrak 2<span className="text-asterisk">*</span></Form.Label>
+                                    <Form.Label>Abstrak 2</Form.Label>
                                     <FileInput
                                         text={
                                             props?.abstract2 ?
@@ -412,7 +412,7 @@ const IsotermProfileComponent = (props: any) => {
                         <Row>
                             <Col xs={12} md={6}>
                                 <Form.Group>
-                                    <Form.Label>Karya 1<span className="text-asterisk">*</span></Form.Label>
+                                    <Form.Label>Karya 1</Form.Label>
                                     <FileInput
                                         text={
                                             props?.paper1 ?
@@ -430,7 +430,7 @@ const IsotermProfileComponent = (props: any) => {
                             </Col>
                             <Col xs={12} md={6}>
                                 <Form.Group>
-                                    <Form.Label>Karya 2<span className="text-asterisk">*</span></Form.Label>
+                                    <Form.Label>Karya 2</Form.Label>
                                     <FileInput
                                         text={
                                             props?.paper2 ?
@@ -452,7 +452,7 @@ const IsotermProfileComponent = (props: any) => {
                     <Row>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Data Pembayaran<span className="text-asterisk">*</span></Form.Label>
+                                <Form.Label>Data Pembayaran</Form.Label>
                                 <FileInput
                                     text={
                                         props?.paymentDocument ?
@@ -470,7 +470,7 @@ const IsotermProfileComponent = (props: any) => {
                         </Col>
                         <Col xs={12} md={6}>
                             <Form.Group>
-                                <Form.Label>Dokumen<span className="text-asterisk">*</span> Disatukan</Form.Label>
+                                <Form.Label>Dokumen Disatukan</Form.Label>
                                 <FileInput
                                     text={
                                         props?.fullDocument ?
