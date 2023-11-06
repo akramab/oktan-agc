@@ -319,13 +319,16 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
         } = this.state;
 
         if (this.validateForm()) {
+            let num1 = number1.startsWith("0") ? number1 : `0${number1}`;
+            let num2 = number2.startsWith("0") ? number2 : `0${number2}`;
+            let num3 = number3.startsWith("0") ? number3 : `0${number3}`;
             let memberData = [
                 {
                     id: "1",
                     name: name1,
                     year: year1,
                     major: major1,
-                    wa_number: name1 ? `0${number1}` : "",
+                    wa_number: name1 ? num1 : "",
                     email: email1
                 },
                 {
@@ -333,7 +336,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                     name: name2,
                     year: year2,
                     major: major2,
-                    wa_number: name2 ? `0${number2}` : "",
+                    wa_number: name2 ? num2 : "",
                     email: email2
                 },
                 {
@@ -341,7 +344,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                     name: name3,
                     year: year3,
                     major: major3,
-                    wa_number: name3 ? `0${number3}` : "",
+                    wa_number: name3 ? num3 : "",
                     email: email3
                 }
             ];
