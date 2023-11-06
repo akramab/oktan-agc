@@ -88,12 +88,12 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
     componentDidUpdate(prevProps: any): void {
         const { isotermProfileResponse, editProfileMessageResponse } = this.props;
         if (prevProps.isotermProfileResponse !== isotermProfileResponse && isotermProfileResponse.length !== 0) {
-            let abstract1 = isotermProfileResponse.documents.find(d => {return d.name === "abstract" && d.id === "1"});
-            let abstract2 = isotermProfileResponse.documents.find(d => {return d.name === "abstract" && d.id === "2"});
-            let work1 = isotermProfileResponse.documents.find(d => {return d.name === "work" && d.id === "1"});
-            let work2 = isotermProfileResponse.documents.find(d => {return d.name === "work" && d.id === "2"});
-            let payment = isotermProfileResponse.documents.find(d => {return d.name === "payment"});
-            let unified = isotermProfileResponse.documents.find(d => {return d.name === "unified_document"});
+            let abstract1 = isotermProfileResponse.documents?.find(d => {return d.name === "abstract" && d.id === "1"});
+            let abstract2 = isotermProfileResponse.documents?.find(d => {return d.name === "abstract" && d.id === "2"});
+            let work1 = isotermProfileResponse.documents?.find(d => {return d.name === "work" && d.id === "1"});
+            let work2 = isotermProfileResponse.documents?.find(d => {return d.name === "work" && d.id === "2"});
+            let payment = isotermProfileResponse.documents?.find(d => {return d.name === "payment"});
+            let unified = isotermProfileResponse.documents?.find(d => {return d.name === "unified_document"});
 
             let abstract1Doc = abstract1 && new File([abstract1.path], "abstract1.pdf", {type: "application/pdf"});
             let abstract2Doc = abstract2 && new File([abstract2.path], "abstract2.pdf", {type: "application/pdf"});
@@ -325,7 +325,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                     name: name1,
                     year: year1,
                     major: major1,
-                    wa_number: `0${number1}`,
+                    wa_number: name1 ? `0${number1}` : "",
                     email: email1
                 },
                 {
@@ -333,7 +333,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                     name: name2,
                     year: year2,
                     major: major2,
-                    wa_number: `0${number2}`,
+                    wa_number: name2 ? `0${number2}` : "",
                     email: email2
                 },
                 {
@@ -341,7 +341,7 @@ export class IsotermProfileContainer extends PureComponent<any, any> {
                     name: name3,
                     year: year3,
                     major: major3,
-                    wa_number: `0${number3}`,
+                    wa_number: name3 ? `0${number3}` : "",
                     email: email3
                 }
             ];
