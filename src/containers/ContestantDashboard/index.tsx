@@ -59,11 +59,9 @@ export class ContestantDashboardContainer extends PureComponent<any, any> {
 
     componentDidUpdate(prevProps: any): void {
         const { verifyMessageResponse, deleteMessageResponse } = this.props;
-        const { keyword } = this.state
-        if (prevProps.verifyMessageResponse !== verifyMessageResponse && verifyMessageResponse) {
-            this.toggleModal();
-        }
-        if (prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) {
+        const { keyword } = this.state;
+        if (prevProps.verifyMessageResponse !== verifyMessageResponse && verifyMessageResponse ||
+            prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) {
             this.props.getContestantDataList(keyword);
         }
     }
