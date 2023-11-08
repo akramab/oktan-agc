@@ -60,10 +60,11 @@ const IsotermProfileComponent = (props: any) => {
                                         placeholder="Pilih subtema"
                                         value={props?.subtheme}
                                         options={[
-                                            "Fotokimia Hijau",
-                                            "Material Energi Hijau",
-                                            "Biokimia Energi",
-                                            "Kimia Reduksi Emisi"
+                                            "Green Innovation",
+                                            "Bio-based Chemistry",
+                                            "Analytical Control",
+                                            "Nano-materials",
+                                            "Sustainable Drugs"
                                         ]}
                                         onChange={(e: any) => props?.handleChange(e)}
                                     />
