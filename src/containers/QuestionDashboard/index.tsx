@@ -207,12 +207,16 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     private submitCreateQuestion(): void {
         const { number, type, question, answers } = this.state.input;
+        let submitAnswer = answers;
+        if (type === "ESSAY") {
+            submitAnswer = null
+        }
 
         this.props.createQuestion({
             number,
             type,
             question,
-            answers
+            submitAnswer
         });
     }
 
