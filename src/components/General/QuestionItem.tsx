@@ -12,8 +12,8 @@ const QuestionItem = (props: any) => {
                         <p className="fs-5 px-2 border border-dark rounded">{data?.number}</p>
                     </Col>
                     <Col className="d-flex align-items-center width-fit">
-                        <FontAwesomeIcon icon={faPen} size="2xs" className="me-2 p-2 rounded-circle bg-write write cursor-pointer" />
-                        <FontAwesomeIcon icon={faTrash} size="2xs" className="p-2 rounded-circle bg-trash trash cursor-pointer" />
+                        <FontAwesomeIcon onClick={() => props?.toggleEdit(data?.id)} icon={faPen} size="2xs" className="me-2 p-2 rounded-circle bg-write write cursor-pointer" />
+                        <FontAwesomeIcon onClick={() => props?.toggleDelete(data?.id)} icon={faTrash} size="2xs" className="p-2 rounded-circle bg-trash trash cursor-pointer" />
                     </Col>
                 </Row>
                 <Row className="my-3">

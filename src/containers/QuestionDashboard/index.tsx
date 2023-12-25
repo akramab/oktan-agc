@@ -31,19 +31,33 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
     constructor(props: any) {
         super(props);
         this.state = {
-            showModal: false,
-            showEdit: false,
             showDelete: false,
             showCreate: false,
             shrink: false,
-            number: "",
-            type: "",
-            question: "",
-            answers: ["", "", "", ""],
-            id: "",
-            numberError: "",
-            typeError: "",
-            questionError: ""
+            input: {
+                number: "",
+                type: "",
+                question: "",
+                answers: [
+                    {
+                        correct: true,
+                        value: ""
+                    },
+                    {
+                        correct: false,
+                        value: ""
+                    },
+                    {
+                        correct: false,
+                        value: ""
+                    },
+                    {
+                        correct: false,
+                        value: ""
+                    }
+                ]
+            },
+            id: ""
         };
 
         this.toggleEdit = this.toggleEdit.bind(this);
@@ -51,8 +65,6 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         this.toggleCreate = this.toggleCreate.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.validateInput = this.validateInput.bind(this);
-        this.validateForm = this.validateForm.bind(this);
         this.handleEditQuestion = this.handleEditQuestion.bind(this);
         this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
         this.submitCreateQuestion = this.submitCreateQuestion.bind(this);
@@ -71,38 +83,37 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     componentDidUpdate(prevProps: any, prevState: any): void {
         const { editMessageResponse, deleteMessageResponse, createMessageResponse, questionDetailResponse } = this.props;
-        const { showModal, showEdit, id } = this.state;
-        if (prevProps.editMessageResponse !== editMessageResponse && editMessageResponse) {
-            this.toggleModal();
-        }
+        const { id, showDelete } = this.state;
         if ((prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) ||
             (prevProps.createMessageResponse !== createMessageResponse && createMessageResponse) ||
-            (prevState.showModal !== showModal && !showModal)) {
+            (prevProps.editMessageResponse !== editMessageResponse && editMessageResponse)) {
+                this.setState({
+                    ...this.state,
+                    showCreate: false,
+                    showDelete: false
+                });
             this.props.getQuestionDataList();
         }
-        if (prevState.showEdit !== showEdit && showEdit.id !== id && showEdit && id) {
+        if (prevState.id !== id && id && !showDelete) {
             this.props.getQuestionDetailData(id);
         }
         if (prevProps.questionDetailResponse !== questionDetailResponse && questionDetailResponse) {
             this.setState({
                 ...this.state,
-                number: questionDetailResponse.number,
-                type: questionDetailResponse.type,
-                question: questionDetailResponse.question,
-                answers: questionDetailResponse.answers
+                showCreate: true,
+                input: {
+                    ...this.state.input,
+                    number: questionDetailResponse.number,
+                    type: questionDetailResponse.type,
+                    question: questionDetailResponse.question,
+                    answers: questionDetailResponse.answers
+                }
             });
         }
     }
 
-    private toggleModal(): void {
-        this.setState({
-            showModal: !this.state.showModal
-        });
-    }
-
     private toggleEdit(id: string = ""): void {
         this.setState({
-            showEdit: !this.state.showEdit,
             id: id
         });
     }
@@ -117,7 +128,31 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
     private toggleCreate(): void {
         this.setState({
             showCreate: !this.state.showCreate,
-            id: ""
+            id: "",
+            input: {
+                ...this.state.input,
+                number: "",
+                type: "",
+                question: "",
+                answers: [
+                    {
+                        correct: 1,
+                        value: ""
+                    },
+                    {
+                        correct: 0,
+                        value: ""
+                    },
+                    {
+                        correct: 0,
+                        value: ""
+                    },
+                    {
+                        correct: 0,
+                        value: ""
+                    }
+                ]
+            }
         });
     }
 
@@ -127,60 +162,34 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         });
     }
 
-    private handleChange(e: any): void {
+    private handleChange(e: any, idx: any = null): void {
         const { name, value } = e.target;
-        let errorType = name + "Error";
-        let errorMessage = this.validateInput(value, name);
 
-        this.setState({
-            ...this.state,
-            [name]: value,
-            [errorType]: errorMessage
-        });
-    }
-
-    private validateInput(input: any, type: string): string {
-        if (type === "number") {
-            if (!input || (isNaN(input) && isNaN(Number(input)))) {
-                return "Please enter a number";
-            }
+        if (name === "answers") {
+            let newAnswers = [...this.state.input.answers];
+            newAnswers[idx].value = value;
+            this.setState({
+                ...this.state,
+                input: {
+                    ...this.state.input,
+                    [name]: newAnswers,
+                }
+            });
         }
-        else if (type === "type") {
-            if (!input) {
-                return "Please choose question type";
-            }
+        else {
+            this.setState({
+                ...this.state,
+                input: {
+                    ...this.state.input,
+                    [name]: value,
+                }
+            });
         }
-        else if (type === "question") {
-            if (!input) {
-                return "Please enter a question";
-            }
-        }
-        return "";
-    }
-
-    private validateForm(): boolean {
-        const {
-            numberError,
-            typeError,
-            questionError
-        } = this.state;
-        if (numberError) {
-            document.getElementsByName("number")[0].focus();
-            return false;
-        }
-        else if (typeError) {
-            document.getElementsByName("type")[0].focus();
-            return false;
-        }
-        else if (questionError) {
-            document.getElementsByName("question")[0].focus();
-            return false;
-        }
-        return true;
     }
 
     private handleEditQuestion(): void {
-        const { id, number, type, question, answers } = this.state;
+        const { id } = this.state;
+        const { number, type, question, answers } = this.state.input;
         let formData = {
             id,
             number,
@@ -197,7 +206,7 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
     }
 
     private submitCreateQuestion(): void {
-        const { number, type, question, answers } = this.state;
+        const { number, type, question, answers } = this.state.input;
 
         this.props.createQuestion({
             number,
@@ -210,32 +219,21 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
     render() {
         const { questionsDataResponse } = this.props;
         const {
-            showModal,
-            showEdit,
             showDelete,
             showCreate,
             shrink,
-            number,
-            type,
-            question,
-            answers,
-            id
+            input,
+            id,
         } = this.state;
         return (
             <QuestionDashboardComponent
                 {...this.props}
                 questionsDataResponse={questionsDataResponse}
-                showModal={showModal}
-                showEdit={showEdit}
                 showDelete={showDelete}
                 showCreate={showCreate}
                 shrink={shrink}
-                number={number}
-                type={type}
-                question={question}
-                answers={answers}
+                input={input}
                 id={id}
-                toggleModal={this.toggleModal}
                 toggleEdit={this.toggleEdit}
                 toggleDelete={this.toggleDelete}
                 toggleCreate={this.toggleCreate}

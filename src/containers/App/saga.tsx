@@ -7,6 +7,7 @@ import { watchIsotermProfileSaga } from "../IsotermProfile/saga";
 import { watchContestantDashboardSaga } from "../ContestantDashboard/saga";
 import { watchForgotPasswordSaga } from "../ForgotPassword/saga";
 import { watchNewPasswordSaga } from "../NewPassword/saga";
+import { watchQuestionDashboardSaga } from "../QuestionDashboard/saga";
 
 export default function* Saga() {
     yield all([
@@ -17,6 +18,7 @@ export default function* Saga() {
         watchIsotermProfileSaga(),
         watchContestantDashboardSaga(),
         watchForgotPasswordSaga(),
-        watchNewPasswordSaga()
+        watchNewPasswordSaga(),
+        watchQuestionDashboardSaga()
     ]);
 }

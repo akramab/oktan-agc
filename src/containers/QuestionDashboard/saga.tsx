@@ -16,7 +16,11 @@ import {
 import { callApi } from "../Layout/saga";
 
 // Subject to change
-import { QUESTION_URL } from "../../config/api";
+import {
+    QUESTION_URL,
+    EDIT_QUESTION_URL,
+    DELETE_QUESTION_URL
+} from "../../config/api";
 
 export function* handleGetQuestionsData(action: any): any {
     let res = yield call(
@@ -37,7 +41,7 @@ export function* handleEditQuestionData(action: any): any {
     let res = yield call(
         callApi,
         "PUT",
-        `${QUESTION_URL}/${params}`,
+        `${EDIT_QUESTION_URL}/${params}`,
         null,
         null,
         true
@@ -52,7 +56,7 @@ export function* handleDeleteQuestionData(action: any): any {
     let res = yield call(
         callApi,
         "DELETE",
-        `${QUESTION_URL}/${params}`,
+        `${DELETE_QUESTION_URL}/${params}`,
         null,
         null,
         true

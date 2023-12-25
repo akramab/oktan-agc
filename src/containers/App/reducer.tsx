@@ -7,6 +7,7 @@ import isotermProfileReducer from "../IsotermProfile/reducer";
 import contestantDashboardReducer from "../ContestantDashboard/reducer";
 import forgotPasswordReducer from "../ForgotPassword/reducer";
 import newPasswordReducer from "../NewPassword/reducer";
+import questionDashboardReducer from "../QuestionDashboard/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -16,7 +17,8 @@ const Reducer = combineReducers({
     isotermProfileReducer,
     contestantDashboardReducer,
     forgotPasswordReducer,
-    newPasswordReducer
+    newPasswordReducer,
+    questionDashboardReducer
 });
 
 export default Reducer;
