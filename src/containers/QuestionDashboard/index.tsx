@@ -57,13 +57,15 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
                     }
                 ]
             },
-            id: ""
+            id: "",
+            keyword: ""
         };
 
         this.toggleEdit = this.toggleEdit.bind(this);
         this.toggleDelete = this.toggleDelete.bind(this);
         this.toggleCreate = this.toggleCreate.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.handleKeyword = this.handleKeyword.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleEditQuestion = this.handleEditQuestion.bind(this);
         this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
@@ -114,12 +116,14 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     private toggleEdit(id: string = ""): void {
         this.setState({
+            ...this.state,
             id: id
         });
     }
 
     private toggleDelete(id: string = ""): void {
         this.setState({
+            ...this.state,
             showDelete: !this.state.showDelete,
             id: id
         });
@@ -127,6 +131,7 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     private toggleCreate(): void {
         this.setState({
+            ...this.state,
             showCreate: !this.state.showCreate,
             id: "",
             input: {
@@ -158,7 +163,16 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
 
     private toggleSidebar(): void {
         this.setState({
+            ...this.state,
             shrink: !this.state.shrink
+        });
+    }
+
+    private handleKeyword(e: any): void {
+        const { value } = e.target;
+        this.setState({
+            ...this.state,
+            keyword: value
         });
     }
 
