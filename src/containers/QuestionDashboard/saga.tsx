@@ -23,11 +23,12 @@ import {
 } from "../../config/api";
 
 export function* handleGetQuestionsData(action: any): any {
+    const { params } = action;
     let res = yield call(
         callApi,
         "GET",
         QUESTION_URL,
-        null,
+        params,
         null,
         true
     );
@@ -40,10 +41,10 @@ export function* handleEditQuestionData(action: any): any {
     const { params } = action;
     let res = yield call(
         callApi,
-        "PUT",
+        "POST",
         `${EDIT_QUESTION_URL}/${params}`,
         null,
-        null,
+        params,
         true
     );
     if (res) {
