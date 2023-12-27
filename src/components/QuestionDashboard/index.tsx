@@ -210,7 +210,7 @@ const QuestionDashboardComponent = (props: any) => {
                     <Row className="justify-content-between align-items-center my-2">
                         <Col>
                             <Form>
-                                <Searchbar />
+                                <Searchbar onChange={(e: any) => props?.handleKeyword(e)} />
                             </Form>
                         </Col>
                         <Col className="text-end">
@@ -220,6 +220,7 @@ const QuestionDashboardComponent = (props: any) => {
                                     <FontAwesomeIcon icon={faFilter} className="me-2" />
                                     Filter
                                 </>}
+                                onClick={(e: any) => props?.handleSearch(e)}
                             />
                         </Col>
                     </Row>

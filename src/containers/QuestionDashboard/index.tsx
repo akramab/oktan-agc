@@ -69,6 +69,7 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         this.handleChange = this.handleChange.bind(this);
         this.handleEditQuestion = this.handleEditQuestion.bind(this);
         this.handleDeleteQuestion = this.handleDeleteQuestion.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
         this.submitCreateQuestion = this.submitCreateQuestion.bind(this);
     }
 
@@ -80,12 +81,12 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         else if (competitionType === "ISOTERM") {
             this.props.history.replace("/profile/isoterm");
         }
-        this.props.getQuestionDataList();
+        this.props.getQuestionDataList({keyword: ""});
     }
 
     componentDidUpdate(prevProps: any, prevState: any): void {
         const { editMessageResponse, deleteMessageResponse, createMessageResponse, questionDetailResponse } = this.props;
-        const { id, showDelete } = this.state;
+        const { id, showDelete, keyword } = this.state;
         if ((prevProps.deleteMessageResponse !== deleteMessageResponse && deleteMessageResponse) ||
             (prevProps.createMessageResponse !== createMessageResponse && createMessageResponse) ||
             (prevProps.editMessageResponse !== editMessageResponse && editMessageResponse)) {
@@ -94,7 +95,7 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
                     showCreate: false,
                     showDelete: false
                 });
-            this.props.getQuestionDataList();
+            this.props.getQuestionDataList({keyword});
         }
         if (prevState.id !== id && id && !showDelete) {
             this.props.getQuestionDetailData(id);
@@ -219,6 +220,12 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
         this.props.deleteQuestion(id);
     }
 
+    private handleSearch(e: any): void {
+        e.preventDefault();
+        const { keyword } = this.state;
+        this.props.getQuestionDataList({keyword});
+    }
+
     private submitCreateQuestion(): void {
         const { number, type, question, answers } = this.state.input;
         let submitAnswer = answers;
@@ -256,9 +263,11 @@ export class QuestionDashboardContainer extends PureComponent<any, any> {
                 toggleDelete={this.toggleDelete}
                 toggleCreate={this.toggleCreate}
                 toggleSidebar={this.toggleSidebar}
+                handleKeyword={this.handleKeyword}
                 handleChange={this.handleChange}
                 handleEditQuestion={this.handleEditQuestion}
                 handleDeleteQuestion={this.handleDeleteQuestion}
+                handleSearch={this.handleSearch}
                 submitCreateQuestion={this.submitCreateQuestion}
             />
         )
@@ -278,7 +287,7 @@ const mapStateToProps = (state: any) => {
 
 function mapDispatchToProps(dispatch: any) {
     return {
-        getQuestionDataList: () => dispatch(getQuestionsData()),
+        getQuestionDataList: (params: any) => dispatch(getQuestionsData(params)),
         editQuestion: (params: any) => dispatch(editQuestionData(params)),
         deleteQuestion: (params: any) => dispatch(deleteQuestionData(params)),
         createQuestion: (params: any) => dispatch(createQuestion(params)),

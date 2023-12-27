@@ -11,9 +11,10 @@ import {
     SET_QUESTION_DETAIL
 } from "./constant";
 
-export function getQuestionsData() {
+export function getQuestionsData(params: any) {
     return {
-        type: GET_QUESTIONS_DATA
+        type: GET_QUESTIONS_DATA,
+        params,
     };
 }
 
