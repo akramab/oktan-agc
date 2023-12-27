@@ -117,3 +117,5 @@ export const NEW_PASSWORD_URL = `${FORGOT_PASSWORD_URL}/new`;
 export const QUESTION_URL = `${getApiUrl()}/question`;
 export const EDIT_QUESTION_URL = `${QUESTION_URL}/edit`;
 export const DELETE_QUESTION_URL = `${QUESTION_URL}/delete`;
+
+export const CBT_URL = `${getApiUrl()}/cbt`;

@@ -20,6 +20,7 @@ const ContestantDashboardContainer = lazy(() => import("../ContestantDashboard")
 const ForgotPasswordContainer = lazy(() => import("../ForgotPassword"));
 const NewPasswordContainer = lazy(() => import("../NewPassword"));
 const QuestionDashboardContainer = lazy(() => import("../QuestionDashboard"));
+const CBTDashboardContainer = lazy(() => import("../CBTDashboard"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -107,6 +108,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                                     exact path={"/profile/isoterm"}
                                     render={(props: any) => {
                                     return <IsotermProfileContainer passed={passed} verified={verified} competitionType={competitionType} {...this.props} {...props} />;
+                                    }}
+                                />
+                                <Route
+                                    exact path={"/cbt"}
+                                    render={(props: any) => {
+                                    return <CBTDashboardContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                     }}
                                 />
                                 {isAdmin &&

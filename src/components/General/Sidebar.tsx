@@ -15,6 +15,7 @@ const Sidebar = (props: any) => {
     const url = window.location.href;
     let profileUrl = props?.isCrystal ? "/profile/crystal" : "/profile/isoterm";
     let profileText = props?.verified ? "text-green" : "text-red";
+    let profileBorder = props?.verified ? "border-green" : "border-red";
 
     return (
         <div className={`${props?.shrink && "shrink"} bg-white sidebar px-3 py-4 d-flex flex-column justify-content-between align-items-center`}>
@@ -95,7 +96,7 @@ const Sidebar = (props: any) => {
                         </Row>
                     </Link> :
                     <Link to={url.includes("/profile") ? "#" : profileUrl} className="text-decoration-none w-100">
-                        <Row className={`py-3 mt-3 ${props?.verified && url.includes("/profile") ? "border-green" : "border-red"} rounded`}>
+                        <Row className={`py-3 mt-3 ${url.includes("/profile") ? profileBorder : ""} rounded`}>
                             <Col className={`width-fit sidebar-icon px-3 ${url.includes("/profile") && "active"}`}>
                                 <FontAwesomeIcon icon={faUser} size="xl" />
                             </Col>

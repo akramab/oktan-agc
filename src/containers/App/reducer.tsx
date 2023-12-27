@@ -8,6 +8,7 @@ import contestantDashboardReducer from "../ContestantDashboard/reducer";
 import forgotPasswordReducer from "../ForgotPassword/reducer";
 import newPasswordReducer from "../NewPassword/reducer";
 import questionDashboardReducer from "../QuestionDashboard/reducer";
+import cbtInfoReducer from "../CBTDashboard/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -18,7 +19,8 @@ const Reducer = combineReducers({
     contestantDashboardReducer,
     forgotPasswordReducer,
     newPasswordReducer,
-    questionDashboardReducer
+    questionDashboardReducer,
+    cbtInfoReducer
 });
 
 export default Reducer;

@@ -19,6 +19,7 @@
   --red-answer: #FF4F4F;
   --green-btn: #0C7F84;
   --green-answer: #25F725;
+  --yellow-flag: #FFFF00;
   --blue-btn: #007AFF;
   --crystal: #2E7578;
   --isoterm: #FF9334;
@@ -151,6 +152,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--green-answer);
 }
 
+.bg-yellow-flag {
+  background-color: var(--yellow-flag);
+}
 
 .border-gray {
   border: 2px solid var(--gray-sidebar);
