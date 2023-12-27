@@ -420,7 +420,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .side-content {
   position: absolute;
-  top: 86px;
+  top: 77.89px;
   left: 277.672px;
   right: 0;
 }
@@ -507,4 +507,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .modal-dialog {
   max-width: 650px !important;
+}
+
+.cbt-img {
+  max-height: 30vh !important;
 }

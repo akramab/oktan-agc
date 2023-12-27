@@ -7,17 +7,18 @@ import {
 } from "./constant";
 import { callApi } from "../Layout/saga";
 
-import { CBT_URL } from "../../config/api";
+import { CBT_INFO_URL } from "../../config/api";
 
 export function* handleGetCBTInfo(action: any): any {
     let res = yield call(
         callApi,
         "GET",
-        CBT_URL,
+        CBT_INFO_URL,
         null,
         null,
         true
     );
+    
     if (res) {
         yield put(setCBTInfo(res));
     }

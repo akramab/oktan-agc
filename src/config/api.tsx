@@ -119,3 +119,4 @@ export const EDIT_QUESTION_URL = `${QUESTION_URL}/edit`;
 export const DELETE_QUESTION_URL = `${QUESTION_URL}/delete`;
 
 export const CBT_URL = `${getApiUrl()}/cbt`;
+export const CBT_INFO_URL = `${QUESTION_URL}/info`;
