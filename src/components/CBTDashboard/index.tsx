@@ -51,7 +51,7 @@ const CBTDashboardComponent = (props: any) => {
                 </Row>
                 <Row className="mt-5">
                     <Col>
-                        <Link to={`/cbt/exam/${props?.cbtInfoResponse?.cbt_id}`}>
+                        <Link to="/cbt/exam">
                             <CustomButton text="Mulai Kerjakan" bg="bg-blue-btn" />
                         </Link>
                     </Col>
