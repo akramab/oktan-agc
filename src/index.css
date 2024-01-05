@@ -153,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-yellow-flag {
-  background-color: var(--yellow-flag);
+  background-color: var(--yellow-flag) !important;
 }
 
 .border-gray {
@@ -170,6 +170,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .border-green {
   border: 2px solid #008000;
+}
+
+.border-yellow-flag {
+  border: 2px solid var(--yellow-flag);
 }
 
 .form-control, .form-select {
@@ -425,6 +429,13 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
 }
 
+.exam-content {
+  position: absolute;
+  top: 77.89px;
+  left: 0;
+  right: 0;
+}
+
 .side-content.shrink {
   left: 90px;
 }
@@ -511,4 +522,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .cbt-img {
   max-height: 30vh !important;
+}
+
+.question-nav {
+  width: 3rem !important;
+  height: 2.5rem;
+}
+
+.form-check input {
+  margin-right: 1rem !important;
+}
+
+.text-body path {
+  fill: black;
 }

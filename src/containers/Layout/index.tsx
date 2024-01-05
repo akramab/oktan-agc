@@ -21,6 +21,7 @@ const ForgotPasswordContainer = lazy(() => import("../ForgotPassword"));
 const NewPasswordContainer = lazy(() => import("../NewPassword"));
 const QuestionDashboardContainer = lazy(() => import("../QuestionDashboard"));
 const CBTDashboardContainer = lazy(() => import("../CBTDashboard"));
+const CBTExamContainer = lazy(() => import("../CBTExam"));
 
 export class LayoutContainer extends PureComponent<any, any> {
     static propTypes = {
@@ -114,6 +115,12 @@ export class LayoutContainer extends PureComponent<any, any> {
                                     exact path={"/cbt"}
                                     render={(props: any) => {
                                     return <CBTDashboardContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
+                                    }}
+                                />
+                                <Route
+                                    exact path={"/cbt/exam"}
+                                    render={(props: any) => {
+                                    return <CBTExamContainer verified={verified} competitionType={competitionType} {...this.props} {...props} />;
                                     }}
                                 />
                                 {isAdmin &&

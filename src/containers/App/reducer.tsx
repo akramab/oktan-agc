@@ -9,6 +9,7 @@ import forgotPasswordReducer from "../ForgotPassword/reducer";
 import newPasswordReducer from "../NewPassword/reducer";
 import questionDashboardReducer from "../QuestionDashboard/reducer";
 import cbtInfoReducer from "../CBTDashboard/reducer";
+import cbtExamReducer from "../CBTExam/reducer";
 
 const Reducer = combineReducers({
     layoutReducer,
@@ -20,7 +21,8 @@ const Reducer = combineReducers({
     forgotPasswordReducer,
     newPasswordReducer,
     questionDashboardReducer,
-    cbtInfoReducer
+    cbtInfoReducer,
+    cbtExamReducer
 });
 
 export default Reducer;

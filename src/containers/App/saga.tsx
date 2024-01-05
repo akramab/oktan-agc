@@ -9,6 +9,7 @@ import { watchForgotPasswordSaga } from "../ForgotPassword/saga";
 import { watchNewPasswordSaga } from "../NewPassword/saga";
 import { watchQuestionDashboardSaga } from "../QuestionDashboard/saga";
 import { watchCBTInfoSaga  } from "../CBTDashboard/saga";
+import { watchCBTExamSaga } from "../CBTExam/saga";
 
 export default function* Saga() {
     yield all([
@@ -21,6 +22,7 @@ export default function* Saga() {
         watchForgotPasswordSaga(),
         watchNewPasswordSaga(),
         watchQuestionDashboardSaga(),
-        watchCBTInfoSaga()
+        watchCBTInfoSaga(),
+        watchCBTExamSaga()
     ]);
 }
